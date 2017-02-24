@@ -1,0 +1,98 @@
+<view class="foodDetail">
+    <image mode="widthFix" class="foodImg" src="./img/foodDetail.jpg" ></image>
+    <view class="infoBox">
+        <view class="FDname">{{thisFoodName}}</view>
+        <view class="FDsecInfo">
+            <view class="FDSI monthSale">
+                月售
+                <view class="FDSI monthSaleNum">
+                    7
+                </view>
+                份
+            </view>
+            <view class="FDSI sayGood">
+                好评率
+                <view class="FDSI sayGoodNum">
+                    100%
+                </view>
+            </view>
+            <view class="FDSI pingjiaCount">
+                （共
+                <view class="FDSI pingjiaCountNum">
+                    2
+                </view>
+                人评价）
+            </view>
+        </view>
+        <view class="FDpriceBox">
+            <view class="FDPinfo">
+                <view class="FDPIfirRow">
+                    <view class="FDPIR nowPriceSign">￥</view>
+                    <view class="FDPIR nowPrice">{{thisFoodPrice}}</view>
+                    <view class="FDPIR oldPriceBobx">
+                        <view class="FDPIR oldPriceSign">￥</view>
+                        <view class="FDPIR oldPrice">44</view>
+                    </view>
+                </view>
+                <view class="FDPIsecRow">
+                    <view class="FDPIsecPrice">{{thisFoodPrice}}</view>
+                    元，限购。
+                </view>
+            </view>
+            <view class="addToShoppingCart {{thisFoodSleCount? 'hidden': ''}}"  data-foodid="{{thisFoodId}}" catchtap="addThisFood" >加入购物车</view>
+            <view class="addOrDelBox  {{thisFoodSleCount? '': 'hidden'}}">
+                <view class="AODB deleteGoodCount {{thisFoodSleCount ? '' : 'hidden'}}"  data-foodid="{{thisFoodId}}" data-price="{{thisFoodPrice}}" catchtap="reduceThisFood">-</view>
+                <view class="AODB thisGoodCount {{thisFoodSleCount ? '' : 'hidden'}}">{{thisFoodSleCount}}</view>
+                <view class="AODB addFoodBtn" data-foodid="{{thisFoodId}}" data-price="{{thisFoodPrice}}" catchtap="addThisFood"  >+</view>
+            </view>
+        </view>
+        <view class="foodRepresent">
+            <view class="FRhead">商品描述</view>
+            <view class="FRmain">
+                套餐内容：新奥尔良风味鸡翅2块*5
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<!--购物车悬浮栏-->
+<view class="shoppingCartBox">
+    <view class="SCLdafaultBox {{shoppingCartCount == 0 ? '' : 'hidden'}}">
+        <image class="SCLDB icon_shoppingCart" mode="widthFix" src="./img/icon-shoppingCart.png"></image>
+        <view class="SCLDB leftM">购物车是空的</view>
+        <view class="SCLDB rightM">
+            <view class="SCLDB sendMoney">0</view>
+            元起送
+        </view>
+    </view>
+    <view class="SCLhadFoodBox {{shoppingCartCount == 0 ? 'hidden' : ''}}">
+        <view class="SCLHFB leftMo">
+            <view class="shoppingIcon">
+                <image class="SCLDB icon_shoppingCart2" mode="widthFix" src="./img/icon-shoppingCart.png"></image>
+                <view class="SCLHFBL countNum">{{ shoppingCartCount }}</view>
+            </view>
+            <view class="allMoneyBox">
+                <view class="allMoneyCon">
+                    共
+                    <view class="allMoneyConSign">￥</view>
+                    <view class="allMoneyResult">{{shoppingCartMoney}}</view>
+                </view>
+                <view class="sendMoneyInfo">
+                    另需付配送费
+                    <view class="sendMoneyResult">10</view>
+                    元
+                </view>
+            </view>
+        </view>
+        <view class="okBtnBox">
+            <view class="noEnoughMoneyBox" style="display: none;">
+                还差￥
+                <view class="noEnoughMoneyCount">9</view>
+                起送
+            </view>
+            <view class="goSureBtn">选好了</view>
+        </view>
+    </view>
+</view>
+

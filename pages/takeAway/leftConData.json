@@ -1,0 +1,36 @@
+{
+  "leftMenuData" : [
+    {
+      "name" : "今日主推",
+      "menuId" : "1"
+    },
+    {
+      "name" : "扒类",
+      "menuId" : "2"
+    },
+    {
+      "name" : "主食",
+      "menuId" : "3"
+    },
+    {
+      "name" : "面食",
+      "menuId" : "4"
+    },
+    {
+      "name" : "沙拉",
+      "menuId" : "5"
+    },
+    {
+      "name" : "甜点",
+      "menuId" : "6"
+    },
+    {
+      "name" : "饮料",
+      "menuId" : "7"
+    },
+    {
+      "name" : "小炒",
+      "menuId" : "8"
+    }
+  ]
+}

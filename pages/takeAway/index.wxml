@@ -1,0 +1,148 @@
+<view class="TACont">
+    <!--商家介绍-->
+    <view class="introduceBox">
+        <view class="IB-firstRow">
+            <image class="IB-shopIcon" src="./img/shangjiaIco.png" mode="widthFix"></image>
+            <view class="shopInfoRow">
+                <view class="SIR-firRow">
+                    <view class="shopName">鸿星海鲜酒家</view>
+                    <view class="shopAddr">(龙苑店)</view>
+                    <view class="recIco">自行配送</view>
+                </view>
+                <view class="sendTxt">
+                    <view class="STV qisong">起送￥20</view>
+                    <view class="STV peisong">配送￥3</view>
+                    <view class="STV songda">送达30分钟</view>
+                </view>
+            </view>
+        </view>
+        <view class="itdTxtBox">
+            <image class="itdIcon" mode="widthFix" src="./img/icon-laba.png"></image>
+            <view class="idtTxt">鸿兴酒家blablablablabla真的很棒的理念</view>
+        </view>
+    </view>
+
+    <!--主导航-->
+    <view class="mainNav">
+        <view class="MNtabBtn">
+            <view class="MBTbtn diancai active">
+                点菜
+            </view>
+        </view>
+        <view class="MNtabBtn">
+            <view class="MBTbtn dizhi">
+                地址
+            </view>
+        </view>
+    </view>
+
+    <!--菜式区-->
+    <view class="menuBox"  style="height:{{scrollConHeight}}px" >
+        <!--左边菜单区-->
+        <scroll-view class="MB-leftCon" scroll-y="true" style="height:{{scrollConHeight}}px" >
+
+            <view wx:for="{{menuData}}" wx:key="index" bindtap="clkLeftMenuFn" class="MBLcon {{item.active == 1 ? 'active' : ''}}" data-typeid="{{item.menuId}}">
+                <view class="MBLC-lB"></view>
+                <view class="MBLC-box">{{item.name}}</view>
+            </view>
+
+        </scroll-view>
+
+        <!--右边菜式区-->
+        <scroll-view class="MB-rightCon" scroll-y="true" style="height:{{scrollConHeight}}px">
+            <view wx:for="{{foodData}}" wx:if="{{item.typeId == nowSelectTypeId}}"  wx:key="index" bindtap="jumpToFoodDetail" class="MBRcon"  data-foodid="{{item.foodId}}" data-price="{{item.price}}" data-foodname="{{item.foodName}}">
+                <image class="MBLC-img"mode="widthFix" src="{{item.imageUrl}}"></image>
+                <view class="MB-Ccon">
+                    <view class="MB-cName">{{item.foodName}}</view>
+                    <view class="MB-YS_ZAN">
+                        <view class="MB-yueshou">
+                            <view class="MB-yueshouN">月售 </view>
+                            <view class="MB-yueshouNum">{{item.monthSaleNum}}</view>
+                        </view>
+                        <view class="MB-zanB">
+                            <view class="MB-zanN"> 赞</view>
+                            <view class="MB-zanNum">{{item.zan}}</view>
+                        </view>
+                    </view>
+                    <view class="MB-price">
+                        <view class="MB-priceN">￥ </view>
+                        <view class="MB-priceNum">{{item.price}}</view>
+                    </view>
+                </view>
+                <view class="addOrDelCon">
+                    <view class="addOrDelBox">
+                        <view class="AODB deleteGoodCount {{item.foodSleCount ? '' : 'hidden'}}"  data-foodid="{{item.foodId}}" data-price="{{item.price}}" catchtap="delFromShoppingCart">-</view>
+                        <view class="AODB thisGoodCount {{item.foodSleCount ? '' : 'hidden'}}">{{item.foodSleCount}}</view>
+                        <view class="AODB addFoodBtn" data-foodid="{{item.foodId}}" data-price="{{item.price}}" catchtap="addToShoppingCartFn">+</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+
+
+<!--购物车详情层-->
+<view class="shoppingCartDetail {{isShoppingDetailShow && shoppingCartCount ? '' : 'hidden'}}">
+    <view class="SCD background" catchtap="hideShoppingDetail"></view>
+    <view class="SCDMain">
+        <view class="SCDM head">
+            <view class="SCDM clearAllShoppingCart">清空购物车</view>
+        </view>
+        <scroll-view class="SCDM AllGoodBox" scroll-y="true" style="height:{{foodTypeCount >=5 ? '310px' : 'auto'}}">
+            <view class="SCDM shoppingCartGood" wx:for="{{foodData}}" wx:if="{{item.foodSleCount}}"  wx:key="index">
+                <view class="SCDMS goodName">{{item.foodName}}</view>
+                <view class="SCDMS goodPrice">￥<view class="SCDMS goodPriceNum">{{item.price}}</view></view>
+                <view class="SCDM_addOrDelCon">
+                    <view class="addOrDelBox">
+                        <view class="AODB deleteGoodCount"  data-foodid="{{item.foodId}}" data-price="{{item.price}}" catchtap="delFromShoppingCart">-</view>
+                        <view class="AODB thisGoodCount">{{item.foodSleCount}}</view>
+                        <view class="AODB addFoodBtn" data-foodid="{{item.foodId}}" data-price="{{item.price}}" catchtap="addToShoppingCartFn">+</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+
+
+
+<!--购物车悬浮栏-->
+<view class="shoppingCartBox" catchtap="showShoppingDetail">
+    <view class="SCLdafaultBox {{shoppingCartCount == 0 ? '' : 'hidden'}}">
+        <image class="SCLDB icon_shoppingCart" mode="widthFix" src="./img/icon-shoppingCart.png"></image>
+        <view class="SCLDB leftM">购物车是空的</view>
+        <view class="SCLDB rightM">
+            <view class="SCLDB sendMoney">0</view>
+            元起送
+        </view>
+    </view>
+    <view class="SCLhadFoodBox {{shoppingCartCount == 0 ? 'hidden' : ''}}">
+        <view class="SCLHFB leftMo">
+            <view class="shoppingIcon">
+                <image class="SCLDB icon_shoppingCart2" mode="widthFix" src="./img/icon-shoppingCart.png"></image>
+                <view class="SCLHFBL countNum">{{ shoppingCartCount }}</view>
+            </view>
+            <view class="allMoneyBox">
+                <view class="allMoneyCon">
+                    共
+                    <view class="allMoneyConSign">￥</view>
+                    <view class="allMoneyResult">{{shoppingCartMoney}}</view>
+                </view>
+                <view class="sendMoneyInfo">
+                    另需付配送费
+                    <view class="sendMoneyResult">10</view>
+                    元
+                </view>
+            </view>
+        </view>
+        <view class="okBtnBox">
+            <view class="noEnoughMoneyBox" style="display: none;">
+                还差￥
+                <view class="noEnoughMoneyCount">9</view>
+                起送
+            </view>
+            <view class="goSureBtn">选好了</view>
+        </view>
+    </view>
+</view>

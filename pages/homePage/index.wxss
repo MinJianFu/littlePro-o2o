@@ -1,0 +1,60 @@
+/**index.wxss**/
+.addrBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  font-size: 12px;
+}
+.AB-icon{
+  width: 10px;
+}
+
+.navBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  font-size: 12px;
+  margin: 18px 0;
+}
+.NB-img{
+  flex: 1;
+}
+.NB-txt{
+  display: block;
+}
+.NB-icon{
+  width: 50px;
+}
+.SB-cont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  font-size: 12px;
+  margin: 18px 0;
+}
+.MBLcon{
+  padding:0 12px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px dashed #dfdfdd;
+
+}
+.SBC-block{
+  flex: 1;
+}
+.SBC-img{
+  width: 80%;
+}
+.SY-swiper{
+}
+.slide-image{
+  width: 100%;
+  height: 100%;
+}

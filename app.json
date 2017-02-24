@@ -1,0 +1,17 @@
+{
+  "pages":[
+    "pages/homePage/index",
+    "pages/groupBuy/index",
+    "pages/schedule/index",
+    "pages/takeAway/index",
+    "pages/foodDetail/index",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#32cd32",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"#fff"
+  }
+}

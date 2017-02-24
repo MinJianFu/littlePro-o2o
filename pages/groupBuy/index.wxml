@@ -1,0 +1,46 @@
+<view class="HPCont" bindLoad="contentFn">
+    <!--到定位标签-->
+    <view class="addrBox">
+        <image class="AB-icon" mode="widthFix" src="./img/icon-location.png">
+        </image>
+        <view class="AB-name">
+            珠江新城
+        </view>
+        <view class="AB-notes">
+            (地铁站)
+        </view>
+    </view>
+    <!--首页轮播-->
+    <swiper class="SY-swiper" indicator-dots="{{swiperData.indicatorDots}}" autoplay="{{swiperData.autoplay}}"
+            interval="{{swiperData.interval}}" duration="{{swiperData.duration}}" style="height:{{swiperHeight}}px">
+        <block wx:for="{{swiperData.imgUrls}}">
+            <swiper-item style="height: auto;">
+                <image src="{{item}}" bindload="swipeInit" class="slide-image" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <!--主要导航区-->
+    <view class="navBox">
+        <view class="NB-img">
+            <image class="NB-icon" mode="widthFix" src="./img/icon-waimai.png">
+            </image>
+            <text class="NB-txt">
+                外卖
+            </text>
+        </view>
+        <view class="NB-img">
+            <image class="NB-icon" mode="widthFix" src="./img/icon-tuangou.png">
+            </image>
+            <text class="NB-txt">
+                团购
+            </text>
+        </view>
+        <view class="NB-img">
+            <image class="NB-icon" mode="widthFix" src="./img/icon-jucan.png">
+            </image>
+            <text class="NB-txt">
+                聚餐预定
+            </text>
+        </view>
+    </view>
+</view>
