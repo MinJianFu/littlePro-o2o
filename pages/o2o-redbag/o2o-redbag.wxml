@@ -1,0 +1,14 @@
+<view class="redbag-item" wx:for="{{redbad}}">
+    <view class="redbag-item-text">{{item.redbagdesc}}</view>
+    <view class="redbag-item-icon-box">
+        <image class="redbag-item-icon"  mode="aspectFill" src="./img/gou.png"></image>
+    </view>
+</view>
+<view class="box1">
+    <view class="box">1</view>
+    <view class="box">1</view>
+    <view class="box">1</view>
+    <view class="box">1</view>
+    <view class="box">1</view>
+    <view class="box">1</view>
+</view>

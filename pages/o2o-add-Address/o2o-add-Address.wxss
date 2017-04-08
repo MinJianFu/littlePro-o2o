@@ -1,0 +1,91 @@
+page{
+    background: #f4f4f4;
+    font-family: Helvetica Neue,Tahoma,Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft Yahei,sans-serif;
+    font-size: 16px;
+}
+.wrap{
+    background: #ffffff;
+}
+.Contacts-box{
+    display: flex;
+}
+.Contacts-from{
+    width: 100%;
+}
+.Contacts-input{
+    padding: 5px 0;
+}
+.Contacts-label{
+    display: flex;
+    padding: 10px 0;
+}
+.man{
+    display: flex;
+    align-items: center;
+}
+.woman{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.Contacts-label-icon{
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEKklEQVRogc2aTWgbRxTHp6lb+1CoTyWQpqSBQm45FNocAtXRCta8kYMggUIFseeNVJualIApgahNPw495OBDKT0EmkvbUALNwYcWTHGCITaYUlRp3pO9gVB86MGHQJNL2R60lvWxq4/VrrQP/hft7MzvvXkzszMjISKyjNXnweoVYPOdIrwPhJtA6AChA4xb3m+3JeH1jNXnU+uliajaDmUpJz8l7cIlILwNhP8AoTugDhTjHVnF91NOfmpk4Bec4nFV1ctehAeF9hfjtiR9DWrFk7GBK2d5WhIaYFyPDLxdVj9UhEvZmnktUvisxbNg9fexgbdJWvxRWfNOJPDKLqTB4m+jgm9yYkNZrYaDr+IVICyPGr5JNbBYDAfPeAUYD8YIf6jnwPrDweBrhTSQ/isB8Ifak4RzfcHXB+zoc76nGB9kuHCuK3xqvTQBZH4dO2ywNruu4JLQJACyqyTjVV/4C+Xi8VgXqYikSD+6SIXTHQ6A1fPjhgNCFxj3pV24pCrmlGS85VvG6pXW3HfyU8C4nwT4jNVnWsakP9eBcvLTR7lv9QdjhyfclFWcaQ5s5vHim9Jixa+8tHrxKH3qn8SJifyhKTarQe8owvtCCCFyu/pVYPwzSZEXrnhBWVPq+p7Vj2etOeGtugmD5x7wh2nEOifA6pUkpU3gzOPrAN4SQPhNIiJfKh0Di58OGIQfhCL8edzwJbd0TJL+LERdvwsI3tvugNXzkvA6hNu0x5I2bXoigNH6PPivOUqyijNdHA0d+Zybe1HWTJjI12XxqQDCJ34P53j+9ZZFxeozoVfr6CPfkADGrYCHX7c3GMqJGOGBcV8A472gApL1jY6GB0unjrRJuaUJRXhzaHhCVxFuCEn4bbdCQzjRAf/2tn4JSH8eBTwQuorNT8KbZboXrOrlgdIpzrRpdWBVQAUz/RQeoCc6Z5ty7mVg80WU8F4KXfb2wf0dn/TsiRFF3tOzXLn4ihBCCMV4p2+vg5wg3BkhvAuMa41GvBO4vl/2S6d2S/PSpLT4ZSzwhK4k/KjR2OwuvgWM21E5kealScWxwleye3i2tatJXxu4Ih8n0rw0CVZ/FRd8YPAyZf0GWPNwmMrqhwMmVngIGGv1sUAmH6pSxjXv1mY9ZnjfSaRh3pQa3dVRDNHveZ8GpN+VhBsJgG3XdpYL73WFb6RSTStJuJsAaE/mb0V4uS/4Rk8wFoHw3/HDdznQ7WXS6kUg3Btn5KXVH4eCbzhBOAeMD0YOX7/dHyxtgizDhXNAeHeEDvyS5YX+Bmy/NmvNCcl4VZF+FCP4Dli9ohxzKlL4ZrtIhdNg9SdA5o8IwSuS9Y3AFTYOU05+Gqye9/6F8jQE9DNgXJOEpuWsfxyWcvJTsooz3nH4Xaiv5kfHNYz7wLgFjPcUm9UMmdnGZmRI+x82WxqPeT0CggAAAABJRU5ErkJggg==") no-repeat;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+}
+
+.Contacts-label-icon-h{
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAD0UlEQVRoQ+1Z61EbMRDWSgWEVBCngnAj/QcqACoIrgBSAaSCkApwKoipAPP/NIIKQiqIU4C0mfXobnxn3Un3yHmYQTMe/zg99tuXdj8Be+UDXrn87A0AWdAYM7PWHgHAMSLO6D9kWURcAcAL/QshHrMsexnqAYMsYIw5tdZeAMBZH0EQcSmEWGRZdt9nPa3pBcAYc+ycu2OMzfoeXFv3wjmfZ1m26rpfJwDGmANr7V1fjceE8xYhIOvY3OJ7MgBjzKFz7ueIWm+SkaxxnmXZUwqIJABa6wvG2DfG2EHKpiPMWSPiXCm1jO0VBZDn+RkAkOYnH4h4HgPRCsC7zcOEmq8rac05P2lzp0YAFLDOOTOBz8csSzGRNQV2I4A8zxcA8Dm2+xTfEfGHUoricGcEAfg8T66zt4GI90KIjdDOuRXn/Cp0TwQB5Hn+0FQOTIGornFSqLX2Wil1Uj9/B8C+tR9yF631DWPs2gd05bbeAbBP328QntyIyhYW+r4DQGv9Zx9pMya8d521lPL9thtVAOzLfRKF38hdd6MKgMLXpgjU4owuwvs1X6WUFBObUQdAAXI0FYAewpNoj1LKsmGqAMjz3ADAYQDAM2Ns6butUS63kPB5nl8CwG2bAhHxSSmVNVkAQ4s55++Lq9xXppusMGBU3ID20VrTnsHbtn6OlLJUfN2FogD8YWVq6wFiLqVcbK/rIjyt6wyAMbaQUs5rh/YBMVj4vgBo3VAQowgfAxDLQn1BjCZ8LAstAeA04tddQYwpPJUT90qpksapB/GV731jsZkKYlThvVBfpJRlqq2XEsQ8UBeWMmIg/ofwVEpQd1YyFqFijui+DykIPEVIFEjJ4/h7glLdoFTZcP5vKWWFTAsBIPNcpgCgOXQzCiGo8Q6SUb63Jkom6ZKKnPtdSkluXo5QQzNzzv1KBdAGwjN51N2FypMuR2zmcs4/1gnhppayc0Nft8TYwjc19k1NPdHlTwDwrouaPIjNje051FE0j4h/hRCHITq+kVbZR2/Qoqyd4q+Y28rMaa1jN3MXA/WdW6n/65vEqEVi5wjEp76nD1z3zDk/bqPbo+Qu8aPWWnoa6hQPAwWn9Nzo961pNHQwvYE554jqnsoSpPmzlDe0qAUKQD4tUnqNFXuDlF9QiqmvNMkACqm01leIeDO2S5HLAMDNdqGWoonOAGhTb43bMdhrEpwIAyEEkbfJb2NJaTSmAV/nUI1Dv67xQUzHgnNOz6ydBR8FwDZAH+jE11C1GHzoZoxRSqYHi1VKgMYUSN97uVDKxlPNeQMwlaabzvkHk3IuT+i/lBIAAAAASUVORK5CYII=") no-repeat;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+}
+.Contacts-number-box{
+    display: flex;
+    padding:5px 0;
+}
+.Contacts-label-text{
+    margin-left: 5px;
+}
+.Contacts-number{
+    flex:0 0 100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.sele-adress{
+    display: flex;
+}
+.adress,.Contacts{
+    flex:0 0 100px;
+    display:flex;
+    justify-content:center;
+    padding-top: 5px;
+}
+.adressShow{
+    width: 100%;
+}
+.adressText{
+    padding: 10px 0;
+}
+.fliiadress{
+    padding: 10px 0;
+}
+.Contacts-number-box,.Contacts-input,.Contacts-box,.sele-adress,.adressText{
+    border-bottom: 1px solid #f4f4f4;
+}
+.btn {
+    width:95%;
+    margin:10px auto;
+    color:#ffffff;
+    background-color:#4cd964;
+    border-radius:5px;
+    display:block;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    font-size:12px;
+
+}
+

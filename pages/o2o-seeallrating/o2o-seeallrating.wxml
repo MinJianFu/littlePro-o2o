@@ -1,0 +1,64 @@
+<view class="eva-warpper">
+    <view class="eva-content">
+        <view class="eva-con-left">
+            <view class="eva-cl-number">4.7</view>
+            <view class="eva-cl-text">综合评分</view>
+            <view class="eva-cl-heightText">高于周边商家91.5%</view>
+        </view>
+        <view class="eva-con-right">
+            <view class="eva-cr-serve">
+                服务态度
+                <view  wx:for="{{resultArr}}" wx:key="index" class="ect-start {{item}}"></view>
+                4.6
+            </view>
+            <view class="eva-cr-taste">
+                菜品味道
+                <view  wx:for="{{resultArr}}" wx:key="index" class="ect-start {{item}}"></view>
+                4.5
+            </view>
+            <view class="eva-cr-time">
+                配送时间
+                <view class="ect-time">平均40分钟</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="halving-line"></view>
+<view class="rating-warpper">
+    <view class="rating-content">
+        <view class="rating-tab" >
+            <view wx:for="{{ratingTab}}" class="rating-num-a" data-RatingId="{{item.tabTypeId}}"  bindtap="seleRating" wx:key="index">
+                {{item.tabText}}
+                <view class="rating-num-a-num" >({{item.tabCount}})</view>
+            </view>
+        </view>
+        <view class="see-rating" >
+            <view class="sr-title">
+                <view class="srt-icon-box">
+                    <image class="srt-icon" src="./img/gou.png" mode="aspectFill"></image>
+                </view>
+                只看有内容的评价
+            </view>
+            <view class="rating-info" wx:for="{{foodrating}}" wx:key="index" wx:if="{{item.ratingTypeid == nowSeleRatingDataId}}" >
+                <view class="ri-portrait">
+                    <image class="rip-icon" src="{{item.ratingava}}" mode="aspectFill"></image>
+                </view>
+                <view class="ri-info">
+                    <view class="rii-top">
+                        <view class="ri-name">{{item.ratingName}}</view>
+                        <view class="ri-time">{{item.ratingtime}}</view>
+                    </view>
+                    <view class="rii-center">
+                        <view class="rib-start" >
+                            <view wx:for="{{item.starShow.showstararr}}" wx:key="index" class="ect-start {{item}}" ></view>
+                        </view>
+                        <view class="rib-time">{{item.ratingdesc}}</view>
+                    </view>
+                    <view class="rii-bottom">
+                        {{item.ratingcontent}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

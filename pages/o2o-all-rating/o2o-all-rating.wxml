@@ -1,0 +1,100 @@
+<view class="wrap">
+    <view class="header-wrap">
+        <view class="header-content">
+            <view class="header-left">
+                <image class="header-left-img" mode="widthFix" src="./img/foodDetail.jpg"></image>
+            </view>
+            <view class="header-right">
+                <view class="header-right-title">
+                    <image class="header-right-title-icon" src="./img/pp.png" mode="aspectFill"></image>
+                    <view class="header-right-title-content">闪电购便利店(赤岗店)</view>
+                </view>
+                <view class="header-right-star">
+                    <view wx:for="{{resultArr}}" class="hrs-star {{item}}"  wx:key="index"></view>
+                    <view>月售299单</view>
+                </view>
+                <view class="header-right-msg">
+                    <view class="header-right-msg-A">商家配送</view>
+                    <view class="header-right-msg-B">28分钟送达</view>
+                    <view class="header-right-msg-C">配送费￥3</view>
+                </view>
+            </view>
+        </view>
+        <view class="header-bottom-info">
+            <view class="hbi-distr">
+                <view class="hbi-distr-l">配送费：</view>
+                <view class="hbi-distr-r">配送费￥</view>
+            </view>
+            <view class="hbi-info">
+                <view class="hbi-info-l">公告：</view>
+                <view class="hbi-info-r">欢迎光临，用餐高峰期请提前下单，谢谢</view>
+            </view>
+        </view>
+    </view>
+    <view class="halving-line"></view>
+    <view class="rating-wrap" wx:for="{{ShopNews}}" wx:key="index">
+        <view class="rating-title">
+            <view class="rt-left">
+                <view class="score-rating"></view>
+                高于周边商家{{item.exceed}}%
+            </view>
+            <view class="num-rating">{{item.allrating}}条评价 <image class="score-rating-icon" src="./img/jtr.png" mode="aspectFill"></image></view>
+        </view>
+        <view class="rating-tab" >
+            <view wx:for="{{ratingTab}}" wx:key="index" class="rating-num-a" data-RatingId="{{item.tabTypeId}}" >
+                {{item.tabText}}
+                <view class="rating-num-a-num" >({{item.tabCount}})</view>
+            </view>
+        </view>
+        <view class="see-rating">
+            <view class="rating-info">
+                <view class="ri-portrait"><image class="rip-icon" src="./img/ava.png" mode="aspectFill"></image></view>
+                <view class="ri-info">
+                    <view class="rii-top">
+                        <view class="ri-name">3*******a</view>
+                        <view class="ri-time">2018-03-12</view>
+                    </view>
+                    <view class="rii-center">
+                        <view wx:for="{{resultArr}}" class="hrs-star {{item}}"  wx:key="index"></view>
+                        <view class="rib-time">40分钟送达</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <navigator url="../o2o-seeallrating/o2o-seeallrating">
+            <view class="see-all">
+                查看全部评价<image class="see-all-icon" src="./img/jtr.png" mode="aspectFill"></image>
+            </view>
+        </navigator>
+    </view>
+    <view class="halving-line"></view>
+    <view class="activity-wrap">
+        <view class="activity-title">活动与属性</view>
+        <view class="activity-content">
+            <view class="ac-icon"><image class="xin-icon" src="./img/xin.png" mode="aspectFill"></image></view>
+            <view class="ac-text">新用户下单立减2999元(不与其他活动同享)</view>
+        </view>
+        <view class="activity-content">
+            <view class="ac-icon"><image class="jian-icon" src="./img/jian.png" mode="aspectFill"></image></view>
+            <view class="ac-text">新用户下单立减2999元(不与其他活动同享)</view>
+        </view>
+        <view class="activity-content">
+            <view class="ac-icon"><image class="piao-icon" src="./img/piao.png" mode="aspectFill"></image></view>
+            <view class="ac-text">新用户下单立减2999元(不与其他活动同享)</view>
+        </view>
+    </view>
+    <view class="halving-line"></view>
+    <view class="shopInfo-wrap">
+        <view class="shopInfo-title">商家信息</view>
+        <view class="shopInfo-address">地址:广州市番禺区大石街红灯区103房</view>
+        <view class="shopInfo-time">00:00/11:11/22:22/33:33/44:44</view>
+        <view class="shopInfo-license">
+            营业执照
+            <view class="right-icon"></view>
+        </view>
+        <view class="shopInfo-license" style="border-bottom: none;">
+            餐饮服务许可证
+            <view class="right-icon"></view>
+        </view>
+    </view>
+</view>
