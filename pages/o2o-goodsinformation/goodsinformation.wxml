@@ -1,0 +1,21 @@
+<view class="page">
+    <view class="item-info">
+        <view class="item {{index == goodsinfor_index ? 'on':''}}" data-key="{{index}}" wx:for="{{goodsinfor}}" bindtap="ongoods">{{item}}</view>
+    </view>
+    <view class="goodsweight">
+        <view>重量</view>
+        <view class="weight-btn">
+            <view bindtap="change_weight" data-key="-" class="{{weight > 1 ? 'on':''}}">-</view>
+            <view>{{weight}}kg</view>
+            <view bindtap="change_weight" data-key="+">+</view>
+        </view>
+    </view>
+    <picker bindchange="ongoodsvalue" value="{{goodsvalue_index}}" range="{{goodsvalue}}">
+        <view class="goodsvalue">
+            <view>物品价值</view>
+            <view>{{goodsvalue[goodsvalue_index]}}</view>
+            <image model="widthFix" src="img/JT-icon.png" class="JT-icon"></image>
+        </view>
+    </picker>
+    <view class="btn {{goodsinfor_index >= 0 ?'btn-on':''}}" bindtap="{{goodsinfor_index >= 0 ?'bbb':'' }}">保存</view>
+</view>
