@@ -1,0 +1,235 @@
+<view class="wrap">
+    <navigator url="../o2o-all-rating/o2o-all-rating">
+        <view class="header-wrap">
+            <view class="header-content" wx:for="{{ShopNews}}" wx:key="index">
+                <view class="header-left">
+                    <image class="header-left-img" mode="widthFix" src="./img/icon-waimai.png"></image>
+                </view>
+                <view class="header-right">
+                    <view class="header-right-title">
+                        <image class="header-right-title-icon" src="./img/pp.png" mode="aspectFill"></image>
+                        <view class="header-right-title-content">{{item.ShopTitle}}</view>
+                    </view>
+                    <view class="header-right-msg">
+                        <view class="header-right-msg-A">{{item.ShopmsgA}}</view>
+                        <view class="header-right-msg-B">{{item.deliveryTime}}分钟送达</view>
+                        <view class="header-right-msg-C">配送费￥{{item.deliveryCost}}</view>
+                    </view>
+                    <view class="header-right-info">
+                        <view class="header-right-info-l">
+                            公告：
+                        </view>
+                        <view class="header-right-info-r">
+                            1、维权电话400-991-3131，您的1小时送达 2、维权电话400-991-3131，您的1小时送达
+                        </view>
+                    </view>
+                    <view class="header-right-icon">
+                        <image class="header-right-icon-R" src="./img/jtr.png" mode="aspectFill"></image>
+                    </view>
+                </view>
+            </view>
+            <swiper indicator-dots="{{indicatorDots}}"
+                    circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical="{{vertical}}" class="swiperStyle">
+                <swiper-item wx:for="{{activity}}" wx:key="index">
+                    <view class="header-bottom-info">
+                        <view class="header-bottom-info-left">
+                            <image class="header-bottom-info-left-icon" src="{{item.activityIcon}}" mode="aspectFill"></image>
+                            <view class="header-bottom-info-left-text">{{item.activityInfo}}</view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <view class="header-bottom-info-right">3个活动</view>
+        </view>
+    </navigator>
+    <view class="tab" wx:for="{{ShopNews}}" wx:key="index">
+        <view class="tab-item " >
+            <view class="tab-text  {{currentTab==0 ? 'tab-active' : ''}}" data-current="0" bindtap="swichNav" >商品</view>
+        </view>
+        <view class="tab-item">
+            <view class="tab-text {{currentTab==1 ? 'tab-active' : ''}}" data-current="1" bindtap="swichNav" >
+                评价
+                <view class="tab-text-num">({{item.evaluate}}分)</view>
+            </view>
+        </view>
+    </view>
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 200}}px" bindchange="bindChange">
+        <swiper-item>
+            <view class="shop-wrap">
+                <view class="menu-wrapper" >
+                    <scroll-view scroll-y="true" style="height:{{winHeight}}px" >
+                        <view wx:for="{{menuData}}" wx:key="index" class=" {{item.active == 1 ? 'menu-active':''}}">
+                            <view class="menu-item" data-typeid="{{item.menuId}}" bindtap="seleMenu">
+                                <view class="menu-item-ic">
+                                    <image wx:if="{{item.showIcon}}" class="menu-item-ico {{item.showIcon == false ? 'showIcon' : 'fadeIcon'}}" src="./img/hot.png" mode="aspectFill"></image>
+                                </view>
+                                {{item.name}}
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+                <view class="goods-wrapper">
+                    <view class="goods-title">
+                        <view class="goods-title-h1"></view>
+                        <view class="goods-title-text"></view>
+                    </view>
+                    <view class="goods-item-box">
+                        <view class="goods-item" wx:for="{{foodsData}}" wx:key="index" wx:if="{{nowSelectTypeId == item.foodsTypeId}}" data-foodtypeid="{{item.foodsTypeId}}">
+                            <view class="goods-item-imgbox">
+                                <image class="goods-item-image" src="./img/foodDetail.jpg"
+                                       mode="aspectFill"></image>
+                            </view>
+                            <view class="goods-item-info">
+                                <view class="goods-item-name">{{item.foodsName}}</view>
+                                <view class="goods-item-deal">{{item.foodsWeight}}</view>
+                                <view class="goods-item-sale">月售{{item.foodsSellout}}份
+                                    好评率{{item.foodsPraise}}%</view>
+                                <view class="goods-item-money">
+                                    <view class="goods-item-money-icon" >￥</view>
+                                    {{item.foodsMoney}}
+                                </view>
+                            </view>
+                            <view class="goods-add">
+                                <image class="icon-sub" src="./img/sub.png" mode="widthFix"
+                                       bindtap="SUB" data-foodsid="{{item.foodsId}}" wx:if="{{item.foodsCount>0}}" data-
+                                       price="{{item.foodsMoney}}"  ></image>
+                                <view class="goods-num" wx:if="{{item.foodsCount>0}}">
+                                    {{item.foodsCount}}</view>
+                                <image class="icon-add" src="./img/add.png" mode="widthFix"
+                                       bindtap="ADD" data-foodsid="{{item.foodsId}}" data-price="{{item.foodsMoney}}"  ></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="eva-warpper">
+                <view class="eva-content" wx:for="{{ShopNews}}" wx:key="index">
+                    <view class="eva-con-left">
+                        <view class="eva-cl-number">{{item.evaluate}}</view>
+                        <view class="eva-cl-text">综合评分</view>
+                        <view class="eva-cl-heightText">高于周边商家{{item.exceed}}%</view>
+                    </view>
+                    <view class="eva-con-right" >
+                        <view class="eva-con-right-box">
+                            <view class="eva-cr-serve">
+                                <view class="eva-cr-serve-l">
+                                    服务态度
+                                </view>
+                                <view class="eva-cr-serve-r">
+                                    <view  wx:for="{{ServiceAttitudeStar}}" wx:key="index" class="ect-start {{item}}"></view>
+                                </view>
+                                <view class="eva-cr-serve-r-n">{{item.ServiceAttitude}}</view>
+                            </view>
+                            <view class="eva-cr-taste">
+                                <view class="eva-cr-serve-l">
+                                    菜品味道
+                                </view>
+                                <view class="eva-cr-serve-r">
+                                    <view  wx:for="{{SasteStar}}" wx:key="index" class="ect-start {{item}}"></view>
+                                </view>
+                                <view class="eva-cr-serve-r-n">{{item.Saste}}</view>
+                            </view>
+                            <view class="eva-cr-time">
+                                <view class="eva-cr-serve-l">
+                                    菜品味道
+                                </view>
+                                <view class="ect-time">平均{{item.deliveryTime}}分钟</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="halving-line"></view>
+            <view class="rating-warpper">
+                <view class="rating-content">
+                    <view class="rating-tab" >
+                        <view wx:for="{{ratingTab}}" wx:key="index" class="rating-num-a {{item.active == 1 ? 'tabActive':''}}" data-RatingId="{{item.tabTypeId}}"  catchtap="seleRating">
+                            {{item.tabText}}
+                            <view class="rating-num-a-num" >({{item.tabCount}})</view>
+                        </view>
+                    </view>
+                    <scroll-view scroll-y="true" style="height: {{winHeight}}px">
+                        <view class="see-rating" >
+                            <view class="sr-title">
+                                <view class="srt-icon-box">
+                                    <image class="srt-icon" src="./img/gou.png" mode="aspectFill"></image>
+                                </view>
+                                只看有内容的评价
+                            </view>
+                            <view class="rating-info" wx:for="{{foodrating}}" wx:key="index" wx:if="{{item.ratingTypeid == nowSeleRatingDataId}}" >
+                                <view class="ri-portrait">
+                                    <image class="rip-icon" src="{{item.ratingava}}" mode="aspectFill"></image>
+                                </view>
+                                <view class="ri-info">
+                                    <view class="rii-top">
+                                        <view class="ri-name">{{item.ratingName}}</view>
+                                        <view class="ri-time">{{item.ratingtime}}</view>
+                                    </view>
+                                    <view class="rii-center">
+                                        <view class="rib-start" >
+                                            <view wx:for="{{item.starShow}}" wx:key="index" class="ect-start {{item}}"></view>
+                                        </view>
+                                        <view class="rib-time">{{item.ratingdesc}}</view>
+                                    </view>
+                                    <view class="rii-bottom">
+                                        {{item.ratingcontent}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="Carmark {{isShowCarItem ? '' : 'hidden' }}"  catchtap="showCar"></view>
+    <view class="shopcart">
+        <view class="cartview  {{ isShowCarItem && hasGoodsCount ? 'CarAnimateIn':''}}"  >
+            <view class="cartview-box">
+                <view class="cartview-box-l"><view>购物车</view></view>
+                <view  class="cartview-box-r">
+                    <view bindtap="clearFoodlist">清空</view>
+                </view>
+            </view>
+            <view class="cartview-list-box" wx:for="{{foodsData}}" wx:key="index" wx:if="{{item.foodsCount>=1}}">
+                <view class="carfood-list">
+                    <view class="carfood-list-content">
+                        <view class="carfood-name">{{item.foodsName}}</view>
+                        <view class="carfood-money">{{item.foodsMoney * item.foodsCount}}</view>
+                        <view class="carfood-calculate">
+                            <view class="carfood-add">
+                                <image class="icon-sub" src="./img/sub.png" mode="widthFix" bindtap="CarFoodListSub" data-foodsid="{{item.foodsId}}"  data-price="{{item.foodsMoney}}"  ></image>
+                                <view class="goods-num">{{item.foodsCount}}</view>
+                                <image class="icon-add" src="./img/add.png" mode="widthFix" bindtap="CarFoodList" data-foodsid="{{item.foodsId}}" data-price="{{item.foodsMoney}}"  ></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="shopcart-content">
+            <view class="shopcart-content-left"  bindtap="showCar">
+                <view class="sc-logo-wrap">
+                    <view class="sc-logo  {{hasGoodsCount ? 'sc-logo-active' : ''}}" >
+                        <view class=" {{hasGoodsCount ? 'icon-shopon' : 'icon-shopof'}}"></view>
+                        <view class="icon-shop-text" wx:if="{{catnum}}">{{catnum}}</view>
+                    </view>
+                </view>
+                <view class="sc-box" wx:for="{{ShopNews}}" wx:key="index">
+                    <view class="sc-text" wx:if="{{catnum<=0}}">购物车是空的</view>
+                    <view class="sc-price" wx:if="{{catnum>0}}">￥{{catmoney}}</view>
+                    <view class="sc-desc" wx:if="{{hasGoodsCount }}">配送费￥{{item.deliveryCost}}</view>
+                </view>
+            </view>
+
+                <view class="shopcart-content-right" bindtap="hasGoods">
+                    <view class="shop-pay {{hasGoodsCount ? 'shop-pay-active' : ''}}">去结算</view>
+                </view>
+
+        </view>
+    </view>
+
+
+</view>

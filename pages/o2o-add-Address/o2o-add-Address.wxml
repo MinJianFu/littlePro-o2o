@@ -1,0 +1,38 @@
+<view class="wrap">
+    <view class="conetnt">
+        <view class="Contacts-box">
+            <view class="Contacts">联系人</view>
+            <view class="Contacts-from">
+                <view class="Contacts-input">
+                    <input placeholder="收货人名字" auto-focus/>
+                </view>
+                <view class="Contacts-label">
+                    <view class="man">
+                        <view class="Contacts-label-icon"></view>
+                        <view class="Contacts-label-text">先生</view>
+                    </view>
+                    <view class="woman">
+                        <view class="Contacts-label-icon"></view>
+                        <view class="Contacts-label-text">女士</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="Contacts-number-box">
+        <view class="Contacts-number">联系电话</view>
+        <view class="Contacts-number-input"><input placeholder="联系人电话" auto-focus/></view>
+    </view>
+    <view class="sele-adress">
+        <view class="adress">送餐地址</view>
+        <view class="adressShow">
+            <navigator url="../o2o-map/o2o-map"  redirect="true">
+                <view class="adressText">{{adressText}}</view>
+            </navigator>
+            <view class="fliiadress"><input placeholder="详细地址(如门牌号等)" auto-focus/></view>
+        </view>
+    </view>
+</view>
+<navigator url="../o2o-SeleAddress/o2o-SeleAddress"  redirect="true">
+    <view class="btn">确定</view>
+</navigator>

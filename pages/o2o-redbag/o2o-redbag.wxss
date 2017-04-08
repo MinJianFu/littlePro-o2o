@@ -1,0 +1,37 @@
+page{
+    background: #f4f4f4;
+    font-family: Helvetica Neue,Tahoma,Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft Yahei,sans-serif;
+}
+
+.redbag-item{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px 0;
+    background: #ffffff;
+}
+.redbag-item-text{
+    flex: 1;
+}
+.redbag-item-icon{
+    width: 18px;
+    height: 18px;
+}
+.box1{
+    position: relative;
+    height: 500px;
+    width: 80%;
+    background: #000;
+    margin: 0 auto;
+
+}
+.box{
+    background: red;
+    width: 30%;
+    height: 30%;
+    margin: 0 1%;
+    text-align: center;
+    border: 1px solid #ffffff;
+    float: left;
+}

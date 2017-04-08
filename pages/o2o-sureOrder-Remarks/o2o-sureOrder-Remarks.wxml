@@ -1,0 +1,17 @@
+<view class="wrap">
+    <view class="viewbody">
+        <view class="switch-box">
+            <view class="title">快速备注</view>
+            <view wx:for="{{remarksB}}" class="switch {{item.isSle ? 'selected' : ''}}"   wx:key="index">
+                <view class="switch-item" bindtap="seleRema" data-rema="{{item.remaId}}" data-content="{{item.remarksBname}}">{{item.remarksBname}}</view>
+            </view>
+        </view>
+        <view class="text-box">
+            <view class="qt-title">其他备注</view>
+            <textarea placeholder="请输入备注内容（可不填）" auto-focus  class="textArea" bindblur="bindTextAreaBlur"></textarea>
+        </view>
+        <navigator url="../o2o-sureOrder/o2o-sureOrder" redirect>
+            <view class="btn">确定</view>
+        </navigator>
+    </view>
+</view>
