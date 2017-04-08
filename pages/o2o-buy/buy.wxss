@@ -1,0 +1,133 @@
+page{height: 100%;background: #f1f1f1; font-family: 微软雅黑;}
+.gooos-bar{
+    display:flex;
+    background:#ffffff;
+    align-items:center;
+    margin:.4rem 0;
+    height:3rem;
+}
+
+.gooos-name{
+    height: 1.5rem;
+    background-size: 1rem;
+    flex: 1;
+    font-size: 12px;
+}
+.goos-icon{
+    width: 2rem;
+    height: 1.5rem;
+    text-align: center;
+
+}
+.gooos-bar>image{
+    width:18px;
+    height:18px;
+    margin:0 .5rem 0;
+}
+.address-bar{
+    background: #fff;
+    margin-bottom: .4rem;
+    padding:0 .5rem;
+}
+
+.collect-bar,.buy-bar{
+    display: flex;
+    align-items: center;
+    height: 4rem;
+}
+.collect-bar .address-text,.buy-bar .address-text{
+    flex: 1;
+    color: #777777;
+    font-size: 14px;
+}
+.collect-bar .JT-icon,.buy-bar .JT-icon{
+    width: 20px;
+    height: 20px;
+}
+.address-bar .address-icon{
+    font-size: 11px;
+    padding: 2px;
+    border: 1px solid;
+    border-radius: 50%;
+    margin-right: .5rem;
+    width: 13px;
+    height: 13px;
+    line-height: 11px;
+    text-align: center;
+}
+.B1,.B2{
+    background: #ffffff;
+    margin-bottom: .4rem;
+    font-size: 13px;
+}
+.peiStime-bar,.remarks-bar,.goos-pcier,.peiSpcier-bar,.voucher,.XF-bar{
+    display: flex;
+    height: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding:.5rem;
+}
+.peiStime-bar,.goos-pcier,.peiSpcier-bar,.voucher{
+    border-bottom: 1px solid #f1f1f1;
+}
+.remarks-text,.goos-pcier-val{
+    text-align: right;
+}
+.JT-icon{
+    width: 20px;
+    height: 20px;
+}
+.voucher-text,.XF-val{
+    flex: 1;
+    text-align: right;
+}
+.goos-pcier-ps{
+    margin-left: .3rem;
+    color: #FA1A43;
+}
+.peiSpcier-bar-ps{
+    margin-left: .3rem;
+    color:#FA1A43 ;
+    border:1px solid;
+    padding: 2px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    text-align: center;
+    line-height: 9px;
+}
+.XF-bar-ps{
+    margin-left: .3rem;
+    color: #808080;
+}
+.foot{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    background: #fff;
+    line-height: 3.5rem;
+    font-size: 13px;
+    font-family: 微软雅黑;
+}
+.foot view:nth-child(1){
+    margin-left: .5rem;
+}
+.foot view:nth-child(2){
+    flex: 1;
+    text-align: right;
+    margin-right: .3rem;
+}
+.TJ-btn{
+    padding: 0 2rem;
+    background: #FA1A43 ;
+    color: #ffffff;
+}
+.foot txet{
+    color: #FA1A43;
+}
+

@@ -1,0 +1,72 @@
+page,.page{
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
+    font-family: 微软雅黑;
+}
+.user-info{
+    background: #fff;
+    font-size: 16px;
+}
+.user{
+    display: flex;
+    padding:.5rem;
+    border-bottom: 1px solid #f1f1f1;
+}
+.user>view:nth-child(2){
+    margin-left: 1rem;
+    flex: 1;
+}
+.user-name{
+    border-bottom: 1px solid #f1f1f1;
+    margin-bottom:.5rem;
+    overflow: hidden;
+    height: 2rem;
+    display: inline-block;
+    width: 100%;
+}
+.radio-sex{
+    margin-top: .5rem;
+}
+.user-phone,.address,.XXaddress{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    border-bottom: 1px solid #f1f1f1;
+    height: 2rem;
+}
+.user-phone>input,.address>view:nth-child(2),.XXaddress>input{
+    flex: 1;
+}
+.user-phone>view:nth-child(1),.address>view:nth-child(1),.XXaddress>view:nth-child(1){
+    width: 4rem;
+}
+.address>view:nth-child(2){
+    margin-left: .5rem;
+}
+.JT-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: .5rem;
+}
+.btn{
+    display: flex;
+    text-align: center;
+    background: #fff;
+    font-size: 14px;
+    margin-top: 2rem;
+    height: 3rem;
+
+}
+.del-btn,.change-btn{
+    flex: 1;
+    line-height: 3rem;
+}
+.change-btn{
+    background: #fa1a43;
+    color: #fff;
+}
+.del-btn{
+    color: #FA1A43;
+}

@@ -1,0 +1,6 @@
+<view class="header-bar">
+    <view class="header-ul">
+        <view class="header-on state{{state}}"></view>
+        <view class="header-li {{index==state? 'on':''}}" wx:for="{{header}}" data-key="{{index}}" bindtap="changestate">{{item}}</view>
+    </view>
+</view>

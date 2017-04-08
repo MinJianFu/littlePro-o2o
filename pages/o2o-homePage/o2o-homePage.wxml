@@ -1,0 +1,100 @@
+<view class="page">
+    <view class="main-bar">
+        <view class="GPS-bor">
+            <image mode="widthFix" src="../icon/fff_DW.png"style="width: 10px; height: 15px;"></image>
+            <view class="GPS-text">广东省广州</view>
+        </view>
+        <view class="search-bar">
+            <view class="search-inside">
+                <image mode="widthFix" src="../icon/search_icon.png"style="width: 13px; height: 13px;"></image>
+                <view>搜索商家、美食</view>
+            </view>
+        </view>
+        <view class="search-on-btn">
+            <view wx:for ="{{search_text}}">{{item}}</view>
+        </view>
+        <view class="To-btn">
+            <navigator url="../o2o-buy/buy">
+            <view class="To-btn-itme">
+                <image mode="scaleToFill" src="../icon/mai_icon.png" style="width: 40px; height: 40px "></image>
+                <view>帮你买</view>
+            </view>
+            </navigator>
+            <navigator url="../o2o-give/give?type=1">
+            <view class="To-btn-itme">
+                <image mode="scaleToFill" src="../icon/song_icon.png" style="width: 50px; height: 40px;"></image>
+                <view>帮你送</view>
+            </view>
+            </navigator>
+            <navigator url="../o2o-give/give?type=2">
+            <view class="To-btn-itme">
+                <image mode="scaleToFill" src="../icon/qu_icon.png" style="width: 40px; height: 40px;"></image>
+                <view>帮你取</view>
+            </view>
+            </navigator>
+        </view>
+        <view class="BJ-EFEFEF"></view>
+    </view>
+
+    <swiper indicator-dots="true" style="height:{{swiperHight}}px;">
+            <swiper-item wx:for="{{swiperInfo.itemUrls}}" wx:key="{{index}}">
+                <image mode="widthFix" src="{{item}}" bindload="swiperonLoad" class="swiperImage"></image>
+            </swiper-item>
+    </swiper>
+    <view class="seller-bar">
+        <view class="seller-itme">
+            <view  class="seller-itme-top">
+            <view class="seller-image">
+                <image mode="widthFix" src="img/seller-image1.png" style="width: 100%; height: 100%;"></image>
+            </view>
+            <view class="seller-info">
+                <view class="seller-name">DQ(广州丽影店)</view>
+                <view class="seller-volume-bar">
+                    <view class="volume-num">月销158单</view><view class="ZS-icon">雷霆专送</view>
+                </view>
+                <view class="price-bar">
+                    <view class="price-info">
+                        <view class="PS-price">¥0元起送</view><view class="PS-price">配送费约¥5</view>
+                    </view>
+                    <view class="PS-time">30分钟</view>
+                </view>
+            </view>
+            </view>
+            <view class="activity-info">
+                <view class="activity-item">
+                    <view class="YH-icon">满</view><view>满50加100、满80加200、多买多加</view>
+                </view>
+                <view class="activity-item">
+                    <view class="YH-icon">满</view><view>满50加100、满80加200、多买多加</view>
+                </view>
+            </view>
+        </view>
+        <view class="seller-itme">
+            <view  class="seller-itme-top">
+                <view class="seller-image">
+                    <image mode="widthFix" src="img/seller-image1.png" style="width: 100%; height: 100%;"></image>
+                </view>
+                <view class="seller-info">
+                    <view class="seller-name">DQ(广州丽影店)</view>
+                    <view class="seller-volume-bar">
+                        <view class="volume-num">月销158单</view><view class="ZS-icon">雷霆专送</view>
+                    </view>
+                    <view class="price-bar">
+                        <view class="price-info">
+                            <view class="PS-price">¥0元起送</view><view class="PS-price">配送费约¥5</view>
+                        </view>
+                        <view class="PS-time">30分钟</view>
+                    </view>
+                </view>
+            </view>
+            <view class="activity-info">
+                <view class="activity-item">
+                    <view class="YH-icon">满</view><view>满50加100、满80加200、多买多加</view>
+                </view>
+                <view class="activity-item">
+                    <view class="YH-icon">满</view><view>满50加100、满80加200、多买多加</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

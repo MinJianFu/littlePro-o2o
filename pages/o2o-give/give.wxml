@@ -1,0 +1,95 @@
+<view class="page">
+    <navigator url="../o2o-goodsinformation/goodsinformation">
+    <view class="gooos-bar">
+        <view class="goos-title">物品信息</view>
+        <view class="gooos-name on" wx:if="{{goodsinformation==''}}">选择类别、重量、价值</view>
+        <view class="gooos-name" wx:if="{{goodsinformation!=''}}">{{goodsinformation.goodsname}}、{{goodsinformation.weight}}、{{goodsinformation.goodsvalue}}</view>
+        <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+    </view>
+    </navigator>
+    <block  wx:if="{{pagetype==1}}">
+    <view class="address-bar">
+        <view class="buy-bar">
+            <view class="address-icon" style="color: #4996FF;">购</view>
+            <view class="address-text" bindtag="!{{seletype}}">选择购买地址（默认就近）</view>
+            <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+        </view>
+        <view class="collect-bar">
+            <view class="address-icon" style="color:#FA1A43;">收</view>
+            <view class="address-text">选择收货地址</view>
+            <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+        </view>
+    </view>
+    </block>
+    <block  wx:if="{{pagetype==2}}">
+        <view class="address-bar">
+            <view class="buy-bar">
+                <view class="address-icon" style="color: #4996FF;">取</view>
+                <view class="address-text" bindtag="!{{seletype}}">选择购买地址（默认就近）</view>
+                <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+            </view>
+            <view class="collect-bar">
+                <view class="address-icon" style="color:#FA1A43;">收</view>
+                <view class="address-text">选择收货地址</view>
+                <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+            </view>
+        </view>
+    </block>
+    <view class="B1" bindtap="ReadyPS_time">
+        <picker bindchange="PS_change" data-key="PS_index" value="{{PS_index}}" range="{{peiS_time}}">
+            <view class="peiStime-bar">
+                <view>配送时间</view>
+                <view class="peiS-time">{{peiS_time[PS_index]}}</view>
+            </view>
+        </picker>
+        <view class="remarks-bar">
+            <view>备注</view>
+            <input type="text" placeholder="请输入特殊要求" class="remarks-text"/>
+        </view>
+    </view>
+    <view class="B2">
+        <view class="peiSpcier-bar">
+            <view class="peiS-text">配送费<text class="peiSpcier-bar-ps">?</text></view>
+            <view class="peiSpcier">{{PS_price}}元</view>
+        </view>
+        <picker bindchange="" value="" range="">
+            <view class="voucher">
+                <view>代金卷</view>
+                <view class="voucher-text" style="color: #808080;">无可用代金卷</view>
+                <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+            </view>
+        </picker>
+        <picker bindchange="PS_change" data-key="XF_index" value="{{XF_index}}" range="{{XiaoFei}}">
+            <view class="XF-bar">
+                <view>小费<text class="XF-bar-ps">加小费抢单更快哟</text></view>
+                <view class="XF-val">{{XiaoFei[XF_index]}}</view>
+                <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
+            </view>
+        </picker>
+    </view>
+    <view class="sele-outer" wx:if="{{seletype}}">
+    <view class="sele-bar {{seletype?'seleon':''}}">
+        <view class="time-sele-bar">
+            <view class="time-cancel">取消</view>
+            <view >选择配送时间</view>
+            <view class="time-determine">确定</view>
+        </view>
+        <picker-view indicator-style="height: 40px;" style="width: 100%; height: 200px; text-align: center;" value="{{value}}" bindchange="bindChange">
+            <picker-view-column>
+                <view wx:for="{{day}}" style="line-height: 40px">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{hour}}" style="line-height: 40px">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{minute}}" style="line-height: 40px">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+    </view>
+    <view class="foot">
+        <view>不含商品费用</view>
+        <view>待支付<txet>¥{{PS_price+XF_index}}</txet></view>
+        <view class="TJ-btn">提交订单</view>
+    </view>
+</view>
