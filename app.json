@@ -21,8 +21,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#1BAAD5",
-
+    "navigationBarBackgroundColor": "#1BAAD5"
   },
 
   "tabBar":{
