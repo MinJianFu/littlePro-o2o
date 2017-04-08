@@ -5,6 +5,16 @@ App({
         let logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
+        wx.getLocation({
+            type: 'gcj02 ',
+            success: function(res) {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                var speed = res.speed
+                var accuracy = res.accuracy
+            }
+        })
+
     },
     getUserInfo:function(cb){
         let that = this
@@ -27,6 +37,8 @@ App({
     globalData : {
         location:'',
         userInfo : null,
+        location:'',
+
         //模拟菜单数据
         menuData : [
             {

@@ -1,6 +1,14 @@
 {
   "pages":[
-
+    "pages/o2o-homePage/o2o-homePage",
+    "pages/o2o-buy/buy",
+    "pages/o2o-give/give",
+    "pages/o2o-receivingaddress/receivingaddress",
+    "pages/o2o-changeaddress/changeaddress",
+    "pages/o2o-addressquery/addressquery",
+    "pages/o2o-goodsinformation/goodsinformation",
+    "pages/o2o-order/order",
+    
     "pages/o2o-shop/o2o-shop",
     "pages/o2o-all-rating/o2o-all-rating",
     "pages/o2o-sureOrder/o2o-sureOrder",
@@ -10,12 +18,32 @@
     "pages/o2o-add-Address/o2o-add-Address",
     "pages/o2o-map/o2o-map",
     "pages/o2o-redbag/o2o-redbag"
-
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#1baad5",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarBackgroundColor": "#1BAAD5",
+
+  },
+
+  "tabBar":{
+    "color":"#C8C8C8",
+    "selectedColor":"#1BAAD5",
+    "backgroundColor":"#fff",
+    "borderStyle":"white",
+    "list":[
+      {
+        "pagePath":"pages/o2o-homePage/o2o-homePage",
+        "text":"首页",
+        "iconPath":"pages/icon/index_icon.png",
+        "selectedIconPath":"pages/icon/index_on_icon.png"
+      },
+      {
+        "pagePath":"pages/o2o-order/order",
+        "text":"订单",
+        "iconPath":"pages/icon/dingdan_icon.png",
+        "selectedIconPath":"pages/icon/dingdan_on_icon.png"
+      }
+    ]
+
   }
 }

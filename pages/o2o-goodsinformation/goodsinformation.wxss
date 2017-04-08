@@ -1,0 +1,88 @@
+page,.page{
+    height: 100%;
+    background: #f1f1f1;
+    overflow: hidden;
+    font-family: 微软雅黑;
+}
+.item-info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: .5rem;
+    background: #fff;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #666;
+}
+.item{
+    padding: 0 .5rem;
+    border:1px solid #f1f1f1;
+    border-radius: 12px;
+    margin: .5rem;
+}
+.weight-btn{
+    border:1px solid #f1f1f1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    overflow: hidden;
+}
+.weight-btn>view{
+}
+.weight-btn>.on{
+    color: #169BD5;
+}
+.weight-btn>view:nth-child(1),.weight-btn>view:nth-child(3){
+    width:30px;
+    text-align: center;
+    line-height: 24px;
+}
+.weight-btn>view:nth-child(3){
+    color: #169BD5;
+}
+.weight-btn>view:nth-child(2){
+    font-size: 12px;
+    padding: 0 10px;
+    line-height: 24px;
+}
+.goodsweight,.goodsvalue{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    background: #fff;
+    margin: 10px 0;
+    font-size: 13px;
+}
+.JT-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: .5rem;
+}
+.goodsvalue>view:nth-child(2){
+    flex: 1;
+    text-align: right;
+}
+.item-info>.on{
+    border-color: #169BD5;
+    color: #169BD5;
+}
+.btn{
+    position: fixed;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    font-size: 14px;
+    background: #DDDDDD;
+    color: #fff;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+.btn-on{
+    background: #169BD5 ;
+}

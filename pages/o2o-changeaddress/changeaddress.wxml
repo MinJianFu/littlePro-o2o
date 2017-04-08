@@ -1,0 +1,34 @@
+<view class="page">
+    <view class="user-info">
+        <view class="user">
+            <view>联系人</view>
+            <view>
+                <input type="text" placeholder="输入姓名"  class="user-name"/>
+                <radio-group class="radio-sex">
+                    <label class="radio" wx:for="{{sexitem}}">
+                        <radio value="{{item.name}}" checked="{{item.checked}}" color="#FA1A43"/>{{item.name}}
+                    </label>
+                </radio-group>
+            </view>
+        </view>
+        <view class="user-phone">
+            <view>手机号</view>
+            <input type="number" placeholder="请输入手机号" class="phone-val"/>
+        </view>
+        <navigator url="../o2o-addressquery/addressquery">
+        <view class="address">
+            <view>收货地址</view>
+            <view>大家快回答后尽快回答客户解答哈卡好看</view>
+            <image mode="aspectFill" src="img/JT-icon.png" class="JT-icon"></image>
+        </view>
+        </navigator>
+        <view class="XXaddress">
+            <view>门牌号</view>
+            <input type="text" placeholder="请输入门牌号或详细地址"/>
+        </view>
+    </view>
+    <view class="btn">
+        <view class="del-btn">删除地址</view>
+        <view class="change-btn">保存</view>
+    </view>
+</view>
