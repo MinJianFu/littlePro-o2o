@@ -1,0 +1,26 @@
+page{
+    background: #f4f4f4;
+    font-family: Helvetica Neue,Tahoma,Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft Yahei,sans-serif;
+}
+
+.addRess-icon{
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEm0lEQVRoQ9VZy3XbOBS9T54ZZZdkE1Mr2xUYqmCcCqJUMHYFIiuIUgGpCqxUYLuCaCoQXEGcleTZ2NlFObFeDgCSIil+wI9Oxlj5WCDw7rsP70t45oueufzYCwDh/yfogF4mlcNPP79Kb3DXtcI6ASCmq3dgnAE4I0CUCcmABDAHYS7Hzk1bQI0BCP/hFXo/xmB2CXjVRBAG7kA0w+avqfRePzY5ozaASHBinqQuZP7KoGuAr83/X8hIKP0NvofM0IjAIxAdRd8z8AiioAmQWgCEvzwD0SUBx/pyxjcGBwBmde1bvRPgaUQgFwT9XjQj3HsvvTfKzKyWNQAxvf+Q1DozpkB/0pT6SLqQnYCI/okZIbhy7ExtEFgBEMH9JYHPQ63fMnhUV+NVwmjPhc0MhFPDBs2ke3hR9V0lgKTwzLgB+udttV4kVMjGNRH9bQuiFIDwlxMi+qAPY/4kvYFhYc9L+MtZZFLMfCG9wazoykIA6sES0WcjPG6k54z2LHfqeOEv5zET3BsWPexcAJpKWn/R/p1xy+if7ctsysyJsFYB79R4p/4wT4YCAKuACOPQTYquH6wtk/ph02YRmvBH6Q3SsQfYzYWEvzwmoi9lH9kK0MW+6D3oYMf9kywLOwzED0gHqf5xU9MR/v0IxJfG9dKF9A7DCF0PljJnwvpOBTtm3mFhF0CwelC2n7e5ztUZD5ZLv+150VnqLUjXOUl+lwIg/OU5EWmtMfNJG9vvGEDCrOl9ks0sAON/GbcLzylNi6u01yUAddfQX6rM9UilMNJz3Oj+NIBgpVznMTM86TkqSWu8ugYgfOMZVT0hXWeYC2AYrDg0n7fSG8wbSw+gewDbwLpwnVjx8R/pyFsc+WxB7RMAJyJzLoAkwjKBtavsmexxZzGr8lKVmSrPn4Mon9ENbm1crHantH7IWkhjAMmAZ8tK0T7m/mubeJNn4r8fQI2A2SkApU1tQtgUuVuVzZq8nvlf3YnIXT1pY0LaleY4mYJH3C6IGXCpWqJVJA7PS6T3WyeTigPP2o1mot3/NpBls4TcVCIb7Zp4mc5NKFgtVNevPJV4/slcKvcuLaarWOmSgfgsxreF56TamIUFTVEFVCV49LtysUR8ZdxoOgW2PcN4n219blfQdFhSqmithOiwrtipUUqL+rYs1NF03t50fZ6uA3LT6S39ibeQyb/bCmX7fWg6n/W8QXe+XwjrtkqUJsQ2bNmntBXOZp8IVlcE6GYaMxfWJxWtxbA/pBsLNJHjw482l7fdk+7H7nYikudXN3eTfco9M2HM5ocfdcJt+rGVAMJEattsVTMu7r+1yd/rMKE9FpEyG53d2giv9lkBMCAS5tRiJJQFlTdrq9OTsgYQP2ywGkJEI6FHUM/F5s+buoxojfdITTcn8ZDQjKzU8MS6oVALQBwZsZ7o5m9i6fEpYUZ0IPNmwtqnH/xxxPwkwDjPjmObjqxqA9jGCh1lJwQaRYzUsXm912hc9UwnTaN1YwDJoAd8V/7adCES49NcQDoo6fJyXjZ5sVVGawAFKYBup2RXHdv+rQBsL+9i314Y6EIw2zN+ASFKJV72QVryAAAAAElFTkSuQmCC") no-repeat;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+.bottom{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    font-size: 16px;
+    height:40px;
+    line-height:40px;
+    background:#fff;
+    color: #1c91fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

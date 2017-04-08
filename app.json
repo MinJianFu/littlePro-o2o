@@ -1,16 +1,20 @@
 {
   "pages":[
-    "pages/homePage/index",
-    "pages/groupBuy/index",
-    "pages/schedule/index",
-    "pages/takeAway/index",
-    "pages/foodDetail/index",
-    "pages/index/index",
-    "pages/logs/logs"
+
+    "pages/o2o-shop/o2o-shop",
+    "pages/o2o-all-rating/o2o-all-rating",
+    "pages/o2o-sureOrder/o2o-sureOrder",
+    "pages/o2o-sureOrder-Remarks/o2o-sureOrder-Remarks",
+    "pages/o2o-seeallrating/o2o-seeallrating",
+    "pages/o2o-SeleAddress/o2o-SeleAddress",
+    "pages/o2o-add-Address/o2o-add-Address",
+    "pages/o2o-map/o2o-map",
+    "pages/o2o-redbag/o2o-redbag"
+
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#32cd32",
+    "navigationBarBackgroundColor": "#1baad5",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"#fff"
   }

@@ -25,14 +25,15 @@ App({
         }
     },
     globalData : {
+        location:'',
         userInfo : null,
-
         //模拟菜单数据
         menuData : [
             {
-                "name" : "今日主推",
+                "name" : "热销榜",
                 "menuId" : "1",
                 "active" : "1",
+                "showIcon": true
             },
             {
                 "name" : "扒类",
@@ -63,7 +64,6 @@ App({
                 "menuId" : "8"
             }
         ],
-
         //模拟菜品数据
         foodData : [
             {
@@ -573,7 +573,245 @@ App({
 
 
         ],
-
+        foodsData:[
+          {
+            "foodsName":"[RIO锐澳]伏特加鸡尾酒滨治味",
+            "foodsWeight":"275ml/瓶",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"50",
+            "foodsCount":"0",
+            "foodsId":"1_1",
+            "foodsTypeId":"1",
+          },
+          {
+            "foodsName":"[RIO锐澳]伏特加鸡尾酒滨治味",
+            "foodsWeight":"800ml/瓶",
+            "foodsSellout":"999",
+            "foodsPraise":"99%",
+            "foodsMoney":"80",
+            "foodsCount":"0",
+            "foodsId":"1_2",
+            "foodsTypeId":"1",
+          },
+          {
+            "foodsName":"[经典]1906香烟",
+            "foodsWeight":"200ml/包",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"18",
+            "foodsCount":"0",
+            "foodsId":"1_3",
+            "foodsTypeId":"2",
+          },
+          {
+            "foodsName":"[RIO锐澳]白兰地鸡尾酒滨治味",
+            "foodsWeight":"275ml/瓶",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"50",
+            "foodsCount":"0",
+            "foodsId":"1_4",
+            "foodsTypeId":"2",
+          },
+          {
+            "foodsName":"[RIO锐澳]白兰地鸡尾酒滨治味",
+            "foodsWeight":"275ml/瓶",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"50",
+            "foodsCount":"0",
+            "foodsId":"1_5",
+            "foodsTypeId":"3",
+          },
+          {
+            "foodsName":"[经典]1906香烟",
+            "foodsWeight":"200ml/包",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"18",
+            "foodsCount":"0",
+            "foodsId":"1_6",
+            "foodsTypeId":"4",
+          },
+          {
+            "foodsName":"[RIO锐澳]伏特加鸡尾酒滨治味",
+            "foodsWeight":"275ml/瓶",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"50",
+            "foodsCount":"0",
+            "foodsId":"1_7",
+            "foodsTypeId":"5",
+          },
+          {
+            "foodsName":"[经典]1906香烟",
+            "foodsWeight":"200ml/包",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"18",
+            "foodsCount":"0",
+            "foodsId":"1_8",
+            "foodsTypeId":"5",
+          },
+          {
+            "foodsName":"[经典]1906香烟",
+            "foodsWeight":"200ml/包",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"18",
+            "foodsCount":"0",
+            "foodsId":"1_9",
+            "foodsTypeId":"6",
+          },
+          {
+            "foodsName":"[RIO锐澳]伏特加鸡尾酒滨治味",
+            "foodsWeight":"275ml/瓶",
+            "foodsSellout":"23",
+            "foodsPraise":"50%",
+            "foodsMoney":"50",
+            "foodsCount":"0",
+            "foodsId":"1_9",
+            "foodsTypeId":"6",
+          },
+        ],
+        //模拟评论数据
+        foodrating:[
+          {
+            "ratingName":"3*********4",
+            "ratingtime":"2018-03-12",
+            "star":"3.2",
+            "ratingdesc":"40分钟送达",
+            "ratingcontent":"超级难吃",
+            "ratingava":"./img/ava.png",
+            "ratingTypeid":1,
+            "starId":1,
+            "starShow":[]
+          },
+          {
+            "ratingName":"3*********4",
+            "ratingtime":"2018-03-12",
+            "star":"4.2",
+            "ratingdesc":"40分钟送达",
+            "ratingcontent":"超级难吃",
+            "ratingava":"./img/ava.png",
+            "ratingTypeid":1,
+            "starId":2,
+            "starShow":[]
+          },
+          {
+            "ratingName":"3*********4",
+            "ratingtime":"2018-03-12",
+            "star":"4.5",
+            "ratingdesc":"40分钟送达",
+            "ratingcontent":"超级好吃",
+            "ratingava":"./img/ava.png",
+            "ratingTypeid":2,
+            "starId":5,
+            "starShow":[]
+          },
+          {
+            "ratingName":"3*********4",
+            "ratingtime":"2018-03-12",
+            "star":4.3,
+            "ratingdesc":"40分钟送达",
+            "ratingcontent":"一般般11111",
+            "ratingava":"./img/ava.png",
+            "ratingTypeid":3,
+            "starId":6,
+            "starShow":[]
+          },
+          {
+            "ratingName":"3*********4",
+            "ratingtime":"2018-03-12",
+            "star":"2",
+            "ratingdesc":"40分钟送达",
+            "ratingcontent":"一般般",
+            "ratingava":"./img/ava.png",
+            "ratingTypeid":3,
+            "starId":7,
+            "starShow":[]
+          }
+        ],
+        ratingTab:[
+          {
+           "tabText":"可以",
+            "tabCount":"3",
+            "tabTypeId":1,
+            "active":1
+          },
+          {
+            "tabText":"一般",
+            "tabCount":"3",
+            "tabTypeId":2
+          },
+          {
+            "tabText":"不可以",
+            "tabCount":"3",
+            "tabTypeId":3
+          }
+        ],
+        //选中菜品数据
+        //店铺信息数据
+        ShopNews:[
+        {
+          "ShopTitle":"闪电购便利店(赤岗店)",
+          "ShopmsgA":"商家配送",
+          "ShopmsgB":"28分钟送达",
+          "deliveryCost":"3",    //配送费
+          "notice":"公告：1、维权电话400-991-3131，您的1小时送达 2、维权电话400-991-3131，您的1小时送达",
+          "ServiceAttitude":"4.5",       //商家服务评分
+          "Saste":"4.6",            //商家味道评分
+          "deliveryTime":40,         //估计送达时间
+          "evaluate":4.7,            //商家总评分
+          "exceed":"91",            //比周边商家高 * %
+          "allrating":"800",         //全部评论数
+          "onlinepay":"5"      //在线支付优惠
+        }
+      ],
+        //活动信息数据
+        activity:[
+          {
+            "activityInfo":"百事可乐1元秒杀",
+            "activityIcon":"./img/font-jian.png"
+          },
+          {
+            "activityInfo":"百事可乐11元秒杀",
+            "activityIcon":"./img/font-jian.png"
+          },
+          {
+            "activityInfo":"百事可乐111元秒杀",
+            "activityIcon":"./img/font-jian.png"
+          }
+        ],
+        //模拟编好数据
+        remarksB:[
+          {
+            "remarksBname":"加奶",
+            "remaId":"1",
+            "seleState":"0",
+            "isSle":""
+          },
+          {
+            "remarksBname":"加珍珠",
+            "remaId":"2",
+            "seleState":"0"
+          },
+          {
+            "remarksBname":"多点茶",
+            "remaId":"3",
+            "seleState":"0"
+          },
+          {
+            "remarksBname":"少点水",
+            "remaId":"4",
+            "seleState":"0"
+          }
+        ],
+        redbag:[{
+            "redbagdesc":"不使用红包",
+            "redbagnum":"10",
+        }],
         //购物车商品数量
         shoppingCartCount : 0,
 

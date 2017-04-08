@@ -1,0 +1,32 @@
+<view class="wrap">
+    <view class="search-input">
+        <input class="search" placeholder="请输入地址"  bindconfirm="bindKeyInput"/>
+    </view>
+    <view class="nowAddress">
+        <view class="title">当前地址</view>
+        <view class="address-box">
+            <view class="address">{{rgcData.address}}</view>
+            <view class="locationBtn" bindtap="positioning">
+                <view class="Btn-icon"></view>
+                <view class="Btn-text">重新定位</view>
+            </view>
+        </view>
+    </view>
+    <view class="nearby">
+        <view class="nearbyAdress">搜索地址</view>
+        <navigator url="../o2o-add-Address/o2o-add-Address" redirect="true">
+            <view class="address-item" wx:for="{{markers}}" bindtap="seleadres" data-adId="{{item.id}}">
+                <view class="address-title">{{item.title}}</view>
+                <view class="SeleNearbyAdress" >
+                    {{item.address}}
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>
+
+<view class="rgc_info">
+    <text></text>
+    <text>{{rgcData.desc}}</text>
+    <text>{{rgcData.business}}</text>
+</view>

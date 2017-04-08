@@ -1,0 +1,155 @@
+.eva-content{
+    display: flex;
+    border: 1px solid #f3f3f3;
+    padding: 10px;
+    align-items:center;
+    text-align: center;
+    justify-content:center;
+}
+.eva-con-left{
+    flex: 0 0 50%;
+    align-items:center;
+    text-align: center;
+    border-right: 2px solid #f3f3f3;
+
+}
+.eva-cl-number{
+    font-size: 16px;
+    color: #ff5800;
+    padding-bottom: 3px;
+}
+.eva-cl-text{
+    font-size: 12px;
+    padding-bottom: 3px;
+}
+.eva-cl-heightText{
+    color: #b1b1b1;
+    font-size: 12px;
+}
+.eva-con-right{
+    align-items:center;
+    color: #767676;
+    flex: 1;
+    justify-content:flex-start;
+}
+.ect-start:first-child{
+    margin-left: 5px;
+}
+.ect-start:last-child{
+    margin-right: 5px;
+}
+.eva-cr-serve,.eva-cr-taste,.eva-cr-time{
+    padding-bottom: 3px;
+    font-size: 12px;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+.ecs-start,.ect-start,.ect-time{
+    display: inline-block;
+}
+.ecs-start{
+    margin-left: 5px;
+}
+.ect-time{
+    color: #b1b1b1;
+    margin-left: 5px;
+}
+.rating-content{
+    padding: 0 10px;
+}
+
+.rating-tab{
+    display: flex;
+    border-bottom: 1px dashed #dbdbdb;
+    font-size: 12px;
+    padding: 10px 0;
+}
+.rating-num-a,.rating-num-b,.rating-num-c{
+    color: #67727f;
+    background: #ebf5ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right:10px;
+
+}
+.rating-num-a-num,.rating-num-b-num,.rating-num-c-num{
+    display: inline-block;
+}
+.rating-active{
+    color: #ffffff;
+    background: #1c91fb;
+}
+.rating-num-b,.rating-num-c{
+    margin-left: 10px;
+}
+.sr-title{
+    display: flex;
+    font-size: 14px;
+    padding:15px 0 25px 0;
+    color: #727272;
+}
+
+.ri-portrait{
+    background: #a3d3fc;
+    border-radius: 50%;
+    width:30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.rip-icon{
+    width: 100%;
+    height: 100%;
+}
+.rating-info{
+    display: flex;
+    font-size: 12px;
+    padding:13px 0;
+
+}
+.ri-info{
+    width: 100%;
+}
+.rii-top{
+    display:flex;
+    width: 100%;
+    padding-bottom: 5px;
+}
+.ri-name{
+    color: #5a5a5a;
+    flex:0 0 80%;
+}
+.rii-center{
+    padding-bottom: 10px;
+    display: flex;
+}
+.rib-start{
+    padding-right: 5px;
+    margin-left:-7px;
+
+}
+.rib-time{
+    color: #a8a8a8;
+}
+.rii-bottom{
+    font-size: 14px;
+    color: #313131;
+}
+.ri-time{
+    text-align: right;
+    color: #a8a8a8;
+}
+.srt-icon-box{
+    padding-right: 5px;
+
+}
+.srt-icon{
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+
+}
+.halving-line{
+    height: 10px;
+    background: #eee;
+}

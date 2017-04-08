@@ -1,0 +1,7 @@
+<view class="wrap">
+    <view class="header"></view>
+    <view class="content"></view>
+    <navigator url="../o2o-add-Address/o2o-add-Address" hover-class="navigator-hover" redirect>
+        <view class="bottom"><view class="addRess-icon"></view><view class="addRess-text">新增地址</view></view>
+    </navigator>
+</view>
