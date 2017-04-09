@@ -5,6 +5,35 @@ App({
         let logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
+        
+        
+        //获取登录状态
+        wx.login({
+            success: function(res) {
+                if (res.code) {
+                    //发起网络请求
+                    wx.request({
+                        url: 'https://www.pcclub.top/Home/Index/getCode', //仅为示例，并非真实的接口地址
+                        method: "POST",
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        data: {
+                            code : res.code
+                        },
+                      
+                        success: function(result) {
+                            console.log(result.data)
+                        }
+                    })
+                } else {
+                    console.log('获取用户登录态失败！' + res.errMsg)
+                }
+            }
+        });
+        
+        
+        ///获取地址
         wx.getLocation({
             type: 'gcj02 ',
             success: function(res) {

@@ -11,7 +11,7 @@
             </view>
         </view>
         <view class="search-on-btn">
-            <view wx:for ="{{search_text}}">{{item}}</view>
+            <view wx:for ="{{search_text}}" wx:key = "{{index}}">{{item}}</view>
         </view>
         <view class="To-btn">
             <navigator url="../o2o-buy/buy">
