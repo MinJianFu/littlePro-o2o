@@ -4,3 +4,38 @@
         <view class="header-li {{index==state? 'on':''}}" wx:for="{{header}}" data-key="{{index}}" bindtap="changestate">{{item}}</view>
     </view>
 </view>
+<view class="order-list">
+    <navigator url="../o2o-orderdetails/orderdetails">
+    <view class="order-item">
+        <view class="item-top">
+            <view>
+                <image mode="widthFix" src="../icon/mai_icon_min.png" class="type-icon"></image>
+                <text class="buy-type">帮你买</text>
+            </view>
+            <view>12元</view>
+        </view>
+        <view class="item-content">
+            <view>
+                <view class="address">新月明珠花园</view>
+                <view class="user-name">陈先生</view>
+            </view>
+            <view>
+                <view class="order-icon1"></view>
+                <view>
+                    <view class="content-type">文件</view>
+                    <view class="order-type">代付款</view>
+                </view>
+                <view class="order-icon2"></view>
+            </view>
+            <view>
+                <view class="address">旧月明珠花园</view>
+                <view class="user-name">陈小姐</view>
+            </view>
+        </view>
+        <view class="item-bottom">
+            <view class="order-date">2017.3.15 18:38</view>
+            <button>立即支付</button>
+        </view>
+    </view>
+    </navigator>
+</view>
