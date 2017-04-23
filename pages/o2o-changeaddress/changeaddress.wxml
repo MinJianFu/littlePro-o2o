@@ -1,34 +1,38 @@
+<import src="../../components/toast/toast.wxml"/>
+
 <view class="page">
     <view class="user-info">
         <view class="user">
-            <view>联系人</view>
+            <view class="userNameTit">联系人</view>
             <view>
-                <input type="text" placeholder="输入姓名"  class="user-name"/>
-                <radio-group class="radio-sex">
-                    <label class="radio" wx:for="{{sexitem}}">
-                        <radio value="{{item.name}}" checked="{{item.checked}}" color="#FA1A43"/>{{item.name}}
-                    </label>
-                </radio-group>
+                <input type="text" placeholder="输入姓名"  class="user-name" value="{{a_name}}" bindinput="changeName" />
+                <!--<radio-group class="radio-sex">-->
+                    <!--<label class="radio" wx:for="{{sexitem}}">-->
+                        <!--<radio value="{{item.name}}" checked="{{item.checked}}" color="#FA1A43"/>{{item.name}}-->
+                    <!--</label>-->
+                <!--</radio-group>-->
             </view>
         </view>
         <view class="user-phone">
             <view>手机号</view>
-            <input type="number" placeholder="请输入手机号" class="phone-val"/>
+            <input type="number" placeholder="请输入手机号" class="phone-val" value="{{a_phone}}" bindinput="changePhone" />
         </view>
         <navigator url="../o2o-addressquery/addressquery">
         <view class="address">
             <view>收货地址</view>
-            <view>大家快回答后尽快回答客户解答哈卡好看</view>
+            <view>{{a_locAddress}}</view>
             <image mode="aspectFill" src="img/JT-icon.png" class="JT-icon"></image>
         </view>
         </navigator>
         <view class="XXaddress">
             <view>门牌号</view>
-            <input type="text" placeholder="请输入门牌号或详细地址"/>
+            <input type="text" placeholder="请输入门牌号或详细地址"  value="{{a_address}}" bindinput="changeAddress"  />
         </view>
     </view>
     <view class="btn">
         <view class="del-btn">删除地址</view>
-        <view class="change-btn">保存</view>
+        <view class="change-btn" catchtap="setAddr">保存</view>
     </view>
+    <template is="wetoast" data="{{...__wetoast__}}"/>
 </view>
+

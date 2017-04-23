@@ -1,13 +1,13 @@
 <view class="page">
     <input  type="text" placeholder="输入地址" class="queryval" bindinput="makertap"/>
-    <view class="address-item" wx:for="{{markers}}">
+    <view class="address-item" wx:for="{{markers}}"  catchtap="tapLocationFn" data-addrvalue="{{item.address+' '+item.title}}">
         <image model="widthFix" src="img/address-icon.png" class="icon"></image>
         <view>
             <view class="address-name">{{item.title}}</view>
             <view class="address-XQ">{{item.address}}</view>
         </view>
     </view>
-    <view wx:if="{{markers.length == []}}" class="PS-view">
+    <view wx:if="{{markers.length == []}}" class="PS-view" >
         <view>找不到地址</view>
         <view>请尝试只输入小区、写字楼或学校名</view>
         <view>详细地址（如门牌号）可稍后输入哦~</view>

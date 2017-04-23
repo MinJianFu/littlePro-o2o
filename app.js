@@ -1,11 +1,16 @@
+
+let {WeToast} = require('components/toast/toast.js');
+
 //app.js
 App({
+    WeToast,
     onLaunch: function () {
     //调用API从本地缓存中获取数据
         let logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
         
+        let that = this;
         
         //获取登录状态
         wx.login({
@@ -13,17 +18,21 @@ App({
                 if (res.code) {
                     //发起网络请求
                     wx.request({
-                        url: 'https://www.pcclub.top/Home/Index/getCode', //仅为示例，并非真实的接口地址
+                        url: 'https://www.pcclub.top/Home/Index/login', //仅为示例，并非真实的接口地址
                         method: "POST",
                         header: {
-                            'content-type': 'application/x-www-form-urlencoded'
+                            'content-type': 'application/x-www-form-urlencoded',
                         },
                         data: {
                             code : res.code
                         },
-                      
                         success: function(result) {
                             console.log(result.data)
+                            wx.setStorage({
+                                key : "session_key",
+                                data : result.data.obj.session_key
+                            })
+                            that.testApiFn();
                         }
                     })
                 } else {
@@ -45,6 +54,33 @@ App({
         })
 
     },
+    
+    //测试接口
+    testApiFn : function () {
+        let session = null;
+        wx.getStorage({
+            key: 'session_key',
+            success: function(res) {
+                console.log(res.data)
+                session = res.data;
+                wx.request({
+                    url: 'https://www.pcclub.top/Home/Order/test', //仅为示例，并非真实的接口地址
+                    method: "POST",
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded',
+                        'token' : session
+                    },
+                    success: function(result) {
+                        console.log(result)
+            
+                    }
+                })
+            }
+        })
+        
+    },
+    
+    
     getUserInfo:function(cb){
         let that = this
         if(this.globalData.userInfo){
