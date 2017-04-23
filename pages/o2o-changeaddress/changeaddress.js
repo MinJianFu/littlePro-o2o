@@ -85,10 +85,9 @@ Page({
                         address : that.data.a_resAddress,
                     },
                     success: function(result) {
-                        console.log(result)
-                        if(result.data.staus == 0){
+                        if(result.data.status == 0){
                             wx.navigateBack({
-                                delta: 1
+                                delta: 2
                             })
                         }else{
                             that.wetoast.toast({

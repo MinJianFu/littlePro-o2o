@@ -12,7 +12,13 @@
         <navigator url="../o2o-receivingaddress/receivingaddress">
         <view class="collect-bar">
             <view class="address-icon" style="color:#FA1A43;">收</view>
-            <view class="address-text">选择收货地址</view>
+            <view class="address-text">
+                <view class="defaultText" wx:if="{{!addrObj}}">选择收货地址</view>
+                <view class="defaultAddressInfo" wx:if="{{addrObj}}">
+                    <view class="addrName">{{addrObj.name +" "+addrObj.phone}}</view>
+                    <view class="addrAddress">{{addrObj.address}}</view>
+                </view>
+            </view>
             <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
         </view>
         </navigator>
