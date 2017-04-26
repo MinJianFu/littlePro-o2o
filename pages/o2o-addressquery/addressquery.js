@@ -9,7 +9,8 @@ Page({
         longitude: '',
         placeData: {},
         id:'',
-        aabb:''
+        aabb:'',
+        comeInType : 0
     },
     makertap: function(e) {
         var that = this;
@@ -50,12 +51,16 @@ Page({
 //             iconTapPath: '../../img/marker_red.png'
         });
     },
-    onLoad: function() {
+    onLoad: function(option) {
         var that = this;
-        // 新建百度地图对象
+        if(option.type){
+            this.setData({
+                comeInType : 1
+            })
+        }
 
     },
-    onShow:function(){
+    onShow:function(e){
         console.log(app.globalData.location);
         if(app.globalData.location == ''){
             wx.getLocation({
@@ -68,10 +73,18 @@ Page({
         }
     },
     tapLocationFn : function (e) {
-        wx.setStorage({
-            key : "addrvalue",
-            data : e.currentTarget.dataset.addrvalue
-        })
+        var comeInType = this.data.comeInType;
+        if(comeInType == 1){
+            wx.setStorage({
+                key : "shoppingAddrvalue",
+                data : e.currentTarget.dataset.addrvalue
+            })
+        }else{
+            wx.setStorage({
+                key : "addrvalue",
+                data : e.currentTarget.dataset.addrvalue
+            })
+        }
         wx.navigateBack({
             delta: 1
         })

@@ -5,6 +5,7 @@ Page({
   
     onLoad:function(options){
         // 页面初始化 options为页面跳转所带来的参数
+       
    
     },
     onReady:function(){
@@ -53,6 +54,7 @@ Page({
                 name : e.currentTarget.dataset.name,
                 phone : e.currentTarget.dataset.phone,
                 address : e.currentTarget.dataset.address,
+                addressid : e.currentTarget.dataset.addressid
             })
         wx.navigateBack({
             delta: 1

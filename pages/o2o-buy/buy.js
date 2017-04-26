@@ -6,7 +6,10 @@ Page({
         XF_index:0,
         PS_price:12,
         goodsval:'',
-        addrObj : null
+        addrObj : null,
+        nowShoppingAddr : "",
+        rmark:"",
+        good_pcier:""
     },
     //获取配送时间
     ReadyPS_time:function(){
@@ -20,6 +23,23 @@ Page({
             peiS_time:timearr
         })
             console.log(this.data.peiS_time);
+    },
+    
+    //提交订单事件
+    place_order:function () {
+        
+    },
+    //修改备注
+    change_rmark : function (e) {
+        this.setData({
+            rmark : e.detail.value
+        })
+    },
+    //修改商品费用
+    change_good_pcier : function (e) {
+        this.setData({
+            good_pcier : e.detail.value
+        })
     },
     //配送时间、代金券、小费的change事件
     PS_change:function(e){
@@ -35,6 +55,7 @@ Page({
                 goodsval:options.goodsval
             })
         }
+        console.log(this.data.addrObj);
     },
     onReady:function(){
         // 页面渲染完成
@@ -50,49 +71,95 @@ Page({
     onUnload:function(){
         // 页面关闭
     },
+    //修改商品内容文字事件
+    changeGoodDetail : function (e) {
+        this.setData({
+            goodsval : e.detail.value
+        })
+    },
+  
+    //跳去选择购物地址
+    jumpToShoppingAddr : function () {
+        wx.navigateTo({
+            url: '../o2o-addressquery?type=1'
+        })
+    },
     
     //拿默认地址
     getDefaultAddress : function () {
         let that = this;
-        wx.getStorage({
-            key: 'nowLocalAddr',
-            success: function (result) {
-                if(result.data){
+        var session = wx.getStorageSync('session_key');
+        var nowLocalAddr = wx.getStorageSync('nowLocalAddr');
+        var nowShoppingAddr = wx.getStorageSync('shoppingAddrvalue');
+        if(nowLocalAddr){
+            that.setData({
+                addrObj : nowLocalAddr
+            })
+            console.log(this.data.addrObj);
+            // wx.removeStorage({
+            //     key: 'nowLocalAddr',
+            //     success: function(res) {
+            //         console.log(res)
+            //     }
+            // })
+        }else{
+            wx.request({
+                url: 'https://www.pcclub.top/Home/Address/getDefaultList', //仅为示例，并非真实的接口地址
+                method: "POST",
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'token' : session
+                },
+                success: function(result) {
+                    console.log(result);
                     that.setData({
-                        addrObj : result.data
-                    })
-                    wx.removeStorage({
-                        key: 'nowLocalAddr',
-                        success: function(res) {
-                            console.log(res)
-                        }
-                    })
-                }else{
-                    wx.getStorage({
-                        key: 'session_key',
-                        success: function(res) {
-                            let session = res.data;
-                            wx.request({
-                                url: 'https://www.pcclub.top/Home/Address/getDefaultList', //仅为示例，并非真实的接口地址
-                                method: "POST",
-                                header: {
-                                    'content-type': 'application/x-www-form-urlencoded',
-                                    'token' : session
-                                },
-                                success: function(result) {
-                                    console.log(result);
-                                    that.setData({
-                                        addrObj : result.data.obj
-                                    })
-                                }
-                            })
-                        }
+                        addrObj : result.data.obj
                     })
                 }
+            })
+        }
+        that.setData({
+            nowShoppingAddr : nowShoppingAddr
+        })
+    },
+    
+    //下单按钮时间
+    goOrderFn : function () {
+        let that = this;
+        var session = wx.getStorageSync('session_key');
+        wx.request({
+            url: 'https://www.pcclub.top/Home/Order/index', //仅为示例，并非真实的接口地址
+            method: "POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'token' : session
+            },
+            data : {
+                order_type : "1",
+                address_id : this.data.addrObj.addressid,
+                name : this.data.addrObj.name,
+                phone : this.data.addrObj.phone,
+                goods_name : this.data.goodsval,
+                s_address : this.data.nowShoppingAddr,
+                r_address : this.data.addrObj.address,
+                s_time : this.data.peiS_time[this.data.PS_index],
+                rmark : this.data.rmark,
+                amount : this.data.PS_price,
+                goods_price : this.data.good_pcier,
+                tip : this.data.XF_index,
+            },
+            
+            success: (result)=> {
+                console.log(this.data.addrObj)
+                console.log(result);
+                // that.setData({
+                //     addrObj : result.data.obj
+                // })
             }
         })
-            
     }
+    
+    
     
     
     
