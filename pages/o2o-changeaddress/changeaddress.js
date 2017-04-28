@@ -83,6 +83,7 @@ Page({
                         name : that.data.a_name,
                         phone : that.data.a_phone,
                         address : that.data.a_resAddress,
+                        detail : that.data.a_address
                     },
                     success: function(result) {
                         if(result.data.status == 0){

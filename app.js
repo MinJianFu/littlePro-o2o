@@ -11,8 +11,25 @@ App({
         wx.setStorageSync('logs', logs)
         
         let that = this;
+       this.wxLogin();
         
-        //获取登录状态
+        
+        ///获取地址
+        wx.getLocation({
+            type: 'gcj02 ',
+            success: function(res) {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                var speed = res.speed
+                var accuracy = res.accuracy
+            }
+        })
+
+    },
+
+    //登录接口
+    wxLogin : function(){
+        let that = this;
         wx.login({
             success: function(res) {
                 if (res.code) {
@@ -40,21 +57,9 @@ App({
                 }
             }
         });
-        
-        
-        ///获取地址
-        wx.getLocation({
-            type: 'gcj02 ',
-            success: function(res) {
-                var latitude = res.latitude
-                var longitude = res.longitude
-                var speed = res.speed
-                var accuracy = res.accuracy
-            }
-        })
 
     },
-    
+
     //测试接口
     testApiFn : function () {
         let session = null;

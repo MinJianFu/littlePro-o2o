@@ -28,13 +28,13 @@ page{
 .buy-address{
     border-bottom: 1px solid #F2F1EF;
 }
-.buy-address>view:nth-child(2),.collect-address>view:nth-child(2){
+.info-conV{
     flex: 1;
 }
-.buy-address>view:nth-child(3),.collect-address>view:nth-child(3){
+.info-rightV{
     text-align: right;
 }
-.buy-address>view:nth-child(2) view:nth-child(1),.collect-address>view:nth-child(2) view:nth-child(1){
+.info-rightV{
     color: #353535;
     font-size: 16px;
 }
@@ -54,20 +54,23 @@ page{
 .collect-icon{
     color: #2fb2d9;
 }
-.goods-info,.order-info{
+.goods-info,.order-info, .rider-info{
     padding: 15px;
     background: #fff;
     margin-top: 8px;
 }
-.goods-info>view,.order-info>view{
+.info-conV{
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 14px;
     line-height: 20px;
 }
-.goods-info>view view:nth-child(2),.order-info>view view:nth-child(2){
+.info-rightV{
     color: #ABA7A2;
+}
+.rider-info{
+    padding-bottom: 40px;
 }
 .btn-bar{
     position: fixed;

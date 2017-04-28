@@ -3,9 +3,11 @@ page{
     background: #F2F1EF;
 }
 .header-bar{
-    width: 100%;
-    background: #1BAAD5;
-    padding: 10px 0;
+    width:100%;
+    background:#1BAAD5;
+    padding:10px 0;
+    position:fixed;
+    z-index:2;
 }
 .header-ul{
     width: 90%;
@@ -46,12 +48,14 @@ page{
     transform:translateX(200%);
 }
 .order-list{
-    padding: 8px 8px 0;
+    padding: 48px 8px 0;
 }
 .order-item{
     background: #fff;
     padding:8px;
     border-radius: 8px;
+    margin: 6px 0;
+    position: relative;
 }
 .item-top{
     display: flex;
@@ -81,10 +85,11 @@ page{
     padding: 10px 0;
     border-bottom:1px solid #F2F1EF;
 }
-.item-content>view:nth-child(2){
+.centerSymbol{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding:0 10px;
 }
 .order-icon1{
     width: 20px;

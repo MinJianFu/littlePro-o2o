@@ -1,41 +1,33 @@
 <view class="header-bar">
     <view class="header-ul">
         <view class="header-on state{{state}}"></view>
-        <view class="header-li {{index==state? 'on':''}}" wx:for="{{header}}" data-key="{{index}}" bindtap="changestate">{{item}}</view>
+        <view class="header-li {{index==state? 'on':''}}" wx:for="{{header}}" wx:key="index" data-key="{{index}}" bindtap="changestate" data-name="{{item}}">{{item}}</view>
     </view>
 </view>
 <view class="order-list">
-    <navigator url="../o2o-orderdetails/orderdetails">
-    <view class="order-item">
+    <view wx:for="{{orderData}}" wx:key="index" class="order-item" data-orderid="{{item.id}}" catchtap="jumpToOrderDetail">
         <view class="item-top">
             <view>
                 <image mode="widthFix" src="../icon/mai_icon_min.png" class="type-icon"></image>
-                <text class="buy-type">帮你买</text>
+                <text class="buy-type" wx:if="{{item.order_type == 1}}">帮你买</text>
+                <text class="buy-type" wx:if="{{item.order_type == 2}}">帮你送</text>
+                <text class="buy-type" wx:if="{{item.order_type == 3}}">帮你取</text>
             </view>
-            <view>12元</view>
+            <view>￥{{item.goods_price}}</view>
         </view>
         <view class="item-content">
             <view>
-                <view class="address">新月明珠花园</view>
-                <view class="user-name">陈先生</view>
+                <view class="address">{{item.s_address}}</view>
             </view>
+            <view class="centerSymbol">>>>></view>
             <view>
-                <view class="order-icon1"></view>
-                <view>
-                    <view class="content-type">文件</view>
-                    <view class="order-type">代付款</view>
-                </view>
-                <view class="order-icon2"></view>
-            </view>
-            <view>
-                <view class="address">旧月明珠花园</view>
-                <view class="user-name">陈小姐</view>
+                <view class="address">{{item.r_address}}</view>
             </view>
         </view>
         <view class="item-bottom">
-            <view class="order-date">2017.3.15 18:38</view>
-            <button>立即支付</button>
+            <view class="order-date">{{item.order_sn}}</view>
+            <button wx:if="{{item.order_status == 1}}">未接单</button>
+            <button wx:if="{{item.order_status == 2}}">已接单</button>
         </view>
     </view>
-    </navigator>
 </view>

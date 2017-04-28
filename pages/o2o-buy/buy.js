@@ -1,3 +1,6 @@
+
+const app = getApp();
+
 Page({
     data:{
         peiS_time:[],
@@ -150,6 +153,10 @@ Page({
             },
             
             success: (result)=> {
+                if(result.data.status == 8888){
+                    app.wxLogin();
+                    return;
+                }
                 console.log(this.data.addrObj)
                 console.log(result);
                 // that.setData({

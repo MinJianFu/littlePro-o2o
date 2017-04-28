@@ -1,13 +1,15 @@
 <view class="user-info">
     <view class="title">
         <image mode="widthFix" src="../icon/mai_icon_min.png" class="order-type"></image>
-        <text>订单已完成</text>
+        <text wx:if="{{orderData.order_status == 1}}">未接单</text>
+        <text wx:if="{{orderData.order_status == 2}}">已接单</text>
+        <text wx:if="{{orderData.order_status == 3}}">订单已完成</text>
     </view>
     <view class="buy-address">
         <view class="buy-icon">购</view>
         <view>
-            <view>新月明珠花园</view>
-            <view>番禺大石华南路30号</view>
+            <view>{{orderData.s_address}}</view>
+            <view>{{orderData.s_address}}</view>
         </view>
         <view>
             <view>陈先生</view>
@@ -17,28 +19,32 @@
     <view class="collect-address">
         <view class="collect-icon">收</view>
         <view>
-            <view>旧月明珠花园</view>
-            <view>番禺大石华南路30号</view>
+            <view>{{orderData.r_address}}</view>
+            <view>{{orderData.r_address}}</view>
         </view>
         <view>
-            <view>陈小姐</view>
-            <view>18011972207</view>
+            <view>{{orderData.name}}</view>
+            <view>{{orderData.phone}}</view>
         </view>
     </view>
 </view>
 <view class="goods-info">
-    <view><view>时间：</view><view>2017.3.15 18:38</view></view>
-    <view><view>物品重量：</view><view>1kg</view></view>
-    <view><view>物品类型：</view><view>泡面</view></view>
-    <view><view>物品价值：</view><view>5元</view></view>
-    <view><view>预约时间：</view><view>立即配送</view></view>
-    <view><view>支付方式：</view><view>微信支付</view></view>
+    <view class="info-conV"><view class="info-leftV">时间：</view><view class="info-rightV">{{orderData.order_sn}}</view></view>
+    <view class="info-conV"><view class="info-leftV">物品重量：</view><view class="info-rightV">1kg</view></view>
+    <view class="info-conV"><view class="info-leftV">物品类型：</view><view class="info-rightV">泡面</view></view>
+    <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">5元</view></view>
+    <view class="info-conV"><view class="info-leftV">预约时间：</view><view class="info-rightV">立即配送</view></view>
+    <view class="info-conV"><view class="info-leftV">支付方式：</view><view class="info-rightV">微信支付</view></view>
 </view>
 <view class="order-info">
-    <view><view>基础配送费：</view><view>12元</view></view>
-    <view><view>重量加价：</view><view>0元</view></view>
-    <view><view>距离加价：</view><view>0元</view></view>
-    <view><view>配送距离：</view><view>2km</view></view>
+    <view class="info-conV"><view class="info-leftV">基础配送费：</view><view class="info-rightV">12元</view></view>
+    <view class="info-conV"><view class="info-leftV">重量加价：</view><view class="info-rightV">0元</view></view>
+    <view class="info-conV"><view class="info-leftV">距离加价：</view><view class="info-rightV">0元</view></view>
+    <view class="info-conV"><view class="info-leftV">配送距离：</view><view class="info-rightV">2km</view></view>
+</view>
+<view class="rider-info">
+    <view class="info-conV"><view class="info-leftV">骑手名字：</view><view class="info-rightV">陈测测</view></view>
+    <view class="info-conV"><view class="info-leftV">骑手电话号码：</view><view class="info-rightV">18011809010</view></view>
 </view>
 <view class="btn-bar">
     <button class="del-btn">删除订单</button>

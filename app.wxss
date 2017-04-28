@@ -9,4 +9,5 @@
   box-sizing: border-box;
 }
 
+@import "public/public.wxss";
 @import "components/toast/toast.wxss";
