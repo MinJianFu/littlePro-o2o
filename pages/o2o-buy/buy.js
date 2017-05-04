@@ -157,6 +157,13 @@ Page({
                     app.wxLogin();
                     return;
                 }
+                if(result.data.status != 0){
+                    this.wetoast.toast({
+                        title: result.data.msg,
+                        duration: 1500
+                    })
+                    return;
+                }
                 console.log(this.data.addrObj)
                 console.log(result);
                 // that.setData({

@@ -1,7 +1,7 @@
 
 <view class="wrap">
     <view>
-        <navigator url="../o2o-SeleAddress/o2o-SeleAddress" hover-class="navigator-hover" redirect>
+        <navigator url="../o2o-SeleAddress/o2o-SeleAddress" hover-class="navigator-hover" >
             <view class="address-item">
             <view class="icon-address-box"><image class="icon-address" src="./img/dt.png" mode="aspectFill"></image></view>
             <view class="address-text">请添加一个收货地址</view>
