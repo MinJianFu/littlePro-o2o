@@ -1,8 +1,10 @@
 
 let {WeToast} = require('components/toast/toast.js');
+let {o2oAjax} = require("utils/util.js");
 
 //app.js
 App({
+    o2oAjax,
     WeToast,
     onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -11,7 +13,7 @@ App({
         wx.setStorageSync('logs', logs)
         
         let that = this;
-       this.wxLogin();
+        this.wxLogin();
         
         
         ///获取地址
@@ -63,23 +65,17 @@ App({
     //测试接口
     testApiFn : function () {
         let session = null;
-        wx.getStorage({
-            key: 'session_key',
-            success: function(res) {
-                console.log(res.data)
-                session = res.data;
-                wx.request({
-                    url: 'https://www.pcclub.top/Home/Order/test', //仅为示例，并非真实的接口地址
-                    method: "POST",
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded',
-                        'token' : session
-                    },
-                    success: function(result) {
-                        console.log(result)
-            
-                    }
-                })
+        let session_key = wx.getStorageSync("session_key");
+        wx.request({
+            url: 'https://www.pcclub.top/Home/Order/test', //仅为示例，并非真实的接口地址
+            method: "POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'token' : session_key
+            },
+            success: function(result) {
+                console.log(result)
+    
             }
         })
         

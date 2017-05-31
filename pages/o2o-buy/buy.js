@@ -1,5 +1,6 @@
 
 const app = getApp();
+let { o2oAjax } = app;
 
 Page({
     data:{
@@ -90,12 +91,11 @@ Page({
     
     //拿默认地址
     getDefaultAddress : function () {
-        let that = this;
         var session = wx.getStorageSync('session_key');
         var nowLocalAddr = wx.getStorageSync('nowLocalAddr');
         var nowShoppingAddr = wx.getStorageSync('shoppingAddrvalue');
         if(nowLocalAddr){
-            that.setData({
+            this.setData({
                 addrObj : nowLocalAddr
             })
             console.log(this.data.addrObj);
@@ -106,22 +106,18 @@ Page({
             //     }
             // })
         }else{
-            wx.request({
+            o2oAjax({
                 url: 'https://www.pcclub.top/Home/Address/getDefaultList', //仅为示例，并非真实的接口地址
                 method: "POST",
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'token' : session
-                },
-                success: function(result) {
+                success: result=>{
                     console.log(result);
-                    that.setData({
-                        addrObj : result.data.obj
+                    this.setData({
+                        addrObj : result
                     })
                 }
             })
         }
-        that.setData({
+        this.setData({
             nowShoppingAddr : nowShoppingAddr
         })
     },
@@ -131,7 +127,7 @@ Page({
         let that = this;
         var session = wx.getStorageSync('session_key');
         wx.request({
-            url: 'https://www.pcclub.top/Home/Order/index', //仅为示例，并非真实的接口地址
+            url: 'https://www.pcclub.top/Home/Order/index', 
             method: "POST",
             header: {
                 'content-type': 'application/x-www-form-urlencoded',

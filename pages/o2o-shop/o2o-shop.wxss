@@ -269,7 +269,7 @@ swiper-item{
 }
 .goods-add{
     position:absolute;
-    bottom:7px;
+    bottom:11px;
     right:10px;
     display: flex;
     align-items: center;
@@ -280,7 +280,7 @@ swiper-item{
     padding: 0 7px;
 }
 .icon-add{
-    width: 17px;
+    width: 24px;
 }
 .icon-sub{
     width: 19px;
