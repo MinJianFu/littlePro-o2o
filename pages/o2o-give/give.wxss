@@ -56,7 +56,8 @@ page{height: 100%;background: #f1f1f1; font-family: 微软雅黑;}
 .address-bar>view{
     display: flex;
     align-items: center;
-    height: 4rem;
+    padding:20px 0;
+
 }
 .address-bar>view .address-text{
     flex: 1;
@@ -100,6 +101,12 @@ page{height: 100%;background: #f1f1f1; font-family: 微软雅黑;}
 }
 .remarks-text,.goos-pcier-val{
     text-align: right;
+}
+.collect-bar, .buy-bar{
+    display: flex;
+    padding:16px 0;
+    align-items:center;
+
 }
 .JT-icon{
     width: 20px;

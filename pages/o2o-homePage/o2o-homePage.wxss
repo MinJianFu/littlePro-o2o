@@ -89,7 +89,6 @@ margin-top:10px;
 .seller-info{
     flex:1;
     margin-left:.5rem;
-    border-bottom: 1px solid #f1f1f1;
 }
 .seller-image{
     width: 4rem;

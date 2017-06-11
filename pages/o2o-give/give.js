@@ -1,3 +1,7 @@
+
+const app = getApp();
+let { o2oAjax } = app;
+
 const date = new Date()
 const minute = ['00','15','30','45']
 const day = ['今天','明天','后天']
@@ -23,7 +27,9 @@ Page({
         minute:minute,
         day:day,
         seletype:false,
-        goodsinformation:''
+        goodsinformation:'',
+        getGoodsAddress : "",   //取货地址
+        sendGoodsAddress : "",  //送货地址
 
     },
     bindChange: function(e) {
@@ -72,13 +78,14 @@ Page({
     },
     onShow:function(){
         // 页面显示
-        wx.getStorage({
-            key:'gooodsinformatio',
-            success:(res)=>{
-                this.setData({
-                    goodsinformation:res.data
-                })
-            }
+    
+        let goodsinformation = wx.getStorageSync('gooodsinformatio');   //拿商品信息
+        let getGoodsAddress = wx.getStorageSync('getGoodsAddress');   //拿取货地址
+        let sendGoodsAddress = wx.getStorageSync('sendGoodsAddress');   //拿商送货地址
+        this.setData({  //从storage拿商品信息
+            goodsinformation : goodsinformation,
+            getGoodsAddress : getGoodsAddress,
+            sendGoodsAddress : sendGoodsAddress
         })
     },
     onHide:function(){
@@ -86,5 +93,41 @@ Page({
     },
     onUnload:function(){
         // 页面关闭
+    },
+    
+    //跳去选择购物地址
+    jumpToShoppingAddr : function () {
+        wx.navigateTo({
+            url: '../o2o-receivingaddress/receivingaddress'
+        })
+    },
+    
+    //下单按钮事件
+    goOrderFn : function () {
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Order/index',
+            method: "POST",
+            data : {
+                order_type : "2",
+                goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight + "|" + this.data.goodsinformation.goodsvalue,
+                phone : this.data.addrObj.phone,
+                name : this.data.addrObj.name,
+                address : this.data.addrObj.address,
+    
+                s_name : "",
+                s_phone : "",
+                s_address : "",
+                s_time : this.data.peiS_time[this.data.PS_index],
+                rmark : this.data.rmark,
+                amount : this.data.PS_price,
+                tip : this.data.XF_index,
+            },
+            success: (result)=> {
+                console.log(result);
+                // that.setData({
+                //     addrObj : result.data.obj
+                // })
+            }
+        })
     }
 })

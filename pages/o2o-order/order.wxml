@@ -16,13 +16,9 @@
             <view>￥{{item.goods_price}}</view>
         </view>
         <view class="item-content">
-            <view>
-                <view class="address">{{item.s_address}}</view>
-            </view>
+            <view class="address">{{item.order_type == 1? "默认地址购买": item.s_address}}</view>
             <view class="centerSymbol">>>>></view>
-            <view>
-                <view class="address">{{item.r_address}}</view>
-            </view>
+            <view class="address">{{item.r_address}}</view>
         </view>
         <view class="item-bottom">
             <view class="order-date">{{item.order_sn}}</view>

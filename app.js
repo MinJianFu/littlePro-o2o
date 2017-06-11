@@ -46,12 +46,10 @@ App({
                             code : res.code
                         },
                         success: function(result) {
-                            console.log(result.data)
                             wx.setStorage({
                                 key : "session_key",
                                 data : result.data.obj.session_key
                             })
-                            that.testApiFn();
                         }
                     })
                 } else {
@@ -62,24 +60,6 @@ App({
 
     },
 
-    //测试接口
-    testApiFn : function () {
-        let session = null;
-        let session_key = wx.getStorageSync("session_key");
-        wx.request({
-            url: 'https://www.pcclub.top/Home/Order/test', //仅为示例，并非真实的接口地址
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'token' : session_key
-            },
-            success: function(result) {
-                console.log(result)
-    
-            }
-        })
-        
-    },
     
     
     getUserInfo:function(cb){

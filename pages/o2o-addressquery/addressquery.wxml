@@ -1,6 +1,6 @@
 <view class="page">
-    <input  type="text" placeholder="输入地址" class="queryval" bindinput="makertap"/>
-    <view class="address-item" wx:for="{{markers}}"  catchtap="tapLocationFn" data-addrvalue="{{item.address+' '+item.title}}">
+    <input  type="text" placeholder="输入地址" class="queryval" bindinput="makertap" />
+    <view class="address-item" wx:for="{{markers}}" wx:key="{{index}}"  catchtap="tapLocationFn" data-addrvalue="{{item.address+' '+item.title}}">
         <image model="widthFix" src="img/address-icon.png" class="icon"></image>
         <view>
             <view class="address-name">{{item.title}}</view>

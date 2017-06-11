@@ -43,7 +43,7 @@ let o2oAjax = function (obj){
             return;
         }
         else if(result.data.status != 0){
-            WeToast.toast({
+            WeToast().toast({
                 title: result.data.msg,
                 duration: 1500
             })

@@ -1,4 +1,6 @@
-let app = getApp();
+
+const app = getApp();
+let { o2oAjax } = app;
 let timer = null;
 Page({
     data:{
@@ -53,23 +55,34 @@ Page({
         }, 4000);
     },
 
-    //发送对应请求
+    //获取订单列表信息
     getList :　function () {
         let that = this;
         const session = wx.getStorageSync("session_key");
-        wx.request({
-            url: that.data.nowUrl,
+        o2oAjax({
+            url: "https://www.pcclub.top/Order/order_listen",
             method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'token' : session
-            },
             data: {
                 page : that.data.nowPage,
             },
             success: function(result) {
                 that.setData({
                     orderData : result.data.list
+                })
+            }
+        })
+    },
+    //上拉获取新的订单列表信息
+    getAnotherList :　function () {
+        o2oAjax({
+            url: "https://www.pcclub.top/Order/order_listen",
+            method: "POST",
+            data: {
+                page : that.data.nowPage,
+            },
+            success: (result)=> {
+                this.setData({
+                    orderData : this.data.orderData.concat(result.data.list)
                 })
             }
         })

@@ -78,18 +78,21 @@ page{
     vertical-align: middle;
 }
 .item-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 10px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-align:center;
+    padding:10px 0;
     border-bottom:1px solid #F2F1EF;
+    font-size:14px;
+    color:#333;
 }
 .centerSymbol{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding:0 10px;
+    width:80px;
 }
 .order-icon1{
     width: 20px;
@@ -105,6 +108,7 @@ page{
 }
 .address,.content-type{
     margin-bottom:6px;
+    flex:1;
 }
 .item-bottom{
     display: flex;

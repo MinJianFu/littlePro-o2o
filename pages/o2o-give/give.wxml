@@ -1,11 +1,5 @@
 <view class="page">
     <navigator url="../o2o-goodsinformation/goodsinformation" style="margin:12px 0;">
-    <!--<view class="gooos-bar">
-        <view class="goos-title">物品信息</view>
-        <view class="gooos-name on" wx:if="{{goodsinformation==''}}">选择类别、重量、价值</view>
-        <view class="gooos-name" wx:if="{{goodsinformation!=''}}">{{goodsinformation.goodsname}}、{{goodsinformation.weight}}、{{goodsinformation.goodsvalue}}</view>
-        <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
-    </view>-->
     <view class="gooos-barNew">
         <view class="goos-titleNew">物品类型：</view>
         <view class="gooos-nameNew on" wx:if="{{goodsinformation==''}}">选择类别</view>
@@ -22,34 +16,33 @@
         <view class="gooos-nameNew" wx:if="{{goodsinformation!=''}}">{{goodsinformation.goodsvalue}}</view>
     </view>
     </navigator>
-    <block  wx:if="{{pagetype==1}}">
-    <view class="address-bar">
-        <view class="buy-bar">
-            <view class="address-icon" style="color: rgb(72,191,64);">发</view>
-            <view class="address-textNew" bindtag="!{{seletype}}">请选择发货地址和发货人联系方式</view>
-            <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
-        </view>
-        <view class="collect-bar">
-            <view class="address-icon" style="color:#FA1A43;">收</view>
-            <view class="address-textNew">请选择收货地址和收货人联系方式</view>
-            <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
-        </view>
-    </view>
-    </block>
-    <block  wx:if="{{pagetype==2}}">
-        <view class="address-bar">
+    <view  class="address-bar">
+        <navigator url="../o2o-receivingaddress/receivingaddress?type=21">
             <view class="buy-bar">
-                <view class="address-icon" style="color: #4996FF;">取</view>
-                <view class="address-text" bindtag="!{{seletype}}">选择购买地址（默认就近）</view>
+                <view class="address-icon" style="color: rgb(72,191,64);">取</view>
+                <view class="address-textNew" wx:if="{{!getGoodsAddress}}">请选择取货地址和联系人号码</view>
+                <view class="address-textNew" wx:if="{{getGoodsAddress}}">
+
+                    <view class="addrName">{{getGoodsAddress.name +" "+getGoodsAddress.phone}}</view>
+                    <view class="addrAddress">{{getGoodsAddress.address}}</view>
+                </view>
                 <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
             </view>
+        </navigator>
+
+        <navigator url="../o2o-receivingaddress/receivingaddress?type=22">
+
             <view class="collect-bar">
-                <view class="address-icon" style="color:#FA1A43;">收</view>
-                <view class="address-text">选择收货地址</view>
+                <view class="address-icon" style="color:#FA1A43;">送</view>
+                <view class="address-textNew" wx:if="{{!sendGoodsAddress}}">请选择送货地址和联系人号码</view>
+                <view class="address-textNew" wx:if="{{sendGoodsAddress}}">
+                    <view class="addrName">{{sendGoodsAddress.name +" "+sendGoodsAddress.phone}}</view>
+                    <view class="addrAddress">{{sendGoodsAddress.address}}</view>
+                </view>
                 <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
             </view>
-        </view>
-    </block>
+        </navigator>
+    </view>
     <view class="B1" bindtap="ReadyPS_time">
         <picker bindchange="PS_change" data-key="PS_index" value="{{PS_index}}" range="{{peiS_time}}">
             <view class="peiStime-bar">
@@ -67,13 +60,13 @@
             <view class="peiS-text">配送费<text class="peiSpcier-bar-ps">?</text></view>
             <view class="peiSpcier">{{PS_price}}元</view>
         </view>
-        <picker bindchange="" value="" range="">
-            <view class="voucher">
-                <view>代金卷</view>
-                <view class="voucher-text" style="color: #808080;">无可用代金卷</view>
-                <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
-            </view>
-        </picker>
+        <!--<picker bindchange="" value="" range="">-->
+            <!--<view class="voucher">-->
+                <!--<view>代金卷</view>-->
+                <!--<view class="voucher-text" style="color: #808080;">无可用代金卷</view>-->
+                <!--<image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>-->
+            <!--</view>-->
+        <!--</picker>-->
         <picker bindchange="PS_change" data-key="XF_index" value="{{XF_index}}" range="{{XiaoFei}}">
             <view class="XF-bar">
                 <view>小费<text class="XF-bar-ps">加小费抢单更快哟</text></view>
@@ -105,6 +98,6 @@
     <view class="foot">
         <view>不含商品费用</view>
         <view>待支付<txet>¥{{PS_price+XF_index}}</txet></view>
-        <view class="TJ-btn">提交订单</view>
+        <view class="TJ-btn" catchtap="goOrderFn">提交订单</view>
     </view>
 </view>

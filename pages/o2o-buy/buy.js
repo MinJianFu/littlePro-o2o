@@ -11,7 +11,6 @@ Page({
         PS_price:12,
         goodsval:'',
         addrObj : null,
-        nowShoppingAddr : "",
         rmark:"",
         good_pcier:""
     },
@@ -26,7 +25,6 @@ Page({
         this.setData({
             peiS_time:timearr
         })
-            console.log(this.data.peiS_time);
     },
     
     //提交订单事件
@@ -59,7 +57,6 @@ Page({
                 goodsval:options.goodsval
             })
         }
-        console.log(this.data.addrObj);
     },
     onReady:function(){
         // 页面渲染完成
@@ -81,13 +78,6 @@ Page({
             goodsval : e.detail.value
         })
     },
-  
-    //跳去选择购物地址
-    jumpToShoppingAddr : function () {
-        wx.navigateTo({
-            url: '../o2o-addressquery?type=1'
-        })
-    },
     
     //拿默认地址
     getDefaultAddress : function () {
@@ -98,7 +88,6 @@ Page({
             this.setData({
                 addrObj : nowLocalAddr
             })
-            console.log(this.data.addrObj);
             // wx.removeStorage({
             //     key: 'nowLocalAddr',
             //     success: function(res) {
@@ -112,7 +101,7 @@ Page({
                 success: result=>{
                     console.log(result);
                     this.setData({
-                        addrObj : result
+                        addrObj : result.obj
                     })
                 }
             })
@@ -122,51 +111,64 @@ Page({
         })
     },
     
-    //下单按钮时间
-    goOrderFn : function () {
-        let that = this;
-        var session = wx.getStorageSync('session_key');
-        wx.request({
-            url: 'https://www.pcclub.top/Home/Order/index', 
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'token' : session
-            },
-            data : {
-                order_type : "1",
-                address_id : this.data.addrObj.addressid,
-                name : this.data.addrObj.name,
-                phone : this.data.addrObj.phone,
-                goods_name : this.data.goodsval,
-                s_address : this.data.nowShoppingAddr,
-                r_address : this.data.addrObj.address,
-                s_time : this.data.peiS_time[this.data.PS_index],
-                rmark : this.data.rmark,
-                amount : this.data.PS_price,
-                goods_price : this.data.good_pcier,
-                tip : this.data.XF_index,
-            },
-            
-            success: (result)=> {
-                if(result.data.status == 8888){
-                    app.wxLogin();
-                    return;
-                }
-                if(result.data.status != 0){
-                    this.wetoast.toast({
-                        title: result.data.msg,
-                        duration: 1500
-                    })
-                    return;
-                }
-                console.log(this.data.addrObj)
+    //调小程序支付接口事件
+    goPayFn : function (payData) {
+        wx.requestPayment({
+            timeStamp : payData.timeStamp,
+            nonceStr : payData.nonceStr,
+            package : payData.package,
+            signType : payData.signType,
+            paySign : payData.paySign,
+            success : (result)=>{
                 console.log(result);
+            },
+            fail : (a, b, c)=>{
+                console.log("支付失败");
+                console.log(a,b,c);
+            }
+        })
+    },
+    //调后台支付接口
+    goPayForBackendFn : function () {
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/WxPay/pay',
+            method: "POST",
+            success: (result)=> {
+                console.log(result);
+                this.goPayFn(result.obj);
                 // that.setData({
                 //     addrObj : result.data.obj
                 // })
             }
         })
+    },
+    
+    //下单按钮s事件
+    goOrderFn : function () {
+        // o2oAjax({
+        //     url: 'https://www.pcclub.top/Home/Order/index',
+        //     method: "POST",
+        //     data : {
+        //         order_type : "1",
+        //         goods_name : this.data.goodsval,
+        //         goods_price : this.data.good_pcier,
+        //         phone : this.data.addrObj.phone,
+        //         name : this.data.addrObj.name,
+        //         address : this.data.addrObj.address,
+        //         s_time : this.data.peiS_time[this.data.PS_index],
+        //         rmark : this.data.rmark,
+        //         amount : this.data.PS_price,
+        //         tip : this.data.XF_index,
+        //     },
+        //
+        //     success: (result)=> {
+        //         console.log(result);
+        //         // that.setData({
+        //         //     addrObj : result.data.obj
+        //         // })
+        //     }
+        // })
+        this.goPayForBackendFn();
     }
     
     
