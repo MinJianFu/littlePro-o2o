@@ -21,15 +21,13 @@ fadeIcon{
     position: relative;
 }
 .header-left{
-    flex: 1;
+    width:80px;
 }
 .header-left-img{
     width: 80px;
 }
 .header-right{
     flex: 1;
-    width: 100%;
-    margin-right:-80px;
 }
 .header-right-title {
     display:flex;
@@ -74,12 +72,13 @@ fadeIcon{
     display: flex;
 }
 .header-right-info-l{
+    width:40px;
+
 }
 .header-right-info-r{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width:61%;
+    padding:0 30px 20px 0;
+    flex:1;
+
 }
 .header-right-icon{
     position: absolute;
@@ -283,7 +282,7 @@ swiper-item{
     width: 24px;
 }
 .icon-sub{
-    width: 19px;
+    width: 24px;
 }
 .eva-content{
     display: flex;

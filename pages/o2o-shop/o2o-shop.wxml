@@ -1,19 +1,19 @@
 <view class="wrap">
     <navigator url="../o2o-all-rating/o2o-all-rating">
         <view class="header-wrap">
-            <view class="header-content" wx:for="{{ShopNews}}" wx:key="index">
+            <view class="header-content">
                 <view class="header-left">
                     <image class="header-left-img" mode="widthFix" src="./img/icon-waimai.png"></image>
                 </view>
                 <view class="header-right">
                     <view class="header-right-title">
                         <image class="header-right-title-icon" src="./img/pp.png" mode="aspectFill"></image>
-                        <view class="header-right-title-content">{{item.ShopTitle}}</view>
+                        <view class="header-right-title-content">{{shopNews.name}}</view>
                     </view>
                     <view class="header-right-msg">
-                        <view class="header-right-msg-A">{{item.ShopmsgA}}</view>
-                        <view class="header-right-msg-B">{{item.deliveryTime}}分钟送达</view>
-                        <view class="header-right-msg-C">配送费￥{{item.deliveryCost}}</view>
+                        <view class="header-right-msg-A">{{shopNews.ShopmsgA}}</view>
+                        <view class="header-right-msg-B">{{shopNews.deliveryTime}}分钟送达</view>
+                        <view class="header-right-msg-C">配送费￥{{shopNews.deliever_price}}</view>
                     </view>
                     <view class="header-right-info">
                         <view class="header-right-info-l">
@@ -23,12 +23,12 @@
                             1、维权电话400-991-3131，您的1小时送达 2、维权电话400-991-3131，您的1小时送达
                         </view>
                     </view>
-                    <view class="header-right-icon">
+                    <!--<view class="header-right-icon">
                         <image class="header-right-icon-R" src="./img/jtr.png" mode="aspectFill"></image>
-                    </view>
+                    </view>-->
                 </view>
             </view>
-            <swiper indicator-dots="{{indicatorDots}}"
+            <!--<swiper indicator-dots="{{indicatorDots}}"
                     circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical="{{vertical}}" class="swiperStyle">
                 <swiper-item wx:for="{{activity}}" wx:key="index">
                     <view class="header-bottom-info">
@@ -39,10 +39,10 @@
                     </view>
                 </swiper-item>
             </swiper>
-            <view class="header-bottom-info-right">3个活动</view>
+            <view class="header-bottom-info-right">3个活动</view>-->
         </view>
     </navigator>
-    <view class="tab" wx:for="{{ShopNews}}" wx:key="index">
+    <!--<view class="tab" wx:for="{{ShopNews}}" wx:key="index">
         <view class="tab-item " >
             <view class="tab-text  {{currentTab==0 ? 'tab-active' : ''}}" data-current="0" bindtap="swichNav" >商品</view>
         </view>
@@ -52,18 +52,18 @@
                 <view class="tab-text-num">({{item.evaluate}}分)</view>
             </view>
         </view>
-    </view>
+    </view>-->
     <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 200}}px" bindchange="bindChange">
         <swiper-item>
             <view class="shop-wrap">
                 <view class="menu-wrapper" >
                     <scroll-view scroll-y="true" style="height:{{winHeight}}px" >
                         <view wx:for="{{menuData}}" wx:key="index" class=" {{item.active == 1 ? 'menu-active':''}}">
-                            <view class="menu-item" data-typeid="{{item.menuId}}" bindtap="seleMenu">
+                            <view class="menu-item" data-typeid="{{item.cate_id}}" bindtap="seleMenu">
                                 <view class="menu-item-ic">
                                     <image wx:if="{{item.showIcon}}" class="menu-item-ico {{item.showIcon == false ? 'showIcon' : 'fadeIcon'}}" src="./img/hot.png" mode="aspectFill"></image>
                                 </view>
-                                {{item.name}}
+                                {{item.cate_name}}
                             </view>
                         </view>
                     </scroll-view>
@@ -74,36 +74,35 @@
                         <view class="goods-title-text"></view>
                     </view>
                     <view class="goods-item-box">
-                        <view class="goods-item" wx:for="{{foodsData}}" wx:key="index" wx:if="{{nowSelectTypeId == item.foodsTypeId}}" data-foodtypeid="{{item.foodsTypeId}}">
+                        <view class="goods-item" wx:for="{{foodsData}}" wx:key="{{index}}" wx:if="{{nowSelectTypeId == item.cate_id}}" data-foodtypeid="{{item.cate_id}}">
                             <view class="goods-item-imgbox">
                                 <image class="goods-item-image" src="./img/foodDetail.jpg"
                                        mode="aspectFill"></image>
                             </view>
                             <view class="goods-item-info">
-                                <view class="goods-item-name">{{item.foodsName}}</view>
+                                <view class="goods-item-name">{{item.goods_name}}</view>
                                 <view class="goods-item-deal">{{item.foodsWeight}}</view>
-                                <view class="goods-item-sale">月售{{item.foodsSellout}}份
-                                    好评率{{item.foodsPraise}}%</view>
+                                <view class="goods-item-sale">月售{{item.volume}}份</view>
                                 <view class="goods-item-money">
                                     <view class="goods-item-money-icon" >￥</view>
-                                    {{item.foodsMoney}}
+                                    {{item.price}}
                                 </view>
                             </view>
                             <view class="goods-add">
                                 <image class="icon-sub" src="./img/sub.png" mode="widthFix"
-                                       bindtap="SUB" data-foodsid="{{item.foodsId}}" wx:if="{{item.foodsCount>0}}" data-
-                                       price="{{item.foodsMoney}}"  ></image>
+                                       bindtap="SUB" data-goods_id="{{item.goods_id}}" wx:if="{{item.foodsCount>0}}" data-
+                                       price="{{item.price}}"  ></image>
                                 <view class="goods-num" wx:if="{{item.foodsCount>0}}">
                                     {{item.foodsCount}}</view>
                                 <image class="icon-add" src="./img/add.png" mode="widthFix"
-                                       bindtap="ADD" data-foodsid="{{item.foodsId}}" data-price="{{item.foodsMoney}}"  ></image>
+                                       bindtap="ADD" data-goods_id="{{item.goods_id}}" data-price="{{item.price}}"  ></image>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
         </swiper-item>
-        <swiper-item>
+        <!--<swiper-item>
             <view class="eva-warpper">
                 <view class="eva-content" wx:for="{{ShopNews}}" wx:key="index">
                     <view class="eva-con-left">
@@ -182,7 +181,7 @@
                     </scroll-view>
                 </view>
             </view>
-        </swiper-item>
+        </swiper-item>-->
     </swiper>
     <view class="Carmark {{isShowCarItem ? '' : 'hidden' }}"  catchtap="showCar"></view>
     <view class="shopcart">
@@ -217,10 +216,10 @@
                         <view class="icon-shop-text" wx:if="{{catnum}}">{{catnum}}</view>
                     </view>
                 </view>
-                <view class="sc-box" wx:for="{{ShopNews}}" wx:key="index">
+                <view class="sc-box">
                     <view class="sc-text" wx:if="{{catnum<=0}}">购物车是空的</view>
                     <view class="sc-price" wx:if="{{catnum>0}}">￥{{catmoney}}</view>
-                    <view class="sc-desc" wx:if="{{hasGoodsCount }}">配送费￥{{item.deliveryCost}}</view>
+                    <view class="sc-desc" wx:if="{{hasGoodsCount }}">配送费￥{{shopNews.deliever_price}}</view>
                 </view>
             </view>
 

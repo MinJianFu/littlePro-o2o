@@ -48,7 +48,7 @@ page{
     transform:translateX(200%);
 }
 .order-list{
-    padding: 48px 8px 0;
+    padding: 8px 8px 0;
 }
 .order-item{
     background: #fff;

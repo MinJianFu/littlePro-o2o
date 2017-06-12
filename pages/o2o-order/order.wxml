@@ -1,9 +1,9 @@
-<view class="header-bar">
+<!--<view class="header-bar">
     <view class="header-ul">
         <view class="header-on state{{state}}"></view>
         <view class="header-li {{index==state? 'on':''}}" wx:for="{{header}}" wx:key="index" data-key="{{index}}" bindtap="changestate" data-name="{{item}}">{{item}}</view>
     </view>
-</view>
+</view>-->
 <view class="order-list">
     <view wx:for="{{orderData}}" wx:key="index" class="order-item" data-orderid="{{item.id}}" catchtap="jumpToOrderDetail">
         <view class="item-top">

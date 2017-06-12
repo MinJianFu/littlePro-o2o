@@ -1,6 +1,6 @@
 
 let {WeToast} = require('components/toast/toast.js');
-let {o2oAjax} = require("utils/util.js");
+let {o2oAjax, wxLogin} = require("utils/util.js");
 
 //app.js
 App({
@@ -13,7 +13,9 @@ App({
         wx.setStorageSync('logs', logs)
         
         let that = this;
-        this.wxLogin();
+        if(!wx.getStorageSync("session_key")){
+            wxLogin();
+        }
         
         
         ///获取地址
@@ -29,36 +31,6 @@ App({
 
     },
 
-    //登录接口
-    wxLogin : function(){
-        let that = this;
-        wx.login({
-            success: function(res) {
-                if (res.code) {
-                    //发起网络请求
-                    wx.request({
-                        url: 'https://www.pcclub.top/Home/Index/login', //仅为示例，并非真实的接口地址
-                        method: "POST",
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded',
-                        },
-                        data: {
-                            code : res.code
-                        },
-                        success: function(result) {
-                            wx.setStorage({
-                                key : "session_key",
-                                data : result.data.obj.session_key
-                            })
-                        }
-                    })
-                } else {
-                    console.log('获取用户登录态失败！' + res.errMsg)
-                }
-            }
-        });
-
-    },
 
     
     

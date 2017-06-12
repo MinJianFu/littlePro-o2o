@@ -13,6 +13,7 @@ Page({
         //type 1 代表为帮你买进来的选地址
         //type 21 代表帮你送进来的选取货地址
         //type 22 代表帮你送进来的选送货地址
+        //type 31 代表帮商家店铺进来的收货地址
        this.setData({
            selectType : options.type
        })
@@ -69,6 +70,14 @@ Page({
         
         if(this.data.selectType == 22){
             wx.setStorageSync( "sendGoodsAddress", {
+                name : e.currentTarget.dataset.name,
+                phone : e.currentTarget.dataset.phone,
+                address : e.currentTarget.dataset.address,
+                addressid : e.currentTarget.dataset.addressid
+            })
+        }
+        if(this.data.selectType == 31){
+            wx.setStorageSync( "shopGoodsAddress", {
                 name : e.currentTarget.dataset.name,
                 phone : e.currentTarget.dataset.phone,
                 address : e.currentTarget.dataset.address,

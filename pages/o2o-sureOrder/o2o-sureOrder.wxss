@@ -19,20 +19,14 @@ page{
     margin-left: .9rem;
 }
 .icon-address-box{
-    width:14px;
-    height:19px;
 }
 .icon-address{
-    width: 100%;
-    height: 100%;
+    width:20px;
 }
 .icon-right-box{
-    width: 12px;
-    height: 12px;
 }
 .icon-right{
-    width: 100%;
-    height: 100%;
+    width: 20px;
 }
 .delivery{
     display: flex;

@@ -60,14 +60,14 @@ Page({
         let that = this;
         const session = wx.getStorageSync("session_key");
         o2oAjax({
-            url: "https://www.pcclub.top/Order/order_listen",
+            url: "https://www.pcclub.top/Home/Order/order_listen",
             method: "POST",
             data: {
                 page : that.data.nowPage,
             },
             success: function(result) {
                 that.setData({
-                    orderData : result.data.list
+                    orderData : result.list
                 })
             }
         })
@@ -75,7 +75,7 @@ Page({
     //上拉获取新的订单列表信息
     getAnotherList :　function () {
         o2oAjax({
-            url: "https://www.pcclub.top/Order/order_listen",
+            url: "https://www.pcclub.top/Home/Order/order_listen",
             method: "POST",
             data: {
                 page : that.data.nowPage,
