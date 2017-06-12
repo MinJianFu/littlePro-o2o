@@ -1,6 +1,6 @@
 <view class="page">
     <view class="item-info">
-        <view class="item {{index == goodsinfor_index ? 'on':''}}" data-key="{{index}}" wx:for="{{goodsinfor}}" bindtap="ongoods">{{item}}</view>
+        <view class="item {{index == goodsinfor_index ? 'on':''}}" data-key="{{index}}" wx:for="{{goodsinfor}}" wx:key="{{index}}" bindtap="ongoods">{{item}}</view>
     </view>
     <view class="goodsweight">
         <view>重量</view>
