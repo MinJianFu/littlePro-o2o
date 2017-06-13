@@ -22,8 +22,9 @@
         </view>
         <view class="item-bottom">
             <view class="order-date">{{item.order_sn}}</view>
-            <button wx:if="{{item.order_status == 1}}">未接单</button>
-            <button wx:if="{{item.order_status == 2}}">已接单</button>
+            <button wx:if="{{item.is_pay == 1}}">未支付</button>
+            <button wx:if="{{item.is_pay == 2}}">已支付</button>
+            <button wx:if="{{item.is_pay == 3}}">已完成</button>
         </view>
     </view>
 </view>

@@ -129,46 +129,42 @@ Page({
         })
     },
     //调后台支付接口
-    goPayForBackendFn : function () {
+    goPayForBackendFn : function (order_sn) {
         o2oAjax({
             url: 'https://www.pcclub.top/Home/WxPay/pay',
             method: "POST",
+            data : {
+                order_sn : order_sn
+            },
             success: (result)=> {
-                console.log(result);
                 this.goPayFn(result.obj);
-                // that.setData({
-                //     addrObj : result.data.obj
-                // })
+                
             }
         })
     },
     
     //下单按钮s事件
     goOrderFn : function () {
-        // o2oAjax({
-        //     url: 'https://www.pcclub.top/Home/Order/index',
-        //     method: "POST",
-        //     data : {
-        //         order_type : "1",
-        //         goods_name : this.data.goodsval,
-        //         goods_price : this.data.good_pcier,
-        //         phone : this.data.addrObj.phone,
-        //         name : this.data.addrObj.name,
-        //         address : this.data.addrObj.address,
-        //         s_time : this.data.peiS_time[this.data.PS_index],
-        //         rmark : this.data.rmark,
-        //         amount : this.data.PS_price,
-        //         tip : this.data.XF_index,
-        //     },
-        //
-        //     success: (result)=> {
-        //         console.log(result);
-        //         // that.setData({
-        //         //     addrObj : result.data.obj
-        //         // })
-        //     }
-        // })
-        this.goPayForBackendFn();
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Order/index',
+            method: "POST",
+            data : {
+                order_type : "1",
+                goods_name : this.data.goodsval,
+                goods_price : this.data.good_pcier,
+                phone : this.data.addrObj.phone,
+                name : this.data.addrObj.name,
+                address : this.data.addrObj.address,
+                s_time : this.data.peiS_time[this.data.PS_index],
+                rmark : this.data.rmark,
+                amount : this.data.PS_price,
+                tip : this.data.XF_index,
+            },
+
+            success: (result)=> {
+                this.goPayForBackendFn(result.obj.order_sn);
+            }
+        })
     }
     
     
