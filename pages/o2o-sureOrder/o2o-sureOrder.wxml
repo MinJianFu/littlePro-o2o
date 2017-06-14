@@ -2,14 +2,10 @@
 <view class="wrap">
     <view>
         <navigator url="../o2o-receivingaddress/receivingaddress?type=31" >
-            <view class="address-item"  wx:if="{{!shopGoodsAddress}}">
+            <view class="address-item">
                 <view class="icon-address-box"><image class="icon-address" src="./img/dt.png" mode="widthFix"></image></view>
-                <view class="address-text">请选择一个收货地址</view>
-                <view class="icon-right-box"><image class="icon-right" src="./img/jtr.png" mode="widthFix"></image></view>
-            </view>
-            <view class="address-item"  wx:if="{{shopGoodsAddress}}">
-                <view class="icon-address-box"><image class="icon-address" src="./img/dt.png" mode="widthFix"></image></view>
-                <view>
+                <view class="address-text"  wx:if="{{!shopGoodsAddress}}">请选择一个收货地址</view>
+                <view class="address-detail"  wx:if="{{shopGoodsAddress}}">
                     <view class="addrName">{{shopGoodsAddress.name +" "+shopGoodsAddress.phone}}</view>
                     <view class="addrAddress">{{shopGoodsAddress.address}}</view>
                 </view>
@@ -46,7 +42,7 @@
     <view class="cart-group">
         <view class="shopinfo">
             <view class="shop-icon-box"><image class="shop-icon" src="./img/sj.png" mode="aspectFill"></image></view>
-            <view class="shop-text">德克士（胜足路店）</view>
+            <view class="shop-text">{{shopNews.name}}</view>
         </view>
         <view class="foodlist" wx:for="{{foodsData}}" wx:key="index" wx:if="{{item.foodsCount>0}}">
             <view class="cell-box" >
@@ -63,13 +59,13 @@
             <view class="online-sub-l">在线支付立减优惠</view>
             <view class="online-sub-r">-￥{{shopNews.onlinePay}}</view>
         </view>
-        <navigator url="../o2o-redbag/o2o-redbag" hover-class="navigator-hover" redirect>
+        <!--<navigator url="../o2o-redbag/o2o-redbag" hover-class="navigator-hover" redirect>
             <view class="redbag">
                 <view class="redbag-text">红包</view>
                 <view class="redbag-sele">无可用红包</view>
                 <image class="pay-rig" src="./img/jtr.png" mode="aspectFill"></image>
             </view>
-        </navigator>
+        </navigator>-->
         <!--<view class="Teghin">
             <view class="Teghin-l">商家代金卷</view>
             <view class="Teghin-r">无可用商家代金卷</view>

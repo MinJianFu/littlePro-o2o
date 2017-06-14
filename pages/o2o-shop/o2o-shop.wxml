@@ -195,13 +195,13 @@
             <view class="cartview-list-box" wx:for="{{foodsData}}" wx:key="index" wx:if="{{item.foodsCount>=1}}">
                 <view class="carfood-list">
                     <view class="carfood-list-content">
-                        <view class="carfood-name">{{item.foodsName}}</view>
-                        <view class="carfood-money">{{item.foodsMoney * item.foodsCount}}</view>
+                        <view class="carfood-name">{{item.goods_name}}</view>
+                        <view class="carfood-money">{{item.price * item.foodsCount}}</view>
                         <view class="carfood-calculate">
                             <view class="carfood-add">
-                                <image class="icon-sub" src="./img/sub.png" mode="widthFix" bindtap="CarFoodListSub" data-foodsid="{{item.foodsId}}"  data-price="{{item.foodsMoney}}"  ></image>
+                                <image class="icon-sub" src="./img/sub.png" mode="widthFix" bindtap="CarFoodListSub" data-goods_id="{{item.goods_id}}"  data-price="{{item.price}}"  ></image>
                                 <view class="goods-num">{{item.foodsCount}}</view>
-                                <image class="icon-add" src="./img/add.png" mode="widthFix" bindtap="CarFoodList" data-foodsid="{{item.foodsId}}" data-price="{{item.foodsMoney}}"  ></image>
+                                <image class="icon-add" src="./img/add.png" mode="widthFix" bindtap="CarFoodList" data-goods_id="{{item.goods_id}}" data-price="{{item.price}}"  ></image>
                             </view>
                         </view>
                     </view>

@@ -73,34 +73,6 @@
                 <!--</view>-->
             <!--</view>-->
         </view>
-        <navigator url="../o2o-shop/o2o-shop">
-            <view class="seller-itme">
-                <view  class="seller-itme-top">
-                    <view class="seller-image">
-                        <image mode="widthFix" src="img/seller-image1.png" style="width: 100%; height: 100%;"></image>
-                    </view>
-                    <view class="seller-info">
-                        <view class="seller-name">DQ(广州丽影店)</view>
-                        <view class="seller-volume-bar">
-                            <view class="volume-num">月销158单</view><view class="ZS-icon">雷霆专送</view>
-                        </view>
-                        <view class="price-bar">
-                            <view class="price-info">
-                                <view class="PS-price">¥0元起送</view><view class="PS-price">配送费约¥5</view>
-                            </view>
-                            <view class="PS-time">30分钟</view>
-                        </view>
-                    </view>
-                </view>
-                <!--<view class="activity-info">-->
-                    <!--<view class="activity-item">-->
-                        <!--<view class="YH-icon">满</view><view>满50加100、满80加200、多买多加</view>-->
-                    <!--</view>-->
-                    <!--<view class="activity-item">-->
-                        <!--<view class="YH-icon">满</view><view>满50加100、满80加200、多买多加</view>-->
-                    <!--</view>-->
-                <!--</view>-->
-            </view>
-        </navigator>
+        
     </view>
 </view>

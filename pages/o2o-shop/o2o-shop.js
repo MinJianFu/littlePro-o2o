@@ -33,6 +33,8 @@ Page({
 		nowSeleRatingDataId: 1,    //评论选中状态
 		ServiceAttitudeStar: [],   //店铺服务态度星星
 		SasteStar: [],    //店铺味道星星
+
+		hasCate : "1",		//用来检测当前已经拿到了的商品类别	
 	},
 	onLoad: function (options) {
 		var that = this;
@@ -51,6 +53,9 @@ Page({
 			}
 		});
 
+		this.setData({
+			seller_id : options.seller_id
+		})
 		this.getNowShopGoods(options.seller_id);
 
 
@@ -170,7 +175,9 @@ Page({
 		}
 		this.setData({
 			menuData: menuData
-		})
+		});
+		this.getGoodsForCate(e.target.dataset.typeid);
+
 	},
 	//评论显示方法
 	seleRating: function (e) {
@@ -246,7 +253,6 @@ Page({
 
 	//获取当前店铺的菜品信息
 	getNowShopGoods : function(seller_id){
-
         o2oAjax({
             url: 'https://www.pcclub.top/Home/Seller/sellerInfo',
             method: "POST",
@@ -268,6 +274,31 @@ Page({
 					shopNews : shopNews
                 })
 				wx.setStorageSync("shopData", result.list);
+            }
+        })
+	},
+
+	//获取店铺某品类的商品列表
+	getGoodsForCate : function(cate_id){
+		//如果已经有了这个类别的商品就不再去服务器获取
+		if(this.data.hasCate.includes(cate_id)){
+			return;
+		}
+		//添加当前菜单类别到hasCate中
+		this.setData({
+			hasCate : this.data.hasCate + cate_id
+		})
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Seller/cate_goods',
+            method: "POST",
+			data : {
+				seller_id : this.data.seller_id,
+				cate_id : cate_id
+			},
+            success: result=>{
+                this.setData({
+					foodsData: this.data.foodsData.concat(result.list),     //右商品数据
+                })
             }
         })
 	}

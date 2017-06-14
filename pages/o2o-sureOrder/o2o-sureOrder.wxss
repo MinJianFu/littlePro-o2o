@@ -11,7 +11,7 @@ page{
     display: flex;
     background: #fff url(./img/border.png) repeat-x left bottom;
     justify-content: space-between;
-    padding: 1.5rem .5rem;
+    padding:12px 8px;
     align-items: center;
 }
 .address-text{
@@ -19,6 +19,10 @@ page{
     margin-left: .9rem;
 }
 .icon-address-box{
+}
+.address-detail{
+    padding: 0 12px;
+    font-size:14px;
 }
 .icon-address{
     width:20px;
