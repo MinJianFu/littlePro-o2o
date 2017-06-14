@@ -28,10 +28,42 @@ Page({
         day:day,
         seletype:false,
         goodsinformation:'',
+        rmark : "",
         getGoodsAddress : "",   //取货地址
         sendGoodsAddress : "",  //送货地址
 
     },
+
+
+  onLoad:function(options){
+        // 页面初始化 options为页面跳转所带来的参数
+        this.setData({
+            pagetype:options.type
+        })
+        this.ReadyPS_time();
+    },
+    onReady:function(){
+        // 页面渲染完成
+    },
+    onShow:function(){
+        // 页面显示
+        let goodsinformation = wx.getStorageSync('gooodsinformatio');   //拿商品信息
+        let getGoodsAddress = wx.getStorageSync('getGoodsAddress');   //拿取货地址
+        let sendGoodsAddress = wx.getStorageSync('sendGoodsAddress');   //拿商送货地址
+        this.setData({  //从storage拿商品信息
+            goodsinformation : goodsinformation,
+            getGoodsAddress : getGoodsAddress,
+            sendGoodsAddress : sendGoodsAddress
+        })
+    },
+    onHide:function(){
+        // 页面隐藏
+    },
+    onUnload:function(){
+        // 页面关闭
+    },
+    
+
     bindChange: function(e) {
         const val = e.detail.value
         this.setData({
@@ -40,6 +72,14 @@ Page({
             day: this.data.days[val[2]]
         })
     },
+
+    //实时设置rmark值
+    rmarkInputFn : function(e){
+        this.setData({
+            rmark : e.detail.value
+        })
+    },
+
     //获取配送时间
     ReadyPS_time:function(){
         let date = new Date(),
@@ -58,43 +98,7 @@ Page({
             [e.currentTarget.dataset.key]:e.detail.value-0
         })
     },
-    onLoad:function(options){
-        // 页面初始化 options为页面跳转所带来的参数
-        this.setData({
-            pagetype:options.type
-        })
-        this.ReadyPS_time();
-        // wx.getStorage({
-        //     key:'gooodsinformatio',
-        //     success:function(res){
-        //         console.log(res);
-        //     }
-        // })
-        // console.log(options);
-    },
-    onReady:function(){
-        // 页面渲染完成
-
-    },
-    onShow:function(){
-        // 页面显示
-    
-        let goodsinformation = wx.getStorageSync('gooodsinformatio');   //拿商品信息
-        let getGoodsAddress = wx.getStorageSync('getGoodsAddress');   //拿取货地址
-        let sendGoodsAddress = wx.getStorageSync('sendGoodsAddress');   //拿商送货地址
-        this.setData({  //从storage拿商品信息
-            goodsinformation : goodsinformation,
-            getGoodsAddress : getGoodsAddress,
-            sendGoodsAddress : sendGoodsAddress
-        })
-    },
-    onHide:function(){
-        // 页面隐藏
-    },
-    onUnload:function(){
-        // 页面关闭
-    },
-    
+  
     //跳去选择购物地址
     jumpToShoppingAddr : function () {
         wx.navigateTo({
@@ -135,7 +139,6 @@ Page({
         })
     },
     
-    
     //下单按钮事件
     goOrderFn : function () {
         o2oAjax({
@@ -144,13 +147,13 @@ Page({
             data : {
                 order_type : "2",
                 goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight,
-                phone : this.data.goodsinformation.phone,
-                name : this.data.goodsinformation.name,
-                address : this.data.goodsinformation.address,
+                phone : this.data.getGoodsAddress.phone,
+                name : this.data.getGoodsAddress.name,
+                address : this.data.getGoodsAddress.address,
     
-                s_name :  this.data.sendGoodsAddress.phone,
+                s_name :  this.data.sendGoodsAddress.name,
                 s_phone :  this.data.sendGoodsAddress.phone,
-                s_address :  this.data.sendGoodsAddress.phone,
+                s_address :  this.data.sendGoodsAddress.address,
                 s_time : this.data.peiS_time[this.data.PS_index],
                 rmark : this.data.rmark,
                 amount : this.data.PS_price,

@@ -52,7 +52,7 @@
         </picker>
         <view class="remarks-bar">
             <view>备注</view>
-            <input type="text" placeholder="请输入特殊要求" class="remarks-text"/>
+            <input type="text" placeholder="请输入特殊要求" value="{{rmark}}" bindchange="rmarkInputFn" class="remarks-text"/>
         </view>
     </view>
     <view class="B2">

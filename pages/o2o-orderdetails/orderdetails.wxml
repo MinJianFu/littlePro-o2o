@@ -6,19 +6,25 @@
         <text wx:if="{{orderData.is_pay == 3}}">已完成</text>
     </view>
     <view class="buy-address">
-        <view class="buy-icon">购</view>
+        <view class="buy-icon"  wx:if="{{orderData.order_type == 1}}">购</view>
+        <view class="buy-icon"  wx:if="{{orderData.order_type == 2}}">取</view>
         <view wx:if="{{orderData.order_type == 1}}">
             <view>就近购买(指定地址购买在备注填写!)</view>
         </view>
-        <view wx:if="{{orderData.order_type == 2}}">
-            <view>陈先生</view>
-            <view>18011972207</view>
+
+        <view wx:if="{{orderData.order_type == 2}}" style="flex: 1;">
+            <view>{{orderData.s_address}}</view>
+        </view>
+        <view  style="padding-left: 12px;" wx:if="{{orderData.order_type == 2}}">
+            <view>{{orderData.s_name}}</view>
+            <view>{{orderData.s_phone}}</view>
         </view>
     </view>
     <view class="collect-address">
-        <view class="collect-icon">收</view>
-        <view>
-            <view>{{orderData.r_address}}</view>
+        <view class="collect-icon" wx:if="{{orderData.order_type == 1}}">收</view>
+        <view class="collect-icon" wx:if="{{orderData.order_type == 2}}">送</view>
+        <view style="flex: 1;">
+            <view>{{orderData.address}}</view>
         </view>
         <view style="padding-left: 12px;">
             <view>{{orderData.name}}</view>
@@ -30,22 +36,17 @@
     <view class="info-conV"><view class="info-leftV">时间：</view><view class="info-rightV">{{orderData.order_sn}}</view></view>
     <view class="info-conV"><view class="info-leftV">物品名称：</view><view class="info-rightV">{{orderData.goods_name}}</view></view>
     <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">{{orderData.goods_price}}元</view></view>
-    <view class="info-conV"><view class="info-leftV">预约时间：</view><view class="info-rightV">立即配送</view></view>
-    <view class="info-conV"><view class="info-leftV">支付方式：</view><view class="info-rightV">微信支付</view></view>
 </view>
 <view class="goods-info" wx:if="{{orderData.order_type == 2}}">
     <view class="info-conV"><view class="info-leftV">时间：</view><view class="info-rightV">{{orderData.order_sn}}</view></view>
-    <view class="info-conV"><view class="info-leftV">物品重量：</view><view class="info-rightV">1kg</view></view>
-    <view class="info-conV"><view class="info-leftV">物品类型：</view><view class="info-rightV">泡面</view></view>
-    <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">5元</view></view>
-    <view class="info-conV"><view class="info-leftV">预约时间：</view><view class="info-rightV">立即配送</view></view>
-    <view class="info-conV"><view class="info-leftV">支付方式：</view><view class="info-rightV">微信支付</view></view>
+    <view class="info-conV"><view class="info-leftV">物品重量：</view><view class="info-rightV">{{orderData.sg_weight}}</view></view>
+    <view class="info-conV"><view class="info-leftV">物品类型：</view><view class="info-rightV">{{orderData.sg_name}}</view></view>
+    <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">{{orderData.goods_price}}元</view></view>
 </view>
 <view class="order-info">
-    <view class="info-conV"><view class="info-leftV">基础配送费：</view><view class="info-rightV">12元</view></view>
-    <view class="info-conV"><view class="info-leftV">重量加价：</view><view class="info-rightV">0元</view></view>
-    <view class="info-conV"><view class="info-leftV">距离加价：</view><view class="info-rightV">0元</view></view>
-    <view class="info-conV"><view class="info-leftV">配送距离：</view><view class="info-rightV">2km</view></view>
+    <view class="info-conV"><view class="info-leftV">基础配送费：</view><view class="info-rightV">{{orderData.amount}}元</view></view>
+    <view class="info-conV"><view class="info-leftV">小费：</view><view class="info-rightV">{{orderData.tip}}元</view></view>
+    <view class="info-conV"><view class="info-leftV">备注：</view><view class="info-rightV">{{orderData.rmark}}</view></view>
 </view>
 <view class="rider-info">
     <view class="info-conV"><view class="info-leftV">骑手名字：</view><view class="info-rightV">陈测测</view></view>
