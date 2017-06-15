@@ -7,6 +7,7 @@ page,.page{
 .available{
     background: #fff;
     font-size:13px;
+    padding-bottom: 40px;
 }
 .item{
     display: flex;
@@ -19,9 +20,14 @@ page,.page{
     width: 15px;
     height: 15px;
 }
+
+.add-info{
+    flex: 1;
+}
 .change-btn{
-    width: 1.5rem;
-    line-height: 1rem;
+    width: 38px;
+    height: 38px;
+    vertical-align: top;
     text-align: center;
 }
 .title{
@@ -38,6 +44,13 @@ page,.page{
     color: #777777;
     margin-top: 1rem;
 }
+.addBtnBox{
+    position:fixed;
+    bottom:0;
+    height:40px;
+    background:#fff;
+    width:100%;
+}
 .add-btn{
     width:17rem;
     line-height:40px;
@@ -45,8 +58,6 @@ page,.page{
     background:#1c91fb;
     color:#fff;
     text-align:center;
-    position:fixed;
-    bottom:.5rem;
     left:0;
     right:0;
     font-size:13px;

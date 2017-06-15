@@ -53,7 +53,5 @@
     <view class="info-conV"><view class="info-leftV">骑手电话号码：</view><view class="info-rightV">18011809010</view></view>
 </view>
 <view class="btn-bar">
-    <button class="del-btn">删除订单</button>
-    <button class="evaluate-btn">立即评价</button>
-    <button class="oncemore-btn">再来一单</button>
+    <button class="oncemore-btn" wx:if="{{orderData.is_pay == 1}}" catchtap="goPayForBackendFn">立即支付</button>
 </view>

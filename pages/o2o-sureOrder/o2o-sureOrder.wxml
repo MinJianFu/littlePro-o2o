@@ -26,7 +26,7 @@
             </picker>
         </view>
     </view>
-    <view class="payment">
+    <!--<view class="payment">
         <picker bindchange="bindPickerChange" value="{{online_index}}" range="{{onlineArr}}">
             <view class="online-pay">
                 <view class="online-pay-box">
@@ -38,7 +38,7 @@
             </view>
         </picker>
 
-    </view>
+    </view>-->
     <view class="cart-group">
         <view class="shopinfo">
             <view class="shop-icon-box"><image class="shop-icon" src="./img/sj.png" mode="aspectFill"></image></view>
@@ -55,10 +55,10 @@
             <view class="fee-l">配送费</view>
             <view class="fee-r">¥{{shopNews.deliever_price}}</view>
         </view>
-        <view class="online-sub" wx:if="{{shopNews.onlinePay}}" >
+        <!--<view class="online-sub" wx:if="{{shopNews.onlinePay}}" >
             <view class="online-sub-l">在线支付立减优惠</view>
             <view class="online-sub-r">-￥{{shopNews.onlinePay}}</view>
-        </view>
+        </view>-->
         <!--<navigator url="../o2o-redbag/o2o-redbag" hover-class="navigator-hover" redirect>
             <view class="redbag">
                 <view class="redbag-text">红包</view>

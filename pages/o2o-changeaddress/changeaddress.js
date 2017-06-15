@@ -1,4 +1,6 @@
-let app = getApp();
+
+const app = getApp();
+let { o2oAjax } = app;
 Page({
     data:{
         sexitem:[
@@ -12,10 +14,27 @@ Page({
         a_resAddress : "",
         toastHidden : true,
         toastText : "",
+
+        selectType : null,
+        address_id : null,
     },
     onLoad:function(options){
         //初始化toast组件
         new app.WeToast();
+        this.setData({
+            selectType : options.type,
+            isEditType : options.edit ? 1 : 0
+        });
+        if(this.data.isEditType){
+            let stData = wx.getStorageSync("beEditAddrData");
+            this.setData({
+                a_name : stData.name,
+                a_phone : stData.phone,
+                a_locAddress : stData.address,
+                a_address : stData.addrDetail,
+                address_id : stData.id
+            })
+        }
     },
     onReady:function(){
         // 页面渲染完成
@@ -31,7 +50,6 @@ Page({
             success: function(res) {
                 that.setData({
                     a_locAddress : res.data,
-                    a_resAddress : res.data + that.data.a_address
                 })
             }
         })
@@ -65,43 +83,47 @@ Page({
     
     //设置新地址
     setAddr : function () {
-        let that = this;
-        wx.getStorage({
-            key: 'session_key',
-            success: function(res) {
-                console.log(res.data);
-                let session = res.data;
-                wx.request({
-                    url: 'https://www.pcclub.top/Home/Address/index', //仅为示例，并非真实的接口地址
-                    //url: 'https://www.pcclub.top/Home/Test/test', //仅为示例，并非真实的接口地址
-                    method: "POST",
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded',
-                        'token' : session
-                    },
-                    data: {
-                        name : that.data.a_name,
-                        phone : that.data.a_phone,
-                        address : that.data.a_resAddress,
-                        detail : that.data.a_address
-                    },
-                    success: function(result) {
-                        if(result.data.status == 0){
-                            wx.navigateBack({
-                                delta: 2
-                            })
-                        }else{
-                            that.wetoast.toast({
-                                title: result.data.msg,
-                                duration: 1500
-                            })
-                        }
-                    
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Address/index', 
+            method: "POST",
+            data: {
+                name : this.data.a_name,
+                phone : this.data.a_phone,
+                address : this.data.a_locAddress,
+                detail : this.data.a_address
+            },
+            success: (result) =>{
+                if(result.status == 0){
+                    let storageMC = "";
+                    if(this.data.selectType == 1){
+                        storageMC = "nowLocalAddr";
                     }
-                })
+                    if(this.data.selectType == 21){
+                        storageMC = "nowLocalAddr";
+                    }
+                    
+                    if(this.data.selectType == 22){
+                        storageMC = "nowLocalAddr";
+                    }
+                    if(this.data.selectType == 31){
+                        storageMC = "nowLocalAddr";
+                    }
+                    wx.setStorageSync(storageMC, {
+                        name : this.data.a_name,
+                        phone : this.data.a_phone,
+                        address : this.data.a_locAddress,
+                    })
+                    wx.navigateBack({
+                        delta: 2
+                    })
+                }else{
+                    this.wetoast.toast({
+                        title: result.data.msg,
+                        duration: 1500
+                    })
+                }
             }
         })
     }
-    
     
 })

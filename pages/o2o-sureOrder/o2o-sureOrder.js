@@ -94,5 +94,88 @@ Page({
 		this.setData({
 			catmoney: catmoney,
 		})
-	}
+	},
+	
+    
+    //调小程序支付接口事件
+    goPayFn : function (payData) {
+        wx.requestPayment({
+            timeStamp : payData.timeStamp,
+            nonceStr : payData.nonceStr,
+            package : payData.package,
+            signType : payData.signType,
+            paySign : payData.paySign,
+            success : (result)=>{
+                let orderData = this.data.orderData;
+                orderData.is_pay = 2;
+                wx.setStorageSync("orderData", orderData);
+                wx.redirectTo({
+                    url: '../o2o-orderdetails/orderdetails'
+                })
+            },
+            fail : (a, b, c)=>{
+                console.log("支付失败");
+                let orderData = this.data.orderData;
+                orderData.is_pay = 1;
+                wx.setStorageSync("orderData", orderData);
+                wx.redirectTo({
+                    url: '../o2o-orderdetails/orderdetails'
+                })
+            }
+        })
+    },
+    //调后台支付接口
+    goPayForBackendFn : function (order_sn) {
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/WxPay/pay',
+            method: "POST",
+            data : {
+                order_sn : order_sn
+            },
+            success: (result)=> {
+                this.goPayFn(result.obj);
+            }
+        })
+    },
+    
+    //下单按钮s事件
+    goOrderFn : function () {
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Order/index',
+            method: "POST",
+            data : {
+                order_type : 3,
+                seller_id  : this.data.shopNews.seller_id,
+                goods_id    : this.data.shopNews,
+                phone : this.data.shopGoodsAddress.phone,
+                name : this.data.shopGoodsAddress.name,
+                address : this.data.shopGoodsAddress.address,
+                s_time : this.data.peiS_time[this.data.PS_index],
+                rmark : this.data.mare,
+                amount : this.data.deliever_price,
+                tip : 0,
+            },
+
+            success: (result)=> {
+                let orderData = {
+                    order_type : 3,
+                    is_pay : 1,
+					seller_id  : this.data.shopNews.seller_id,
+					goods_id    : this.data.shopNews,
+					phone : this.data.shopGoodsAddress.phone,
+					name : this.data.shopGoodsAddress.name,
+					address : this.data.shopGoodsAddress.address,
+					s_time : this.data.peiS_time[this.data.PS_index],
+					rmark : this.data.mare,
+					amount : this.data.deliever_price,
+					tip : 0,
+                }
+                this.setData({
+                    orderData : orderData
+                });
+                this.goPayForBackendFn(result.obj.order_sn);
+            }
+        })
+    }
+    
 });

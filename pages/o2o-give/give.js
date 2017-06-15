@@ -17,7 +17,7 @@ for (let i = 1; i < 25; i++) {
 
 Page({
     data:{
-        pagetype:'',
+        pageType:'',
         peiS_time:[],
         PS_index:0,
         XiaoFei:['0元','1元','2元','3元','4元','5元'],
@@ -31,14 +31,15 @@ Page({
         rmark : "",
         getGoodsAddress : "",   //取货地址
         sendGoodsAddress : "",  //送货地址
-
+        
+        orderData : null,
     },
 
 
   onLoad:function(options){
         // 页面初始化 options为页面跳转所带来的参数
         this.setData({
-            pagetype:options.type
+            pageType:options.type
         })
         this.ReadyPS_time();
     },
@@ -117,11 +118,21 @@ Page({
             signType : payData.signType,
             paySign : payData.paySign,
             success : (result)=>{
-                console.log(result);
+                let orderData = this.data.orderData;
+                orderData.is_pay = 2;
+                wx.setStorageSync("orderData", orderData);
+                wx.redirectTo({
+                    url: '../o2o-orderdetails/orderdetails'
+                })
             },
             fail : (a, b, c)=>{
                 console.log("支付失败");
-                console.log(a,b,c);
+                let orderData = this.data.orderData;
+                orderData.is_pay = 1;
+                wx.setStorageSync("orderData", orderData);
+                wx.redirectTo({
+                    url: '../o2o-orderdetails/orderdetails'
+                })
             }
         })
     },
@@ -147,13 +158,13 @@ Page({
             data : {
                 order_type : "2",
                 goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight,
-                phone : this.data.getGoodsAddress.phone,
-                name : this.data.getGoodsAddress.name,
-                address : this.data.getGoodsAddress.address,
+                phone : this.data.sendGoodsAddress.phone,
+                name : this.data.sendGoodsAddress.name,
+                address : this.data.sendGoodsAddress.address,
     
-                s_name :  this.data.sendGoodsAddress.name,
-                s_phone :  this.data.sendGoodsAddress.phone,
-                s_address :  this.data.sendGoodsAddress.address,
+                s_name :  this.data.getGoodsAddress.name,
+                s_phone :  this.data.getGoodsAddress.phone,
+                s_address :  this.data.getGoodsAddress.address,
                 s_time : this.data.peiS_time[this.data.PS_index],
                 rmark : this.data.rmark,
                 amount : this.data.PS_price,
@@ -161,6 +172,25 @@ Page({
                 tip : this.data.XF_index,
             },
             success: (result)=> {
+                let orderData = {
+                    order_type : 2,
+                    is_pay : 1,
+                    s_name : this.data.getGoodsAddress.name,
+                    s_phone : this.data.getGoodsAddress.phone,
+                    s_address : this.data.getGoodsAddress.address,
+                    address : this.data.sendGoodsAddress.address,
+                    name : this.data.sendGoodsAddress.name,
+                    phone : this.data.sendGoodsAddress.phone,
+                    order_sn : result.obj.order_sn,
+                    goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight,
+                    goods_price :  this.data.goodsinformation.goodsvalue,
+                    amount : this.data.PS_price,
+                    rmark : this.data.rmark,
+                    tip : this.data.XF_index
+                }
+                this.setData({
+                    orderData : orderData
+                });
                 this.goPayForBackendFn(result.obj.order_sn);
             }
         })

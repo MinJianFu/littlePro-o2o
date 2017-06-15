@@ -47,6 +47,27 @@ Page({
             }
         })
     },
+
+    //跳转到添加地址的页面
+    nvaToMakeNewAddr : function(){
+        wx.navigateTo({
+            url: '../o2o-changeaddress/changeaddress?type=' + this.data.selectType
+        })
+    },
+
+    //跳去编辑地址
+    nvaToEditAddr : function(e){
+        wx.setStorageSync("beEditAddrData", {
+            id : e.currentTarget.dataset.addressid,
+            name : e.currentTarget.dataset.name,
+            phone : e.currentTarget.dataset.phone,
+            address : e.currentTarget.dataset.address,
+            addrDetail : e.currentTarget.dataset.detail,
+        })
+        wx.navigateTo({
+            url: '../o2o-changeaddress/changeaddress?type=' + this.data.selectType + '&edit=1'
+        })
+    },
     
     //点击某条地址信息返回上一页事件
     choseAddrFn : function (e) {

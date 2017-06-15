@@ -12,7 +12,8 @@ Page({
         goodsval:'',
         addrObj : null,
         rmark:"",
-        good_pcier:""
+        good_pcier:"",
+        orderData : null,
     },
     //获取配送时间
     ReadyPS_time:function(){
@@ -81,19 +82,11 @@ Page({
     
     //拿默认地址
     getDefaultAddress : function () {
-        var session = wx.getStorageSync('session_key');
         var nowLocalAddr = wx.getStorageSync('nowLocalAddr');
-        var nowShoppingAddr = wx.getStorageSync('shoppingAddrvalue');
         if(nowLocalAddr){
             this.setData({
                 addrObj : nowLocalAddr
             })
-            // wx.removeStorage({
-            //     key: 'nowLocalAddr',
-            //     success: function(res) {
-            //         console.log(res)
-            //     }
-            // })
         }else{
             o2oAjax({
                 url: 'https://www.pcclub.top/Home/Address/getDefaultList', //仅为示例，并非真实的接口地址
@@ -106,9 +99,6 @@ Page({
                 }
             })
         }
-        this.setData({
-            nowShoppingAddr : nowShoppingAddr
-        })
     },
     
     //调小程序支付接口事件
@@ -120,11 +110,21 @@ Page({
             signType : payData.signType,
             paySign : payData.paySign,
             success : (result)=>{
-                console.log(result);
+                let orderData = this.data.orderData;
+                orderData.is_pay = 2;
+                wx.setStorageSync("orderData", orderData);
+                wx.redirectTo({
+                    url: '../o2o-orderdetails/orderdetails'
+                })
             },
             fail : (a, b, c)=>{
                 console.log("支付失败");
-                console.log(a,b,c);
+                let orderData = this.data.orderData;
+                orderData.is_pay = 1;
+                wx.setStorageSync("orderData", orderData);
+                wx.redirectTo({
+                    url: '../o2o-orderdetails/orderdetails'
+                })
             }
         })
     },
@@ -162,6 +162,22 @@ Page({
             },
 
             success: (result)=> {
+                let orderData = {
+                    order_type : 1,
+                    is_pay : 1,
+                    address : this.data.addrObj.address,
+                    name : this.data.addrObj.name,
+                    phone : this.data.addrObj.phone,
+                    order_sn : result.obj.order_sn,
+                    goods_name :  this.data.goodsval,
+                    goods_price :  this.data.good_pcier,
+                    amount : this.data.PS_price,
+                    rmark : this.data.rmark,
+                    tip : this.data.XF_index
+                }
+                this.setData({
+                    orderData : orderData
+                });
                 this.goPayForBackendFn(result.obj.order_sn);
             }
         })

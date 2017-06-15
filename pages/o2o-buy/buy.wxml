@@ -2,7 +2,7 @@
 <view class="page">
     <view class="gooos-bar">
         <image mode="aspectFill" src="img/buy-icon.png"></image>
-        <input type="text" placeholder="请输入商品名称" class="gooos-name" value="{{goodsval}}" bindinput="changeGoodDetail"/>
+        <input type="text" placeholder="请输入商品名称" class="gooos-name" value="{{goodsval}}" bindchange="changeGoodDetail"/>
     </view>
     <view class="address-bar">
         <view class="buy-bar">

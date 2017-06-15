@@ -4,32 +4,17 @@
         <view wx:for="{{addressList}}" wx:key="{{index}}" class="available-item item" catchtap="choseAddrFn" data-name="{{item.name}}" data-addressid="{{item.id}}" data-phone="{{item.phone}}" data-address="{{item.address}}">
             <view class="add-info">
                 <view class="user-info">
-                    <text class="user-name">{{item.name}}</text>
+                    <text class="user-name">{{item.name}} </text>
                     <text class="user-phone">{{item.phone}}</text>
                 </view>
-                <view class="adderss">{{item.address}}</view>
+                <view class="adderss">{{item.address + " " +item.detail}}</view>
             </view>
-            <view class="change-btn">
+            <view class="change-btn" catchtap="nvaToEditAddr"  data-name="{{item.name}}" data-addressid="{{item.id}}" data-phone="{{item.phone}}" data-address="{{item.address}}" data-detail="{{item.detail}}">
                 <image class="add-icon" model="widthFix" src="img/change-icon.png"></image>
             </view>
         </view>
     </view>
-    <!--<view class="not-available">-->
-        <!--<view class="title">不在范围内</view>-->
-        <!--<view class="item">-->
-            <!--<view class="add-info">-->
-                <!--<view class="user-info">-->
-                    <!--<text class="user-name">林先生</text>-->
-                    <!--<text class="user-phone">18011972207</text>-->
-                <!--</view>-->
-                <!--<view class="adderss">新月明珠花园4栋1603</view>-->
-            <!--</view>-->
-            <!--<view class="change-btn">-->
-                <!--<image class="add-icon" model="widthFix" src="img/change-icon.png"></image>-->
-            <!--</view>-->
-        <!--</view>-->
-    <!--</view>-->
-    <navigator url="../o2o-changeaddress/changeaddress">
-    <view class="add-btn">添加新地址</view>
-    </navigator>
+    <view class="addBtnBox">
+        <view class="add-btn" catchtap="nvaToMakeNewAddr">添加新地址</view>
+    </view>
 </view>

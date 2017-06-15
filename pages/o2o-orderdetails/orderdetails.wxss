@@ -85,7 +85,7 @@ page{
     background: #fff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 15px;
     box-sizing: border-box;
 }
@@ -100,5 +100,6 @@ button{
 .oncemore-btn{
     color:#fff;
     background:#1BAAD5;
+    padding:6px 10px;
 
 }
