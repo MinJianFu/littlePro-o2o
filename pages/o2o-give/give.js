@@ -55,7 +55,8 @@ Page({
             goodsinformation : goodsinformation,
             getGoodsAddress : getGoodsAddress,
             sendGoodsAddress : sendGoodsAddress
-        })
+        });
+        this.getFreight();
     },
     onHide:function(){
         // 页面隐藏
@@ -107,6 +108,21 @@ Page({
         })
     },
     
+    //获取配送费接口
+    getFreight : function(){
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Order/getPrice',
+            method: "POST",
+            data : {
+                type : 2
+            },
+            success : (result)=>{
+                this.setData({
+                    PS_price : parseFloat(result.obj.price)
+                })
+            }
+        })
+    },
     
     
     //调小程序支付接口事件
@@ -157,7 +173,7 @@ Page({
             method: "POST",
             data : {
                 order_type : "2",
-                goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight,
+                goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight + "|" + this.data.goodsinformation.goodsvalue,
                 phone : this.data.sendGoodsAddress.phone,
                 name : this.data.sendGoodsAddress.name,
                 address : this.data.sendGoodsAddress.address,
@@ -168,7 +184,7 @@ Page({
                 s_time : this.data.peiS_time[this.data.PS_index],
                 rmark : this.data.rmark,
                 amount : this.data.PS_price,
-                goods_price : this.data.goodsinformation.goodsvalue,
+                // goods_price : this.data.goodsinformation.goodsvalue,
                 tip : this.data.XF_index,
             },
             success: (result)=> {
@@ -182,8 +198,8 @@ Page({
                     name : this.data.sendGoodsAddress.name,
                     phone : this.data.sendGoodsAddress.phone,
                     order_sn : result.obj.order_sn,
-                    goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight,
-                    goods_price :  this.data.goodsinformation.goodsvalue,
+                    goods_name : this.data.goodsinformation.goodsname + "|" + this.data.goodsinformation.weight + "|" + this.data.goodsinformation.goodsvalue,
+                    // goods_price :  this.data.goodsinformation.goodsvalue,
                     amount : this.data.PS_price,
                     rmark : this.data.rmark,
                     tip : this.data.XF_index

@@ -260,12 +260,7 @@ Page({
 				seller_id : seller_id
 			},
             success: result=>{
-				let shopNews = {
-					name : result.list.name,
-					deliever_price : result.list.deliever_price,
-					begin_time : result.list.begin_time,
-					phone : result.list.phone
-				};
+				let shopNews = result.list;
 				let procesCate_list = result.list.cate_list;
 				procesCate_list[0].active = 1;
                 this.setData({

@@ -87,6 +87,6 @@
     <view class="footer">
         <view class="footer-text">待支付￥{{catmoney + deliever_price}}</view>
         <view class="footer-msg" wx:if="{{shopNews.redBad}}">已优惠{{redbad}}元</view>
-        <view class="footer-btn">确定下单</view>
+        <view class="footer-btn" catchtap="goOrderFn">确定下单</view>
     </view>
 </view>

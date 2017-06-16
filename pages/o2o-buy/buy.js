@@ -58,6 +58,8 @@ Page({
                 goodsval:options.goodsval
             })
         }
+        this.getFreight();
+        this.getDefaultAddress();
     },
     onReady:function(){
         // 页面渲染完成
@@ -65,7 +67,6 @@ Page({
     },
     onShow:function(){
         // 页面显示
-        this.getDefaultAddress();
     },
     onHide:function(){
         // 页面隐藏
@@ -73,6 +74,23 @@ Page({
     onUnload:function(){
         // 页面关闭
     },
+
+    //获取配送费接口
+    getFreight : function(){
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Order/getPrice',
+            method: "POST",
+            data : {
+                type : 1
+            },
+            success : (result)=>{
+                this.setData({
+                    PS_price : parseFloat(result.obj.price)
+                })
+            }
+        })
+    },
+    
     //修改商品内容文字事件
     changeGoodDetail : function (e) {
         this.setData({

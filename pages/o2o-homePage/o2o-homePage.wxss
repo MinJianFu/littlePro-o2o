@@ -100,7 +100,7 @@ margin-top:10px;
     justify-content: space-between;
     align-items: center;
     font-size: 15px;
-    margin: .4rem 0;
+    margin:2px 0 0;
 }
 .price-bar,.price-info{
     display: flex;
@@ -110,6 +110,7 @@ margin-top:10px;
 }
 .price-bar{
     font-size: 16px;
+    margin-top:4px;
 }
 .seller-name{
     font-weight: 600;
@@ -118,9 +119,6 @@ margin-top:10px;
 }
 .price-info{
     font-size: 12px;
-}
-.price-bar{
-    margin-top: 10px;
 }
 .activity-info{
     box-sizing: border-box;
@@ -136,7 +134,7 @@ margin-top:10px;
 }
 .PS-price{
     border-right: 1px solid #f1f1f1;
-    padding: 0 5px;
+    padding: 0 5px 0 0;
 }
 .PS-price:last-child{
     border-right: none;
@@ -158,4 +156,7 @@ margin-top:10px;
     border-radius: 3px;
     color: #ffffff;
     margin-right:5px;
+}
+.volume-num, .PS-price{
+    color: #b2aeae;
 }

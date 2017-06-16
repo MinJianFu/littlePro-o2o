@@ -52,13 +52,13 @@
                         <view class="seller-info">
                             <view class="seller-name">{{item.name}}</view>
                             <view class="seller-volume-bar">
-                                <view class="volume-num">月销{{item.volume}}单</view><view class="ZS-icon">雷霆专送</view>
+                                <view class="volume-num">月售/{{item.volume}}</view><view class="ZS-icon">雷霆专送</view>
                             </view>
                             <view class="price-bar">
                                 <view class="price-info">
-                                    <view class="PS-price">¥{{item.start_price}}元起送</view><view class="PS-price">配送费约¥{{item.deliever_price}}</view>
+                                    <view class="PS-price">起送{{item.start_price}}￥</view><view class="PS-price">配送费{{item.deliever_price}}￥</view>
                                 </view>
-                                <view class="PS-time">{{item.begin_time}}分钟</view>
+                                <!--<view class="PS-time">{{item.begin_time}}分钟</view>-->
                             </view>
                         </view>
                     </view>

@@ -11,17 +11,16 @@
                         <view class="header-right-title-content">{{shopNews.name}}</view>
                     </view>
                     <view class="header-right-msg">
-                        <view class="header-right-msg-A">{{shopNews.ShopmsgA}}</view>
-                        <view class="header-right-msg-B">{{shopNews.deliveryTime}}分钟送达</view>
+                        <!--<view class="header-right-msg-A">{{shopNews.ShopmsgA}}</view>
+                        <view class="header-right-msg-B">{{shopNews.deliveryTime}}分钟送达</view>-->
+                        <view class="header-right-msg-A">营业时间：{{shopNews.begin_time + "-" + shopNews.end_time}}</view>
                         <view class="header-right-msg-C">配送费￥{{shopNews.deliever_price}}</view>
                     </view>
                     <view class="header-right-info">
                         <view class="header-right-info-l">
                             公告：
                         </view>
-                        <view class="header-right-info-r">
-                            1、维权电话400-991-3131，您的1小时送达 2、维权电话400-991-3131，您的1小时送达
-                        </view>
+                        <view class="header-right-info-r">{{shopNews.seller_content}}</view>
                     </view>
                     <!--<view class="header-right-icon">
                         <image class="header-right-icon-R" src="./img/jtr.png" mode="aspectFill"></image>

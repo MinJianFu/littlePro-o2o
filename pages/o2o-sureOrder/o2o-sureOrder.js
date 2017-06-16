@@ -1,6 +1,7 @@
 const date = new Date();
 
 let app = getApp();
+let { o2oAjax } = app;
 
 Page({
 	data: {
@@ -21,7 +22,6 @@ Page({
 	},
 
 	onLoad: function (e) {
-		console.log(app.globalData.foodsData)
 		let that = this
 		that.ready_time()   //显示选择时间方法
 	},
@@ -140,40 +140,51 @@ Page({
     
     //下单按钮s事件
     goOrderFn : function () {
+		let goods = [];
+		for(let i in this.data.foodsData){
+			if(this.data.foodsData[i].foodsCount > 0){
+				let temObj = {
+					goods_id : this.data.foodsData[i].goods_id,
+					num : this.data.foodsData[i].foodsCount,
+				}
+				goods.push(temObj);
+			}
+		}
         o2oAjax({
             url: 'https://www.pcclub.top/Home/Order/index',
             method: "POST",
             data : {
                 order_type : 3,
                 seller_id  : this.data.shopNews.seller_id,
-                goods_id    : this.data.shopNews,
+				goods : JSON.stringify(goods),
                 phone : this.data.shopGoodsAddress.phone,
                 name : this.data.shopGoodsAddress.name,
                 address : this.data.shopGoodsAddress.address,
-                s_time : this.data.peiS_time[this.data.PS_index],
+                s_time : this.data.time[this.data.song_index],
                 rmark : this.data.mare,
                 amount : this.data.deliever_price,
                 tip : 0,
             },
 
             success: (result)=> {
-                let orderData = {
-                    order_type : 3,
-                    is_pay : 1,
-					seller_id  : this.data.shopNews.seller_id,
-					goods_id    : this.data.shopNews,
-					phone : this.data.shopGoodsAddress.phone,
-					name : this.data.shopGoodsAddress.name,
-					address : this.data.shopGoodsAddress.address,
-					s_time : this.data.peiS_time[this.data.PS_index],
-					rmark : this.data.mare,
-					amount : this.data.deliever_price,
-					tip : 0,
-                }
-                this.setData({
-                    orderData : orderData
-                });
-                this.goPayForBackendFn(result.obj.order_sn);
+				debugger;
+                // let orderData = {
+                //     order_type : 3,
+                //     is_pay : 1,
+				// 	seller_id  : this.data.shopNews.seller_id,
+				// 	goods_id    : this.data.shopNews,
+				// 	phone : this.data.shopGoodsAddress.phone,
+				// 	name : this.data.shopGoodsAddress.name,
+				// 	address : this.data.shopGoodsAddress.address,
+				// 	s_time : this.data.peiS_time[this.data.PS_index],
+				// 	rmark : this.data.mare,
+				// 	amount : this.data.deliever_price,
+				// 	tip : 0,
+                // }
+                // this.setData({
+                //     orderData : orderData
+                // });
+                // this.goPayForBackendFn(result.obj.order_sn);
             }
         })
     }

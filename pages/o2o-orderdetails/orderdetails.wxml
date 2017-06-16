@@ -41,7 +41,7 @@
     <view class="info-conV"><view class="info-leftV">时间：</view><view class="info-rightV">{{orderData.order_sn}}</view></view>
     <view class="info-conV"><view class="info-leftV">物品重量：</view><view class="info-rightV">{{orderData.sg_weight}}</view></view>
     <view class="info-conV"><view class="info-leftV">物品类型：</view><view class="info-rightV">{{orderData.sg_name}}</view></view>
-    <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">{{orderData.goods_price}}元</view></view>
+    <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">{{orderData.sg_cost}}</view></view>
 </view>
 <view class="order-info">
     <view class="info-conV"><view class="info-leftV">基础配送费：</view><view class="info-rightV">{{orderData.amount}}元</view></view>
