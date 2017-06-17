@@ -1,3 +1,4 @@
+<import src="../../components/toast/toast.wxml"/>
 
 <view class="wrap">
     <view>
@@ -7,7 +8,7 @@
                 <view class="address-text"  wx:if="{{!shopGoodsAddress}}">请选择一个收货地址</view>
                 <view class="address-detail"  wx:if="{{shopGoodsAddress}}">
                     <view class="addrName">{{shopGoodsAddress.name +" "+shopGoodsAddress.phone}}</view>
-                    <view class="addrAddress">{{shopGoodsAddress.address}}</view>
+                    <view class="addrAddress">{{shopGoodsAddress.address + " " +shopGoodsAddress.addrDetail}}</view>
                 </view>
                 <view class="icon-right-box"><image class="icon-right" src="./img/jtr.png" mode="widthFix"></image></view>
             </view>
@@ -73,15 +74,10 @@
         </view>-->
     </view>
     <view class="cart-item">
-        <navigator url="../o2o-sureOrder-Remarks/o2o-sureOrder-Remarks" hover-class="navigator-hover" redirect>
-            <view class="cart-item-li">
-                <view class="cart-item-left">订单备注</view>
-                <view class="cart-item-r-box">
-                    <view class="cart-item-r">{{mare}},{{Value}}</view>
-                    <image class="pay-rig" src="./img/jtr.png" mode="aspectFill"></image>
-                </view>
-            </view>
-        </navigator>
+        <view class="remarks-bar">
+            <view>备注</view>
+            <input type="text" placeholder="请输入特殊要求" class="remarks-text"  value="{{mare}}" bindinput="change_mare"/>
+        </view>
     </view>
     <view style="padding-bottom: 60px;"></view>
     <view class="footer">
@@ -89,4 +85,7 @@
         <view class="footer-msg" wx:if="{{shopNews.redBad}}">已优惠{{redbad}}元</view>
         <view class="footer-btn" catchtap="goOrderFn">确定下单</view>
     </view>
+
+
+    <template is="wetoast" data="{{...__wetoast__}}"/>
 </view>

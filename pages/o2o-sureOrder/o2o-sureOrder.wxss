@@ -23,6 +23,7 @@ page{
 .address-detail{
     padding: 0 12px;
     font-size:14px;
+    flex: 1;
 }
 .icon-address{
     width:20px;
@@ -297,3 +298,14 @@ page{
     line-height:50px;
 }
 
+
+.remarks-bar{
+    display: flex;
+    height: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding:.5rem;
+}
+.remarks-text{
+    text-align: right;
+}

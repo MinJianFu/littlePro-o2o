@@ -76,7 +76,8 @@ Page({
                 name : e.currentTarget.dataset.name,
                 phone : e.currentTarget.dataset.phone,
                 address : e.currentTarget.dataset.address,
-                addressid : e.currentTarget.dataset.addressid
+                addressid : e.currentTarget.dataset.addressid,
+                addrDetail : e.currentTarget.dataset.detail,
             })
         }
         
@@ -85,7 +86,8 @@ Page({
                 name : e.currentTarget.dataset.name,
                 phone : e.currentTarget.dataset.phone,
                 address : e.currentTarget.dataset.address,
-                addressid : e.currentTarget.dataset.addressid
+                addressid : e.currentTarget.dataset.addressid,
+                addrDetail : e.currentTarget.dataset.detail,
             })
         }
         
@@ -94,7 +96,8 @@ Page({
                 name : e.currentTarget.dataset.name,
                 phone : e.currentTarget.dataset.phone,
                 address : e.currentTarget.dataset.address,
-                addressid : e.currentTarget.dataset.addressid
+                addressid : e.currentTarget.dataset.addressid,
+                addrDetail : e.currentTarget.dataset.detail,
             })
         }
         if(this.data.selectType == 31){
@@ -102,7 +105,8 @@ Page({
                 name : e.currentTarget.dataset.name,
                 phone : e.currentTarget.dataset.phone,
                 address : e.currentTarget.dataset.address,
-                addressid : e.currentTarget.dataset.addressid
+                addressid : e.currentTarget.dataset.addressid,
+                addrDetail : e.currentTarget.dataset.detail,
             })
         }
         wx.navigateBack({

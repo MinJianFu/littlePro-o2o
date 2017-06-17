@@ -30,7 +30,7 @@
         </view>
     </view>
     <view class="btn">
-        <view class="del-btn">删除地址</view>
+        <view class="del-btn" catchtap="delAddr">删除地址</view>
         <view class="change-btn" catchtap="setAddr">保存</view>
     </view>
     <template is="wetoast" data="{{...__wetoast__}}"/>

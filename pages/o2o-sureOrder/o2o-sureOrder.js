@@ -1,7 +1,7 @@
 const date = new Date();
 
 let app = getApp();
-let { o2oAjax } = app;
+let { o2oAjax, WeToast } = app;
 
 Page({
 	data: {
@@ -15,7 +15,7 @@ Page({
 		onlineArr: ['微信支付'],    //显示支付方式状态
 		online_index: 0,   //显示支付方式状态
 		superaddition: [],   //获取选中商品信息
-		mare: '口味、编好等',    //选备注状态
+		mare: '',    //选备注状态
 		Value: '',   //写备注状态
 		redbad: '10',   //红包
 		catmoney: '0'
@@ -95,7 +95,14 @@ Page({
 			catmoney: catmoney,
 		})
 	},
-	
+	//备注更改
+    change_mare : function (e) {
+        this.setData({
+            mare : e.detail.value
+        })
+    },
+    
+    
     
     //调小程序支付接口事件
     goPayFn : function (payData) {
@@ -140,6 +147,15 @@ Page({
     
     //下单按钮s事件
     goOrderFn : function () {
+    
+        if(!!!this.data.shopGoodsAddress){
+            WeToast().toast({
+                title: '请选择收货地址',
+                duration: 1500
+            })
+            return;
+        }
+        
 		let goods = [];
 		for(let i in this.data.foodsData){
 			if(this.data.foodsData[i].foodsCount > 0){
@@ -157,9 +173,11 @@ Page({
                 order_type : 3,
                 seller_id  : this.data.shopNews.seller_id,
 				goods : JSON.stringify(goods),
+				
                 phone : this.data.shopGoodsAddress.phone,
                 name : this.data.shopGoodsAddress.name,
                 address : this.data.shopGoodsAddress.address,
+				
                 s_time : this.data.time[this.data.song_index],
                 rmark : this.data.mare,
                 amount : this.data.deliever_price,
@@ -167,24 +185,24 @@ Page({
             },
 
             success: (result)=> {
-				debugger;
-                // let orderData = {
-                //     order_type : 3,
-                //     is_pay : 1,
-				// 	seller_id  : this.data.shopNews.seller_id,
-				// 	goods_id    : this.data.shopNews,
-				// 	phone : this.data.shopGoodsAddress.phone,
-				// 	name : this.data.shopGoodsAddress.name,
-				// 	address : this.data.shopGoodsAddress.address,
-				// 	s_time : this.data.peiS_time[this.data.PS_index],
-				// 	rmark : this.data.mare,
-				// 	amount : this.data.deliever_price,
-				// 	tip : 0,
-                // }
-                // this.setData({
-                //     orderData : orderData
-                // });
-                // this.goPayForBackendFn(result.obj.order_sn);
+                let orderData = {
+                    order_type : 3,
+                    seller_id  : this.data.shopNews.seller_id,
+                    goods : JSON.stringify(goods),
+    
+                    phone : this.data.shopGoodsAddress.phone,
+                    name : this.data.shopGoodsAddress.name,
+                    address : this.data.shopGoodsAddress.address,
+    
+                    s_time : this.data.time[this.data.song_index],
+                    rmark : this.data.mare,
+                    amount : this.data.deliever_price,
+                    tip : 0,
+                }
+                this.setData({
+                    orderData : orderData
+                });
+                this.goPayForBackendFn(result.obj.order_sn);
             }
         })
     }

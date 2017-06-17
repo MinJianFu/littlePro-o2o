@@ -1,46 +1,44 @@
 <view class="wrap">
-    <navigator url="../o2o-all-rating/o2o-all-rating">
-        <view class="header-wrap">
-            <view class="header-content">
-                <view class="header-left">
-                    <image class="header-left-img" mode="widthFix" src="./img/icon-waimai.png"></image>
-                </view>
-                <view class="header-right">
-                    <view class="header-right-title">
-                        <image class="header-right-title-icon" src="./img/pp.png" mode="aspectFill"></image>
-                        <view class="header-right-title-content">{{shopNews.name}}</view>
-                    </view>
-                    <view class="header-right-msg">
-                        <!--<view class="header-right-msg-A">{{shopNews.ShopmsgA}}</view>
-                        <view class="header-right-msg-B">{{shopNews.deliveryTime}}分钟送达</view>-->
-                        <view class="header-right-msg-A">营业时间：{{shopNews.begin_time + "-" + shopNews.end_time}}</view>
-                        <view class="header-right-msg-C">配送费￥{{shopNews.deliever_price}}</view>
-                    </view>
-                    <view class="header-right-info">
-                        <view class="header-right-info-l">
-                            公告：
-                        </view>
-                        <view class="header-right-info-r">{{shopNews.seller_content}}</view>
-                    </view>
-                    <!--<view class="header-right-icon">
-                        <image class="header-right-icon-R" src="./img/jtr.png" mode="aspectFill"></image>
-                    </view>-->
-                </view>
+    <view class="header-wrap">
+        <view class="header-content">
+            <view class="header-left">
+                <image class="header-left-img" mode="widthFix" src="./img/icon-waimai.png"></image>
             </view>
-            <!--<swiper indicator-dots="{{indicatorDots}}"
-                    circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical="{{vertical}}" class="swiperStyle">
-                <swiper-item wx:for="{{activity}}" wx:key="index">
-                    <view class="header-bottom-info">
-                        <view class="header-bottom-info-left">
-                            <image class="header-bottom-info-left-icon" src="{{item.activityIcon}}" mode="aspectFill"></image>
-                            <view class="header-bottom-info-left-text">{{item.activityInfo}}</view>
-                        </view>
+            <view class="header-right">
+                <view class="header-right-title">
+                    <image class="header-right-title-icon" src="./img/pp.png" mode="aspectFill"></image>
+                    <view class="header-right-title-content">{{shopNews.name}}</view>
+                </view>
+                <view class="header-right-msg">
+                    <!--<view class="header-right-msg-A">{{shopNews.ShopmsgA}}</view>
+                    <view class="header-right-msg-B">{{shopNews.deliveryTime}}分钟送达</view>-->
+                    <view class="header-right-msg-A">营业时间：{{shopNews.begin_time + "-" + shopNews.end_time}}</view>
+                    <view class="header-right-msg-C">配送费￥{{shopNews.deliever_price}}</view>
+                </view>
+                <view class="header-right-info">
+                    <view class="header-right-info-l">
+                        公告：
                     </view>
-                </swiper-item>
-            </swiper>
-            <view class="header-bottom-info-right">3个活动</view>-->
+                    <view class="header-right-info-r">{{shopNews.seller_content}}</view>
+                </view>
+                <!--<view class="header-right-icon">
+                    <image class="header-right-icon-R" src="./img/jtr.png" mode="aspectFill"></image>
+                </view>-->
+            </view>
         </view>
-    </navigator>
+        <!--<swiper indicator-dots="{{indicatorDots}}"
+                circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical="{{vertical}}" class="swiperStyle">
+            <swiper-item wx:for="{{activity}}" wx:key="index">
+                <view class="header-bottom-info">
+                    <view class="header-bottom-info-left">
+                        <image class="header-bottom-info-left-icon" src="{{item.activityIcon}}" mode="aspectFill"></image>
+                        <view class="header-bottom-info-left-text">{{item.activityInfo}}</view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="header-bottom-info-right">3个活动</view>-->
+    </view>
     <!--<view class="tab" wx:for="{{ShopNews}}" wx:key="index">
         <view class="tab-item " >
             <view class="tab-text  {{currentTab==0 ? 'tab-active' : ''}}" data-current="0" bindtap="swichNav" >商品</view>
@@ -222,9 +220,12 @@
                 </view>
             </view>
 
-                <view class="shopcart-content-right" bindtap="hasGoods">
-                    <view class="shop-pay {{hasGoodsCount ? 'shop-pay-active' : ''}}">去结算</view>
-                </view>
+            <view class="shopcart-content-right" bindtap="hasGoods" wx:if="{{hasGoodsCount}}">
+                <view class="shop-pay shop-pay-active">去结算</view>
+            </view>
+            <view class="shopcart-content-right" bindtap="hasGoods"  wx:if="{{!hasGoodsCount}}">
+                <view class="shop-pay ">去结算</view>
+            </view>
 
         </view>
     </view>

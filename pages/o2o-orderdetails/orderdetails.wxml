@@ -6,7 +6,7 @@
         <text wx:if="{{orderData.is_pay == 3}}">已完成</text>
     </view>
     <view class="buy-address">
-        <view class="buy-icon"  wx:if="{{orderData.order_type == 1}}">购</view>
+        <view class="buy-icon"  wx:if="{{orderData.order_type == 1 || orderData.order_type == 3}}">购</view>
         <view class="buy-icon"  wx:if="{{orderData.order_type == 2}}">取</view>
         <view wx:if="{{orderData.order_type == 1}}">
             <view>就近购买(指定地址购买在备注填写!)</view>
@@ -15,13 +15,21 @@
         <view wx:if="{{orderData.order_type == 2}}" style="flex: 1;">
             <view>{{orderData.s_address}}</view>
         </view>
+
+        <view wx:if="{{orderData.order_type == 3}}">
+            <view>{{orderData.seller_name}}</view>
+        </view>
+
         <view  style="padding-left: 12px;" wx:if="{{orderData.order_type == 2}}">
             <view>{{orderData.s_name}}</view>
             <view>{{orderData.s_phone}}</view>
         </view>
+
+
+
     </view>
     <view class="collect-address">
-        <view class="collect-icon" wx:if="{{orderData.order_type == 1}}">收</view>
+        <view class="collect-icon" wx:if="{{orderData.order_type == 1 || orderData.order_type == 3}}">收</view>
         <view class="collect-icon" wx:if="{{orderData.order_type == 2}}">送</view>
         <view style="flex: 1;">
             <view>{{orderData.address}}</view>
@@ -43,14 +51,16 @@
     <view class="info-conV"><view class="info-leftV">物品类型：</view><view class="info-rightV">{{orderData.sg_name}}</view></view>
     <view class="info-conV"><view class="info-leftV">物品价值：</view><view class="info-rightV">{{orderData.sg_cost}}</view></view>
 </view>
+<view class="goods-info" wx:if="{{orderData.order_type == 3}}">
+    <view class="info-conV"><view class="info-leftV">时间：</view><view class="info-rightV">{{orderData.order_sn}}</view></view>
+    <view class="info-conV"><view class="info-leftV">商品：</view></view>
+    <view class="info-rightV" wx:for="{{orderData.goods_list}}" wx:key="{{index}}" >{{item.goods_name + ' ￥' + item.price + ' * ' + item.num}}</view>
+    <view class="info-conV" style="margin-top:12px;"><view class="info-leftV">商品总价：</view><view class="info-rightV" style="color: red;">{{orderData.order_amount - orderData.amount}}</view></view>
+</view>
 <view class="order-info">
     <view class="info-conV"><view class="info-leftV">基础配送费：</view><view class="info-rightV">{{orderData.amount}}元</view></view>
-    <view class="info-conV"><view class="info-leftV">小费：</view><view class="info-rightV">{{orderData.tip}}元</view></view>
+    <view class="info-conV"  wx:if="{{orderData.order_type != 3}}"><view class="info-leftV">小费：</view><view class="info-rightV">{{orderData.tip}}元</view></view>
     <view class="info-conV"><view class="info-leftV">备注：</view><view class="info-rightV">{{orderData.rmark}}</view></view>
-</view>
-<view class="rider-info">
-    <view class="info-conV"><view class="info-leftV">骑手名字：</view><view class="info-rightV">陈测测</view></view>
-    <view class="info-conV"><view class="info-leftV">骑手电话号码：</view><view class="info-rightV">18011809010</view></view>
 </view>
 <view class="btn-bar">
     <button class="oncemore-btn" wx:if="{{orderData.is_pay == 1}}" catchtap="goPayForBackendFn">立即支付</button>

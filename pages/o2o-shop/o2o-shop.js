@@ -262,7 +262,7 @@ Page({
             success: result=>{
 				let shopNews = result.list;
 				let procesCate_list = result.list.cate_list;
-				procesCate_list[0].active = 1;
+                procesCate_list[0] ? procesCate_list[0].active = 1:null;
                 this.setData({
 					menuData: procesCate_list,     //左菜单数据
 					foodsData: result.list.goods_list,     //右商品数据

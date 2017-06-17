@@ -1,7 +1,7 @@
 <view class="page">
     <view class="available">
         <view class="title">可选收货地址</view>
-        <view wx:for="{{addressList}}" wx:key="{{index}}" class="available-item item" catchtap="choseAddrFn" data-name="{{item.name}}" data-addressid="{{item.id}}" data-phone="{{item.phone}}" data-address="{{item.address}}">
+        <view wx:for="{{addressList}}" wx:key="{{index}}" class="available-item item" catchtap="choseAddrFn" data-name="{{item.name}}" data-addressid="{{item.id}}" data-phone="{{item.phone}}" data-address="{{item.address}}" data-detail="{{item.detail}}">
             <view class="add-info">
                 <view class="user-info">
                     <text class="user-name">{{item.name}} </text>

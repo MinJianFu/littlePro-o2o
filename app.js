@@ -12,10 +12,8 @@ App({
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
         
-        let that = this;
-        if(!wx.getStorageSync("session_key")){
-            wxLogin();
-        }
+        //进app做一次登录
+        wxLogin();
         
         
         ///获取地址

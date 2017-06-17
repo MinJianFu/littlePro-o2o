@@ -1,3 +1,6 @@
+<import src="../../components/toast/toast.wxml"/>
+
+
 <view class="page">
     <navigator url="../o2o-goodsinformation/goodsinformation" style="margin:12px 0;">
     <view class="gooos-barNew">
@@ -24,7 +27,7 @@
                 <view class="address-textNew" wx:if="{{getGoodsAddress}}">
 
                     <view class="addrName">{{getGoodsAddress.name +" "+getGoodsAddress.phone}}</view>
-                    <view class="addrAddress">{{getGoodsAddress.address}}</view>
+                    <view class="addrAddress">{{getGoodsAddress.address + " " +getGoodsAddress.addrDetail}}</view>
                 </view>
                 <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
             </view>
@@ -37,7 +40,7 @@
                 <view class="address-textNew" wx:if="{{!sendGoodsAddress}}">请选择送货地址和联系人号码</view>
                 <view class="address-textNew" wx:if="{{sendGoodsAddress}}">
                     <view class="addrName">{{sendGoodsAddress.name +" "+sendGoodsAddress.phone}}</view>
-                    <view class="addrAddress">{{sendGoodsAddress.address}}</view>
+                    <view class="addrAddress">{{sendGoodsAddress.address + " " +sendGoodsAddress.addrDetail}}</view>
                 </view>
                 <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
             </view>
@@ -100,4 +103,7 @@
         <view>待支付<txet>¥{{PS_price+XF_index}}</txet></view>
         <view class="TJ-btn" catchtap="goOrderFn">提交订单</view>
     </view>
+
+
+    <template is="wetoast" data="{{...__wetoast__}}"/>
 </view>

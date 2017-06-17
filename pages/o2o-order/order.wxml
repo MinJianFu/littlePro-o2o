@@ -11,11 +11,14 @@
                 <image mode="widthFix" src="../icon/mai_icon_min.png" class="type-icon"></image>
                 <text class="buy-type" wx:if="{{item.order_type == 1}}">帮你买</text>
                 <text class="buy-type" wx:if="{{item.order_type == 2}}">帮你送</text>
+                <text class="buy-type" wx:if="{{item.order_type == 3}}">商家订单</text>
             </view>
             <view  wx:if="{{item.order_type != 2}}">￥{{item.goods_price}}</view>
         </view>
         <view class="item-content">
-            <view class="address">{{item.order_type == 1? "默认地址购买": item.s_address}}</view>
+            <view class="address" wx:if="{{item.order_type == 1}}">默认地址购买</view>
+            <view class="address" wx:if="{{item.order_type == 2}}">{{item.s_address}}</view>
+            <view class="address" wx:if="{{item.order_type == 3}}">{{item.seller_name}}</view>
             <view class="centerSymbol">>>>></view>
             <view class="address">{{item.address}}</view>
         </view>

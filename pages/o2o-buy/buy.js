@@ -1,6 +1,6 @@
 
 const app = getApp();
-let { o2oAjax } = app;
+let { o2oAjax, WeToast } = app;
 
 Page({
     data:{
@@ -59,7 +59,6 @@ Page({
             })
         }
         this.getFreight();
-        this.getDefaultAddress();
     },
     onReady:function(){
         // 页面渲染完成
@@ -67,6 +66,7 @@ Page({
     },
     onShow:function(){
         // 页面显示
+        this.getDefaultAddress();
     },
     onHide:function(){
         // 页面隐藏
@@ -163,6 +163,13 @@ Page({
     
     //下单按钮s事件
     goOrderFn : function () {
+        if(!!!this.data.addrObj){
+            WeToast().toast({
+                title: '请选择地址',
+                duration: 1500
+            })
+            return;
+        }
         o2oAjax({
             url: 'https://www.pcclub.top/Home/Order/index',
             method: "POST",

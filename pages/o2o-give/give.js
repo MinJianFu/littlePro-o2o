@@ -1,6 +1,6 @@
 
 const app = getApp();
-let { o2oAjax } = app;
+let { o2oAjax, WeToast } = app;
 
 const date = new Date()
 const minute = ['00','15','30','45']
@@ -168,6 +168,29 @@ Page({
     
     //下单按钮事件
     goOrderFn : function () {
+    
+        if(!!!this.data.goodsinformation ){
+            WeToast().toast({
+                title: '请完善货物信息',
+                duration: 1500
+            })
+            return;
+        }
+        if(!!!this.data.getGoodsAddress){
+            WeToast().toast({
+                title: '请选择取货地址',
+                duration: 1500
+            })
+            return;
+        }
+        if(!!!this.data.sendGoodsAddress){
+            WeToast().toast({
+                title: '请选择送货地址',
+                duration: 1500
+            })
+            return;
+        }
+        
         o2oAjax({
             url: 'https://www.pcclub.top/Home/Order/index',
             method: "POST",

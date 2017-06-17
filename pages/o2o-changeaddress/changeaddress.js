@@ -17,6 +17,8 @@ Page({
 
         selectType : null,
         address_id : null,
+        
+        usfApi : 'https://www.pcclub.top/Home/Address/index',
     },
     onLoad:function(options){
         //初始化toast组件
@@ -32,7 +34,9 @@ Page({
                 a_phone : stData.phone,
                 a_locAddress : stData.address,
                 a_address : stData.addrDetail,
-                address_id : stData.id
+                address_id : stData.id,
+    
+                usfApi : 'https://www.pcclub.top/Home/Address/editAddress'
             })
         }
     },
@@ -80,17 +84,34 @@ Page({
             a_address : e.detail.value
         })
     },
+    //删除地址
+    delAddr : function () {
     
-    //设置新地址
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Address/delAddress',
+            method: "POST",
+            data: {
+                address_id : this.data.address_id
+            },
+            success: (result) =>{
+                wx.navigateBack({
+                    delta: 1
+                })
+            }
+        })
+    },
+    
+    //设置地址
     setAddr : function () {
         o2oAjax({
-            url: 'https://www.pcclub.top/Home/Address/index', 
+            url: this.data.usfApi,
             method: "POST",
             data: {
                 name : this.data.a_name,
                 phone : this.data.a_phone,
                 address : this.data.a_locAddress,
-                detail : this.data.a_address
+                detail : this.data.a_address,
+                address_id : this.data.address_id
             },
             success: (result) =>{
                 if(result.status == 0){
@@ -99,19 +120,21 @@ Page({
                         storageMC = "nowLocalAddr";
                     }
                     if(this.data.selectType == 21){
-                        storageMC = "nowLocalAddr";
+                        storageMC = "getGoodsAddress";
                     }
                     
                     if(this.data.selectType == 22){
-                        storageMC = "nowLocalAddr";
+                        storageMC = "sendGoodsAddress";
                     }
                     if(this.data.selectType == 31){
-                        storageMC = "nowLocalAddr";
+                        storageMC = "shopGoodsAddress";
                     }
                     wx.setStorageSync(storageMC, {
                         name : this.data.a_name,
                         phone : this.data.a_phone,
                         address : this.data.a_locAddress,
+                        address_id : this.data.address_id,
+                        addrDetail : this.data.a_address,
                     })
                     wx.navigateBack({
                         delta: 2

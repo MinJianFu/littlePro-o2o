@@ -18,7 +18,7 @@
                 <view class="defaultText" wx:if="{{!addrObj}}">选择收货地址</view>
                 <view class="defaultAddressInfo" wx:if="{{addrObj}}">
                     <view class="addrName">{{addrObj.name +" "+addrObj.phone}}</view>
-                    <view class="addrAddress">{{addrObj.address}}</view>
+                    <view class="addrAddress">{{addrObj.address + " " +addrObj.addrDetail}}</view>
                 </view>
             </view>
             <image class="JT-icon" mode="aspectFill" src="img/JT-icon.png"></image>
