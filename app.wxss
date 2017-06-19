@@ -11,3 +11,4 @@
 
 @import "public/public.wxss";
 @import "components/toast/toast.wxss";
+@import "components/alertBox/alertBox.wxss";

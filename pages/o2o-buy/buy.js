@@ -1,6 +1,6 @@
 
 const app = getApp();
-let { o2oAjax, WeToast } = app;
+let { o2oAjax, WeToast, alertBox } = app;
 
 Page({
     data:{
@@ -14,6 +14,8 @@ Page({
         rmark:"",
         good_pcier:"",
         orderData : null,
+
+        amountHideBoxStatus : 0,    //是否显示运费说明弹窗
     },
     //获取配送时间
     ReadyPS_time:function(){
@@ -44,6 +46,15 @@ Page({
             good_pcier : e.detail.value
         })
     },
+
+    //弹出配送费说明弹窗
+    showAlert : function(e){
+        alertBox().alert({
+            title : '配送费说明',
+            text : '配送费为市区基础配送价格，若需配送城镇或跨区远距离配送请和骑手咨询'
+        })
+    },
+
     //配送时间、代金券、小费的change事件
     PS_change:function(e){
         this.setData({

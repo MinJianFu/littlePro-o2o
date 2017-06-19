@@ -1,11 +1,13 @@
 
 let {WeToast} = require('components/toast/toast.js');
+let {alertBox} = require('components/alertBox/alertBox.js');
 let {o2oAjax, wxLogin} = require("utils/util.js");
 
 //app.js
 App({
     o2oAjax,
     WeToast,
+    alertBox,
     onLaunch: function () {
     //调用API从本地缓存中获取数据
         let logs = wx.getStorageSync('logs') || []

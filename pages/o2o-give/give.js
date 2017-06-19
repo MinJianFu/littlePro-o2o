@@ -1,6 +1,6 @@
 
 const app = getApp();
-let { o2oAjax, WeToast } = app;
+let { o2oAjax, WeToast, alertBox } = app;
 
 const date = new Date()
 const minute = ['00','15','30','45']
@@ -82,6 +82,15 @@ Page({
         })
     },
 
+
+    //弹出配送费说明弹窗
+    showAlert : function(e){
+        alertBox().alert({
+            title : '配送费说明',
+            text : '配送费为市区基础配送价格，若需配送城镇或跨区远距离配送请和骑手咨询'
+        })
+    },
+    
     //获取配送时间
     ReadyPS_time:function(){
         let date = new Date(),

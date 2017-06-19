@@ -1,0 +1,11 @@
+
+<template name="alertBox">
+    <view class="__alertBox {{status ? '' : 'hidden'}}">
+        <view class="__AB_bg"></view>
+        <view class="__AB_main">
+            <view class="__AB_head">{{title}}</view>
+            <view class="__AB_body">{{text}}</view>
+            <view class="__AB_foot" catchtap='__hideAlertBox'>确定</view>
+        </view>
+    </view>
+</template>

@@ -1,4 +1,6 @@
 <import src="../../components/toast/toast.wxml"/>
+<import src="../../components/alertBox/alertBox.wxml"/>
+
 <view class="page">
     <view class="gooos-bar">
         <image mode="aspectFill" src="img/buy-icon.png"></image>
@@ -43,7 +45,7 @@
             <input type="number" placeholder="请输入预计金额" class="goos-pcier-val" value="{{good_pcier}}" bindinput="change_good_pcier"/>
         </view>
         <view class="peiSpcier-bar">
-            <view class="peiS-text">配送费<text class="peiSpcier-bar-ps">?</text></view>
+            <view class="peiS-text">配送费<text class="peiSpcier-bar-ps" catchtap='showAlert'>?</text></view>
             <view class="peiSpcier">{{PS_price}}元</view>
         </view>
         <!--<picker bindchange="" value="" range="">-->
@@ -67,5 +69,7 @@
         <view class="TJ-btn" bindtap="goOrderFn">提交订单</view>
     </view>
 
+
     <template is="wetoast" data="{{...__wetoast__}}"/>
+    <template is="alertBox" data="{{...__alertBox__}}"/>
 </view>
