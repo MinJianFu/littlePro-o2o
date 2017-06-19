@@ -160,47 +160,39 @@ Page({
 		for(let i in this.data.foodsData){
 			if(this.data.foodsData[i].foodsCount > 0){
 				let temObj = {
+					goods_name : this.data.foodsData[i].goods_name,
+					price : this.data.foodsData[i].price,
 					goods_id : this.data.foodsData[i].goods_id,
 					num : this.data.foodsData[i].foodsCount,
 				}
 				goods.push(temObj);
 			}
 		}
-        o2oAjax({
-            url: 'https://www.pcclub.top/Home/Order/index',
-            method: "POST",
-            data : {
+		let beSendData = {
                 order_type : 3,
                 seller_id  : this.data.shopNews.seller_id,
+				seller_name : this.data.shopNews.seller_name,
 				goods : JSON.stringify(goods),
-				
+				goods_price : this.data.catmoney,
+
                 phone : this.data.shopGoodsAddress.phone,
                 name : this.data.shopGoodsAddress.name,
-                address : this.data.shopGoodsAddress.address,
+                address : this.data.shopGoodsAddress.address + ' ' +this.data.shopGoodsAddress.addrDetail,
 				
                 s_time : this.data.time[this.data.song_index],
                 rmark : this.data.mare,
                 amount : this.data.deliever_price,
                 tip : 0,
-            },
-
+		}
+        o2oAjax({
+            url: 'https://www.pcclub.top/Home/Order/index',
+            method: "POST",
+            data : beSendData,
             success: (result)=> {
-                let orderData = {
-                    order_type : 3,
-                    seller_id  : this.data.shopNews.seller_id,
-                    goods : JSON.stringify(goods),
-    
-                    phone : this.data.shopGoodsAddress.phone,
-                    name : this.data.shopGoodsAddress.name,
-                    address : this.data.shopGoodsAddress.address,
-    
-                    s_time : this.data.time[this.data.song_index],
-                    rmark : this.data.mare,
-                    amount : this.data.deliever_price,
-                    tip : 0,
-                }
+				beSendData.goods_list = JSON.parse(beSendData.goods);
+				beSendData.order_amount = beSendData.goods_price + beSendData.amount;
                 this.setData({
-                    orderData : orderData
+                    orderData : beSendData
                 });
                 this.goPayForBackendFn(result.obj.order_sn);
             }

@@ -203,7 +203,7 @@ Page({
     
                 s_name :  this.data.getGoodsAddress.name,
                 s_phone :  this.data.getGoodsAddress.phone,
-                s_address :  this.data.getGoodsAddress.address,
+                s_address :  this.data.getGoodsAddress.address + ' ' + this.data.getGoodsAddress.addrDetail,
                 s_time : this.data.peiS_time[this.data.PS_index],
                 rmark : this.data.rmark,
                 amount : this.data.PS_price,

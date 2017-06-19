@@ -11,9 +11,12 @@ Page({
     
     onShow : function(){
         let orderData = wx.getStorageSync("orderData");
-        orderData.sg_name = orderData.goods_name.split("|")[0];
-        orderData.sg_weight = orderData.goods_name.split("|")[1];
-        orderData.sg_cost = orderData.goods_name.split("|")[2];
+        if( orderData.order_type == 2){
+            orderData.sg_name = orderData.goods_name.split("|")[0];
+            orderData.sg_weight = orderData.goods_name.split("|")[1];
+            orderData.sg_cost = orderData.goods_name.split("|")[2];
+        }
+        
         this.setData({
             orderData : orderData
         })

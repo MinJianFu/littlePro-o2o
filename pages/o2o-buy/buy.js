@@ -179,7 +179,7 @@ Page({
                 goods_price : this.data.good_pcier,
                 phone : this.data.addrObj.phone,
                 name : this.data.addrObj.name,
-                address : this.data.addrObj.address,
+                address : this.data.addrObj.address + " " + this.data.addrObj.addrDetail,
                 s_time : this.data.peiS_time[this.data.PS_index],
                 rmark : this.data.rmark,
                 amount : this.data.PS_price,

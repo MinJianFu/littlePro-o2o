@@ -75,7 +75,7 @@
     </view>
     <view class="cart-item">
         <view class="remarks-bar">
-            <view>备注</view>
+            <view style="width:80px;">备注</view>
             <input type="text" placeholder="请输入特殊要求" class="remarks-text"  value="{{mare}}" bindinput="change_mare"/>
         </view>
     </view>
