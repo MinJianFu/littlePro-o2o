@@ -17,6 +17,8 @@ Page({
 
         selectType : null,
         address_id : null,
+
+        secondIn : 0,
         
         usfApi : 'https://www.pcclub.top/Home/Address/index',
     },
@@ -25,17 +27,19 @@ Page({
         new app.WeToast();
         this.setData({
             selectType : options.type,
-            isEditType : options.edit ? 1 : 0
+            isEditType : options.edit == 1 ? 1 : 0,
         });
-        if(this.data.isEditType){
-            let stData = wx.getStorageSync("beEditAddrData");
+        
+        let stData = wx.getStorageSync("beEditAddrData");
+        this.setData({
+            a_name : stData.name || null,
+            a_phone : stData.phone || null,
+            a_locAddress : stData.address || null,
+            a_address : stData.addrDetail || null,
+            address_id : stData.id || null,
+        })
+        if(this.data.isEditType == 1){
             this.setData({
-                a_name : stData.name,
-                a_phone : stData.phone,
-                a_locAddress : stData.address,
-                a_address : stData.addrDetail,
-                address_id : stData.id,
-    
                 usfApi : 'https://www.pcclub.top/Home/Address/editAddress'
             })
         }
@@ -49,14 +53,15 @@ Page({
         
         //完整地址拼接
         let that = this;
-        wx.getStorage({
-            key: 'addrvalue',
-            success: function(res) {
-                that.setData({
-                    a_locAddress : res.data,
-                })
-            }
-        })
+        if(this.data.isEditType == 1 && this.data.secondIn == 0){
+            this.setData({
+                secondIn : 1
+            })
+        }else{
+            this.setData({
+                a_locAddress : wx.getStorageSync('addrvalue')
+            })
+        }
        
     },
     onHide:function(){
@@ -99,6 +104,27 @@ Page({
                 })
             }
         })
+    },
+
+    //跳到地址搜索页面
+    nvaToPlaceSearchPage : function(){
+        if(this.data.selectType == 31){
+            
+            wx.setStorageSync("beEditAddrData", {
+                name : this.data.a_name,
+                phone : this.data.a_phone,
+                address : this.data.a_locAddress,
+                addrDetail : this.data.a_address,
+                id : this.data.address_id
+            });
+            wx.redirectTo({
+                url: '../o2o-addressquery/addressquery?type='+ this.data.selectType +'&edit='+ this.data.isEditType
+            })
+        }else{
+            wx.navigateTo({
+                url: '../o2o-addressquery/addressquery?type='+ this.data.selectType +'&edit='+ this.data.isEditType
+            })
+        }
     },
     
     //设置地址

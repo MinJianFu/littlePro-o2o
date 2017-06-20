@@ -17,13 +17,11 @@
             <view>手机号</view>
             <input type="number" placeholder="请输入手机号" class="phone-val" value="{{a_phone}}" bindinput="changePhone" />
         </view>
-        <navigator url="../o2o-addressquery/addressquery">
-        <view class="address">
+        <view class="address" catchtap="nvaToPlaceSearchPage">
             <view>收货地址</view>
             <view>{{a_locAddress}}</view>
             <image mode="aspectFill" src="img/JT-icon.png" class="JT-icon"></image>
         </view>
-        </navigator>
         <view class="XXaddress">
             <view>门牌号</view>
             <input type="text" placeholder="请输入门牌号或详细地址"  value="{{a_address}}" bindinput="changeAddress"  />

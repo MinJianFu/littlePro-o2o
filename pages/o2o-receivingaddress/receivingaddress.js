@@ -50,6 +50,7 @@ Page({
 
     //跳转到添加地址的页面
     nvaToMakeNewAddr : function(){
+        wx.removeStorageSync("beEditAddrData");
         wx.navigateTo({
             url: '../o2o-changeaddress/changeaddress?type=' + this.data.selectType
         })

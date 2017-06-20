@@ -10,7 +10,8 @@ Page({
         placeData: {},
         id:'',
         aabb:'',
-        comeInType : 0
+        comeInType : 0,
+        isEditType : 0,     
     },
     makertap: function(e) {
         var that = this;
@@ -55,7 +56,8 @@ Page({
         var that = this;
         if(option.type){
             this.setData({
-                comeInType : 1
+                comeInType : option.type,
+                isEditType : option.edit
             })
         }
 
@@ -74,20 +76,19 @@ Page({
     },
     tapLocationFn : function (e) {
         var comeInType = this.data.comeInType;
-        if(comeInType == 1){
-            wx.setStorage({
-                key : "shoppingAddrvalue",
-                data : e.currentTarget.dataset.addrvalue
+        wx.setStorageSync("addrvalue", e.currentTarget.dataset.addrvalue);
+        if(this.data.comeInType == 31){
+            let stData = wx.getStorageSync("beEditAddrData") || {};
+                stData.address = e.currentTarget.dataset.addrvalue;
+            wx.setStorageSync("beEditAddrData", stData)
+            wx.redirectTo({
+                url: '../o2o-changeaddress/changeaddress?type=31&edit='+ this.data.isEditType
             })
         }else{
-            wx.setStorage({
-                key : "addrvalue",
-                data : e.currentTarget.dataset.addrvalue
+            wx.navigateBack({
+                delta: 1
             })
         }
-        wx.navigateBack({
-            delta: 1
-        })
     }
 
  })

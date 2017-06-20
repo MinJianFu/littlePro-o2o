@@ -34,7 +34,6 @@ page,.page{
     align-items: center;
     padding: .5rem;
     border-bottom: 1px solid #f1f1f1;
-    height: 2rem;
 }
 .user-phone>input,.address>view:nth-child(2),.XXaddress>input{
     flex: 1;
@@ -64,7 +63,7 @@ page,.page{
     line-height: 3rem;
 }
 .change-btn{
-    background: #fa1a43;
+    background: #ec4628;
     color: #fff;
 }
 .del-btn{
