@@ -35,6 +35,9 @@ Page({
 		that.SetAllmoney()
 		that.addValue()   //写备注的value
 	},
+	onUnLoad: function(){
+		wx.removeStorageSync("make");
+	},
 	addmark: function (e) {
 		let that = this
 		wx.getStorage({
