@@ -54,6 +54,12 @@ let o2oAjax = function (obj) {
             else {
                 obj.success(result.data);
             }
+        },
+        fail: (a, b) =>{
+            obj.fail && obj.fail(a, b);
+        },
+        complete: (a, b, c) =>{
+            obj.complete && obj.complete(a, b, c);
         }
     })
 }

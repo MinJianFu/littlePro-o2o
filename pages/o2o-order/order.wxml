@@ -4,29 +4,35 @@
         <view class="header-li {{index==state? 'on':''}}" wx:for="{{header}}" wx:key="index" data-key="{{index}}" bindtap="changestate" data-name="{{item}}">{{item}}</view>
     </view>
 </view>-->
-<view class="order-list">
-    <view wx:for="{{orderData}}" wx:key="index" class="order-item" data-orderid="{{item.id}}" catchtap="jumpToOrderDetail">
-        <view class="item-top">
-            <view>
-                <image mode="widthFix" src="../icon/mai_icon_min.png" class="type-icon"></image>
-                <text class="buy-type" wx:if="{{item.order_type == 1}}">帮你买</text>
-                <text class="buy-type" wx:if="{{item.order_type == 2}}">帮你送</text>
-                <text class="buy-type" wx:if="{{item.order_type == 3}}">商家订单</text>
+<scroll-view class="order-list" scroll-y='{{true}}' lower-threshold='{{50}}'  bindscrolltolower='getAnotherList' style="height:{{screenHeight}}px">
+    
+    <view class="loadingBox" wx:if='{{isReloading == 1}}'>重新获取订单信息...</view>
+    <view class="listBox">
+        <view wx:for="{{orderData}}" wx:key="index" class="order-item" data-orderid="{{item.id}}" catchtap="jumpToOrderDetail">
+            <view class="item-top">
+                <view>
+                    <image mode="widthFix" src="../icon/mai_icon_min.png" class="type-icon"></image>
+                    <text class="buy-type" wx:if="{{item.order_type == 1}}">帮你买</text>
+                    <text class="buy-type" wx:if="{{item.order_type == 2}}">帮你送</text>
+                    <text class="buy-type" wx:if="{{item.order_type == 3}}">商家订单</text>
+                </view>
+                <view  wx:if="{{item.order_type != 2}}">￥{{item.goods_price}}</view>
             </view>
-            <view  wx:if="{{item.order_type != 2}}">￥{{item.goods_price}}</view>
-        </view>
-        <view class="item-content">
-            <view class="address" wx:if="{{item.order_type == 1}}">默认地址购买</view>
-            <view class="address" wx:if="{{item.order_type == 2}}">{{item.s_address}}</view>
-            <view class="address" wx:if="{{item.order_type == 3}}">{{item.seller_name}}</view>
-            <view class="centerSymbol">>>>></view>
-            <view class="address">{{item.address}}</view>
-        </view>
-        <view class="item-bottom">
-            <view class="order-date">{{item.order_sn}}</view>
-            <button wx:if="{{item.is_pay == 1}}">未支付</button>
-            <button wx:if="{{item.is_pay == 2}}">已支付</button>
-            <button wx:if="{{item.is_pay == 3}}">已完成</button>
+            <view class="item-content">
+                <view class="address" wx:if="{{item.order_type == 1}}">默认地址购买</view>
+                <view class="address" wx:if="{{item.order_type == 2}}">{{item.s_address}}</view>
+                <view class="address" wx:if="{{item.order_type == 3}}">{{item.seller_name}}</view>
+                <view class="centerSymbol">>>>></view>
+                <view class="address">{{item.address}}</view>
+            </view>
+            <view class="item-bottom">
+                <view class="order-date">{{item.order_sn}}</view>
+                <button wx:if="{{item.is_pay == 1}}">未支付</button>
+                <button wx:if="{{item.is_pay == 2}}">已支付</button>
+                <button wx:if="{{item.is_pay == 3}}">已完成</button>
+            </view>
         </view>
     </view>
-</view>
+    <view class="loadingBox" wx:if='{{isLoading}}'>加载中...</view>
+    <view class="loadingBox" wx:if='{{noMoreList == 1}}'>已经没有更多订单信息了!</view>
+</scroll-view>
