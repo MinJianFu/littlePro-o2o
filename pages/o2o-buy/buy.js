@@ -92,7 +92,7 @@ Page({
             url: 'https://www.pcclub.top/Home/Order/getPrice',
             method: "POST",
             data : {
-                type : 1
+                type : 2
             },
             success : (result)=>{
                 this.setData({
