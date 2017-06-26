@@ -176,8 +176,8 @@ Page({
     },
     
     //下单按钮事件
-    goOrderFn : function () {
-    
+    goOrderFn : function (e) {
+        console.log(e.detail )
         if(!!!this.data.goodsinformation ){
             WeToast().toast({
                 title: '请完善货物信息',
@@ -218,6 +218,7 @@ Page({
                 amount : this.data.PS_price,
                 // goods_price : this.data.goodsinformation.goodsvalue,
                 tip : this.data.XF_index,
+                fromId:e.detail.formId,
             },
             success: (result)=> {
                 let orderData = {

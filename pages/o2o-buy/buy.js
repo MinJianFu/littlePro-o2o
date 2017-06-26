@@ -173,7 +173,8 @@ Page({
     },
     
     //下单按钮s事件
-    goOrderFn : function () {
+    goOrderFn : function (e) {
+        console.log(e.detail )
         if(!!!this.data.addrObj){
             WeToast().toast({
                 title: '请选择地址',
@@ -195,6 +196,7 @@ Page({
                 rmark : this.data.rmark,
                 amount : this.data.PS_price,
                 tip : this.data.XF_index,
+                fromId:e.detail.formId,
             },
 
             success: (result)=> {
