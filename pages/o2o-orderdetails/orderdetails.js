@@ -8,8 +8,7 @@ Page({
     data:{
         orderData : {},
     },
-    
-    onShow : function(){
+    onLoad : function(){
         let orderData = wx.getStorageSync("orderData");
         if( orderData.order_type == 2){
             orderData.sg_name = orderData.goods_name.split("|")[0];
@@ -20,6 +19,10 @@ Page({
         this.setData({
             orderData : orderData
         })
+
+    },
+
+    onShow : function(){
     },
     
     onUnload:function(){
@@ -36,7 +39,7 @@ Page({
             signType : payData.signType,
             paySign : payData.paySign,
             success : (result)=>{
-                let orderData = JSON.parse(JSON.stringify(his.data.orderData));
+                let orderData = JSON.parse(JSON.stringify(this.data.orderData));
                 orderData.is_pay = 2;
                 this.setData({
                     orderData : orderData
