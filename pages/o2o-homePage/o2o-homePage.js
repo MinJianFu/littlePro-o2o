@@ -10,9 +10,8 @@ Page({
         swiperInfo: {
 
             itemUrls: [
-                "img/LB1.jpg",
-                "img/LB2.jpg",
-                "img/LB3.jpg"
+                "img/LB4.jpg",
+                "img/LB5.jpg",
             ]
         },
         salerList: [],
