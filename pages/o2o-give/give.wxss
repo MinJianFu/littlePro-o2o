@@ -168,8 +168,7 @@ page{height: 100%;background: #f1f1f1; font-family: 微软雅黑;}
     background:#FA1A43;
     color:#ffffff;
     border-radius:0;
-    line-height:2.5rem;
-    font-size: 13px;
+    line-height:3.5rem;
 }
 .foot txet{
     color: #FA1A43;

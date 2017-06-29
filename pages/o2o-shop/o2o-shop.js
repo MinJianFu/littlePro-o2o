@@ -36,6 +36,21 @@ Page({
 
 		hasCate : "1",		//用来检测当前已经拿到了的商品类别	
 	},
+    //转发事件
+    onShareAppMessage: function (res) {
+        return {
+            title: '雷霆快送',
+            path: '/page/o2o-homePage/o2o-homePage',
+            success: function(res) {
+                console.log('转发成功', res)
+                // 转发成功
+            },
+            fail: function(res) {
+                console.log('转发失败', res)
+                // 转发失败
+            }
+        }
+    },
 	onLoad: function (options) {
 		var that = this;
 		//that.showStar()   //评论星星方法
