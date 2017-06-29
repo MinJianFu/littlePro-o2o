@@ -69,7 +69,7 @@ Page({
     onShareAppMessage: function (res) {
         return {
             title: '雷霆快送',
-            path: '/page/o2o-homePage/o2o-homePage',
+            path: 'pages/o2o-homePage/o2o-homePage',
             success: function(res) {
                 console.log('转发成功', res)
                 // 转发成功
