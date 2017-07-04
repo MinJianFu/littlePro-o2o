@@ -1,5 +1,6 @@
 const bmap = require('../../bmap/bmap-wx');
-const qqmap = require('../../qqmap/qqmap-wx-jssdk.min');
+const QQMapWX = require('../../qqmap/qqmap-wx-jssdk.min');
+var qqmapsdk;
 const app = getApp();
 var wxMarkerData = [];
 Page({
@@ -34,9 +35,6 @@ Page({
         that.setData({
             id:e.detail.value
         })
-        // var id = e.markerId;
-        // that.showSearchInfo(wxMarkerData, id);
-        // that.changeMarkerColor(wxMarkerData, id);
         var BMap = new bmap.BMapWX({
             ak: 'Z7gFc5DRWLdLjNEGAKQyCtNqx5D4Hd0E'
         });
@@ -44,32 +42,24 @@ Page({
             console.log(data)
         };
         var success = function(data) {
-            console.log(data);
             wxMarkerData = data.wxMarkerData;
             that.setData({
                 markers: wxMarkerData
             });
-//             // that.setData({
-//             //     latitude: wxMarkerData[0].latitude
-//             // });
-//             // that.setData({
-//             //     longitude: wxMarkerData[0].longitude
-//             // });
         }
 //         // 发起POI检索请求
         BMap.search({
-            location:app.globalData.location,
+            location: app.globalData.location,
             "query": this.data.id,
             fail: fail,
             success: success,
-//             // 此处需要在相应路径放置图片文件
-//             iconPath: '../../img/marker_red.png',
-//             // 此处需要在相应路径放置图片文件
-//             iconTapPath: '../../img/marker_red.png'
         });
     },
     onLoad: function(option) {
         var that = this;
+        qqmapsdk = new QQMapWX({
+            key: 'QYFBZ-D7VHS-3DYOO-6MFPT-7PMYE-6WF6X'
+        });
         if(option.type){
             this.setData({
                 comeInType : option.type,
@@ -79,16 +69,7 @@ Page({
 
     },
     onShow:function(e){
-        console.log(app.globalData.location);
-        if(app.globalData.location == ''){
-            wx.getLocation({
-                type:'gcj02',
-                success:(res)=>{
-                    app.globalData.location = res.latitude+','+res.longitude
-                    console.log(app.globalData.location);
-                }
-            })
-        }
+
     },
     tapLocationFn : function (e) {
         var comeInType = this.data.comeInType;
@@ -105,6 +86,25 @@ Page({
                 delta: 1
             })
         }
+    },
+    getLbsUseingTenc : function(e){
+        qqmapsdk.getSuggestion({
+            keyword: e.detail.value,
+            region: app.globalData.locationCity,
+            policy: 1,
+            success: (res) => {
+                console.log(res);
+                this.setData({
+                    markers : res.data
+                })
+            },
+            fail: function(res) {
+                console.log(res);
+            },
+            complete: function(res) {
+                console.log(res);
+            }
+        });
     }
 
  })

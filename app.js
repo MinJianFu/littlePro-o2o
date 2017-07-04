@@ -2,6 +2,8 @@
 let {WeToast} = require('components/toast/toast.js');
 let {alertBox} = require('components/alertBox/alertBox.js');
 let {o2oAjax, wxLogin} = require("utils/util.js");
+const QQMapWX = require('./qqmap/qqmap-wx-jssdk.min');
+var qqmapsdk;
 
 //app.js
 App({
@@ -16,18 +18,37 @@ App({
         
         //进app做一次登录
         wxLogin();
+        //实例化qq地图
+        qqmapsdk = new QQMapWX({
+            key: 'QYFBZ-D7VHS-3DYOO-6MFPT-7PMYE-6WF6X'
+        });
         
         
         ///获取地址
-        wx.getLocation({
-            type: 'gcj02 ',
-            success: function(res) {
-                var latitude = res.latitude
-                var longitude = res.longitude
-                var speed = res.speed
-                var accuracy = res.accuracy
+        if(this.globalData.location == ''){
+            wx.getLocation({
+                type:'gcj02',
+                success:(res)=>{
+                    this.globalData.location = res.latitude+','+res.longitude;
+                    this.getDetailLocation(res.latitude, res.longitude);
+                }
+            })
+        }
+
+    },
+    getDetailLocation : function(lat, lgt){
+        qqmapsdk.reverseGeocoder({
+            location: {
+                latitude: lat,
+                longitude: lgt
+            },
+            success: (res) => {
+                this.globalData.locationCity = res.result.ad_info.city;
+            },
+            fail: function(res) {
+                console.log(res);
             }
-        })
+        });
 
     },
 
@@ -53,9 +74,9 @@ App({
         }
     },
     globalData : {
-        location:'',
         userInfo : null,
         location:'',
+        locationCity : "",
 
         //模拟菜单数据
         menuData : [
