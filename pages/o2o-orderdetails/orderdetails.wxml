@@ -3,7 +3,8 @@
         <image mode="widthFix" src="../icon/mai_icon_min.png" class="order-type"></image>
         <text wx:if="{{orderData.is_pay == 1}}">未支付</text>
         <text wx:if="{{orderData.is_pay == 2}}">已支付</text>
-        <text wx:if="{{orderData.is_pay == 3}}">已完成</text>
+        <text wx:if="{{orderData.is_pay == 3}}">已接单</text>
+        <text wx:if="{{orderData.is_pay == 4}}">已完成</text>
     </view>
     <view class="buy-address">
         <view class="buy-icon"  wx:if="{{orderData.order_type == 1 || orderData.order_type == 3}}">购</view>
