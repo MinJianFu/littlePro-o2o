@@ -280,6 +280,7 @@ Page({
                 procesCate_list[0] ? procesCate_list[0].active = 1:null;
                 this.setData({
 					nowSelectTypeId: procesCate_list[0].id,
+					hasCate:  procesCate_list[0].id,
 					menuData: procesCate_list,     //左菜单数据
 					foodsData: result.list.goods_list,     //右商品数据
 					shopNews : shopNews
@@ -304,7 +305,7 @@ Page({
             method: "POST",
 			data : {
 				seller_id : this.data.seller_id,
-				id : id
+				cate_id : id
 			},
             success: result=>{
                 this.setData({
