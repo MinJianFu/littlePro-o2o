@@ -50,8 +50,8 @@
             </view>
         </view>
     </view>-->
-    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 200}}px" bindchange="bindChange">
-        <swiper-item>
+    <!--<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 200}}px" bindchange="bindChange">
+        <swiper-item>-->
             <view class="shop-wrap">
                 <view class="menu-wrapper" >
                     <scroll-view scroll-y="true" style="height:{{winHeight}}px" >
@@ -98,7 +98,7 @@
                     </view>
                 </view>
             </view>
-        </swiper-item>
+        <!--</swiper-item>-->
         <!--<swiper-item>
             <view class="eva-warpper">
                 <view class="eva-content" wx:for="{{ShopNews}}" wx:key="index">
@@ -179,7 +179,7 @@
                 </view>
             </view>
         </swiper-item>-->
-    </swiper>
+    <!--</swiper>-->
     <view class="Carmark {{isShowCarItem ? '' : 'hidden' }}"  catchtap="showCar"></view>
     <view class="shopcart">
         <view class="cartview  {{ isShowCarItem && hasGoodsCount ? 'CarAnimateIn':''}}"  >
