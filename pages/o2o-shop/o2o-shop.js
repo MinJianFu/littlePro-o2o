@@ -179,7 +179,7 @@ Page({
 	seleMenu: function (e) {
 		let menuData = this.data.menuData;
 		for (let i = 0; i < menuData.length; i++) {
-			if (e.target.dataset.typeid == menuData[i].cate_id) {
+			if (e.target.dataset.typeid == menuData[i].id) {
 				menuData[i].active = 1
 				this.setData({
 					nowSelectTypeId: e.target.dataset.typeid
@@ -279,6 +279,7 @@ Page({
 				let procesCate_list = result.list.cate_list;
                 procesCate_list[0] ? procesCate_list[0].active = 1:null;
                 this.setData({
+					nowSelectTypeId: procesCate_list[0].id,
 					menuData: procesCate_list,     //左菜单数据
 					foodsData: result.list.goods_list,     //右商品数据
 					shopNews : shopNews
@@ -289,21 +290,21 @@ Page({
 	},
 
 	//获取店铺某品类的商品列表
-	getGoodsForCate : function(cate_id){
+	getGoodsForCate : function(id){
 		//如果已经有了这个类别的商品就不再去服务器获取
-		if(this.data.hasCate.includes(cate_id)){
+		if(this.data.hasCate.includes(id)){
 			return;
 		}
 		//添加当前菜单类别到hasCate中
 		this.setData({
-			hasCate : this.data.hasCate + cate_id
+			hasCate : this.data.hasCate + id
 		})
         o2oAjax({
             url: 'https://www.pcclub.top/Home/Seller/cate_goods',
             method: "POST",
 			data : {
 				seller_id : this.data.seller_id,
-				cate_id : cate_id
+				id : id
 			},
             success: result=>{
                 this.setData({

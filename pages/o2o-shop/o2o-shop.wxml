@@ -56,7 +56,7 @@
                 <view class="menu-wrapper" >
                     <scroll-view scroll-y="true" style="height:{{winHeight}}px" >
                         <view wx:for="{{menuData}}" wx:key="index" class=" {{item.active == 1 ? 'menu-active':''}}">
-                            <view class="menu-item" data-typeid="{{item.cate_id}}" bindtap="seleMenu">
+                            <view class="menu-item" data-typeid="{{item.id}}" bindtap="seleMenu">
                                 <view class="menu-item-ic">
                                     <image wx:if="{{item.showIcon}}" class="menu-item-ico {{item.showIcon == false ? 'showIcon' : 'fadeIcon'}}" src="./img/hot.png" mode="aspectFill"></image>
                                 </view>
