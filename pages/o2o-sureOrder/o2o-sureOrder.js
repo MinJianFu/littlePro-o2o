@@ -29,7 +29,8 @@ Page({
 		let that = this
 		that.setData({
 			foodsData: wx.getStorageSync("foodsData"),
-			shopGoodsAddress: wx.getStorageSync("shopGoodsAddress")
+			shopGoodsAddress: wx.getStorageSync("shopGoodsAddress"),
+			shopNews : wx.getStorageSync("shopData"),
 		})
 		that.addmark()    //选择的备注
 		that.SetAllmoney()
