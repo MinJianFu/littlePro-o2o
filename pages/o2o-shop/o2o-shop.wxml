@@ -2,7 +2,7 @@
     <view class="header-wrap">
         <view class="header-content">
             <view class="header-left">
-                <image class="header-left-img" mode="widthFix" src="./img/icon-waimai.png"></image>
+                <image class="header-left-img" mode="widthFix" src="{{shopNews.seller_pic}}"></image>
             </view>
             <view class="header-right">
                 <view class="header-right-title">
@@ -73,7 +73,7 @@
                     <view class="goods-item-box">
                         <view class="goods-item" wx:for="{{foodsData}}" wx:key="{{index}}" wx:if="{{nowSelectTypeId == item.cate_id}}" data-foodtypeid="{{item.cate_id}}">
                             <view class="goods-item-imgbox">
-                                <image class="goods-item-image" src="./img/foodDetail.jpg"
+                                <image class="goods-item-image" src="{{item.goods_pic}}"
                                        mode="aspectFill"></image>
                             </view>
                             <view class="goods-item-info">

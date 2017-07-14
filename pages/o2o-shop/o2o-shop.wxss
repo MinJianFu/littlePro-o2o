@@ -22,9 +22,12 @@ fadeIcon{
 }
 .header-left{
     width:80px;
+    padding:8px;
+    box-sizing:border-box;
+
 }
 .header-left-img{
-    width: 80px;
+    width: 72px;
 }
 .header-right{
     flex: 1;
