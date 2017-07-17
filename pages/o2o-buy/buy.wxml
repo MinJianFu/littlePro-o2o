@@ -41,7 +41,9 @@
     </view>
     <view class="B2">
         <view class="goos-pcier">
-            <view style="width:180px;">商品费用<text class="goos-pcier-ps">当面与骑士结算</text></view>
+            <view style="width:180px;">商品费用
+                <!--<text class="goos-pcier-ps">当面与骑士结算</text>-->
+            </view>
             <input type="number" placeholder="请输入预计金额" class="goos-pcier-val" value="{{good_pcier}}" bindinput="change_good_pcier"/>
         </view>
         <view class="peiSpcier-bar">
