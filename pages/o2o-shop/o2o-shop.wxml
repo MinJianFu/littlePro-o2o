@@ -54,7 +54,7 @@
         <swiper-item>-->
             <view class="shop-wrap">
                 <view class="menu-wrapper" >
-                    <scroll-view scroll-y="true" style="height:{{winHeight}}px" >
+                    <scroll-view scroll-y="true" style="height:{{winHeight-148}}px" >
                         <view wx:for="{{menuData}}" wx:key="index" class=" {{item.active == 1 ? 'menu-active':''}}">
                             <view class="menu-item" data-typeid="{{item.id}}" bindtap="seleMenu">
                                 <view class="menu-item-ic">
@@ -70,7 +70,7 @@
                         <view class="goods-title-h1"></view>
                         <view class="goods-title-text"></view>
                     </view>
-                    <view class="goods-item-box">
+                    <scroll-view scroll-y='{{true}}' class="goods-item-box" style="height:{{winHeight-148}}px">
                         <view class="goods-item" wx:for="{{foodsData}}" wx:key="{{index}}" wx:if="{{nowSelectTypeId == item.cate_id}}" data-foodtypeid="{{item.cate_id}}">
                             <view class="goods-item-imgbox">
                                 <image class="goods-item-image" src="{{item.goods_pic}}"
@@ -95,7 +95,7 @@
                                        bindtap="ADD" data-goods_id="{{item.goods_id}}" data-price="{{item.price}}"  ></image>
                             </view>
                         </view>
-                    </view>
+                    </scroll-view>
                 </view>
             </view>
         <!--</swiper-item>-->
