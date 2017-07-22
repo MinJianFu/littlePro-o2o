@@ -34,7 +34,8 @@ Page({
 		ServiceAttitudeStar: [],   //店铺服务态度星星
 		SasteStar: [],    //店铺味道星星
 
-		hasCate : "1",		//用来检测当前已经拿到了的商品类别	
+		hasCate : "1",		//用来检测当前已经拿到了的商品类别
+        needMoreMoney : 999,      //还差多少钱起送
 	},
     //转发事件
     onShareAppMessage: function (res) {
@@ -160,7 +161,7 @@ Page({
 		for (let i = 0; i < foods.length; i++) {
 			if (foods[i].foodsCount > 0) {
 				catnum = catnum + foods[i].foodsCount
-				catmoney = catmoney + (foods[i].foodsCount * foods[i].price)
+				catmoney =  parseFloat((catmoney + parseFloat((foods[i].foodsCount * parseFloat(foods[i].price)).toFixed(2))).toFixed(2));
 			}
 		}
 		if (catnum <= 0) {
@@ -169,9 +170,11 @@ Page({
 				isShowCarItem: false
 			})
 		}
+		let needMoreMoney = parseFloat((parseFloat(this.data.shopNews.start_price) - parseFloat(catmoney)).toFixed(2)).toFixed(2);
 		this.setData({
 			catnum: catnum,
 			catmoney: catmoney,
+            needMoreMoney: needMoreMoney
 		})
 
 	},
@@ -244,7 +247,9 @@ Page({
 			animationData: animation.export(),
 			catnum: 0,
 			catmoney: 0,
-			foodsData: foods
+			foodsData: foods,
+            hasGoodsCount: false,
+            isShowCarItem: false,
 		})
 	},
 	//购物车动画状态显示方法

@@ -13,6 +13,7 @@
                     <!--<view class="header-right-msg-A">{{shopNews.ShopmsgA}}</view>
                     <view class="header-right-msg-B">{{shopNews.deliveryTime}}分钟送达</view>-->
                     <view class="header-right-msg-A">营业时间：{{shopNews.begin_time + "-" + shopNews.end_time}}</view>
+                    <view class="header-right-msg-C">起送费￥{{shopNews.start_price}}</view>
                     <view class="header-right-msg-C">配送费￥{{shopNews.deliever_price}}</view>
                 </view>
                 <view class="header-right-info">
@@ -181,7 +182,7 @@
         </swiper-item>-->
     <!--</swiper>-->
     <view class="Carmark {{isShowCarItem ? '' : 'hidden' }}"  catchtap="showCar"></view>
-    <view class="shopcart">
+    <view class="shopcart" style="z-index: {{isShowCarItem ? '50' : '-2' }}">
         <view class="cartview  {{ isShowCarItem && hasGoodsCount ? 'CarAnimateIn':''}}"  >
             <view class="cartview-box">
                 <view class="cartview-box-l"><view>购物车</view></view>
@@ -220,11 +221,15 @@
                 </view>
             </view>
 
-            <view class="shopcart-content-right" bindtap="hasGoods" wx:if="{{hasGoodsCount}}">
+            <view class="shopcart-content-right 1111" bindtap="hasGoods" wx:if="{{hasGoodsCount && catmoney*100 >= shopNews.start_price*100}}">
                 <view class="shop-pay shop-pay-active">去结算</view>
             </view>
-            <view class="shopcart-content-right" bindtap="hasGoods"  wx:if="{{!hasGoodsCount}}">
-                <view class="shop-pay ">去结算</view>
+            <view class="shopcart-content-right 2222" wx:if="{{!hasGoodsCount}}">
+                <view class="shop-pay ">￥{{shopNews.start_price}}起送</view>
+            </view>
+
+            <view class="shopcart-content-right 3333" wx:if="{{hasGoodsCount && needMoreMoney > 0}}">
+                <view class="shop-pay ">差￥{{needMoreMoney}}起送</view>
             </view>
 
         </view>
