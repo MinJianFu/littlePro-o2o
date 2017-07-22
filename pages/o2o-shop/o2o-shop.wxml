@@ -194,7 +194,7 @@
                 <view class="carfood-list">
                     <view class="carfood-list-content">
                         <view class="carfood-name">{{item.goods_name}}</view>
-                        <view class="carfood-money">{{item.price * item.foodsCount}}</view>
+                        <view class="carfood-money">{{((item.price*100) * (item.foodsCount*100))/10000}}</view>
                         <view class="carfood-calculate">
                             <view class="carfood-add">
                                 <image class="icon-sub" src="./img/sub.png" mode="widthFix" bindtap="CarFoodListSub" data-goods_id="{{item.goods_id}}"  data-price="{{item.price}}"  ></image>
