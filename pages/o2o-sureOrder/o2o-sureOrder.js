@@ -190,7 +190,7 @@ Page({
 		let beSendData = {
                 order_type : 3,
                 seller_id  : this.data.shopNews.seller_id,
-				seller_name : this.data.shopNews.seller_name,
+				seller_name : this.data.shopNews.name,
 				goods : JSON.stringify(goods),
 				goods_price : this.data.catmoney,
 
