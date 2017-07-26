@@ -1,6 +1,6 @@
 
 let app = getApp();
-let { o2oAjax } = app;
+let { o2oAjax, loading } = app;
 
 let showStar = require('../star/star.js')
 
@@ -37,22 +37,10 @@ Page({
 		hasCate : "1",		//用来检测当前已经拿到了的商品类别
         needMoreMoney : 999,      //还差多少钱起送
 	},
-    //转发事件
-    onShareAppMessage: function (res) {
-        return {
-            title: '雷霆快送',
-            path: 'pages/o2o-homePage/o2o-homePage',
-            success: function(res) {
-                console.log('转发成功', res)
-                // 转发成功
-            },
-            fail: function(res) {
-                console.log('转发失败', res)
-                // 转发失败
-            }
-        }
-    },
 	onLoad: function (options) {
+		//loading层
+		loading().__showLoading();
+
 		var that = this;
 		//that.showStar()   //评论星星方法
 		//that.ServiceAttitudeStar()   //店铺服务态度星星方法
@@ -76,6 +64,28 @@ Page({
 
 
 	},
+    onReady: function () {
+        // 页面渲染完成
+		
+		//关闭loading层
+		loading().__hideLoading();
+    },
+
+    //转发事件
+    onShareAppMessage: function (res) {
+        return {
+            title: '雷霆快送',
+            path: 'pages/o2o-homePage/o2o-homePage',
+            success: function(res) {
+                console.log('转发成功', res)
+                // 转发成功
+            },
+            fail: function(res) {
+                console.log('转发失败', res)
+                // 转发失败
+            }
+        }
+    },
 
 	//tab方法
 	bindChange: function (e) {

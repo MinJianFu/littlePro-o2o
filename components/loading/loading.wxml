@@ -1,0 +1,6 @@
+
+<template name="loading">
+    <view class="__loading {{status ? '' : 'hidden'}}">
+        <image class="__loadingImg" mode="widthFix" src="../../components/loading/img/loading.gif"></image>
+    </view>
+</template>

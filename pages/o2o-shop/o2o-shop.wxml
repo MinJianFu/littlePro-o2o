@@ -1,3 +1,6 @@
+
+<import src="../../components/loading/loading.wxml"/>
+
 <view class="wrap">
     <view class="header-wrap">
         <view class="header-content">
@@ -236,4 +239,5 @@
     </view>
 
 
+    <template is="loading" data="{{...__loading__}}"/>
 </view>
