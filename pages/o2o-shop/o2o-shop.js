@@ -68,7 +68,9 @@ Page({
         // 页面渲染完成
 		
 		//关闭loading层
-		loading().__hideLoading();
+		setTimeout(function(){
+			loading().__hideLoading();
+		}, 800)
     },
 
     //转发事件

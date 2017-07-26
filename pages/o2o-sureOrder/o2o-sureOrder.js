@@ -200,7 +200,7 @@ Page({
 				
                 s_time : this.data.time[this.data.song_index],
                 rmark : this.data.mare,
-                amount : this.data.deliever_price,
+                amount : this.data.shopNews.deliever_price,
                 tip : 0,
 		}
         o2oAjax({
