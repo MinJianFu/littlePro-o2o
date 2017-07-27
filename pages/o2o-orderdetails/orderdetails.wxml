@@ -56,7 +56,7 @@
     <view class="info-conV"><view class="info-leftV">时间：</view><view class="info-rightV">{{orderData.order_sn}}</view></view>
     <view class="info-conV"><view class="info-leftV">商品：</view></view>
     <view class="info-rightV" wx:for="{{orderData.goods_list}}" wx:key="{{index}}" >{{item.goods_name + ' ￥' + item.price + ' * ' + item.num}}</view>
-    <view class="info-conV" style="margin-top:12px;"><view class="info-leftV">商品总价：</view><view class="info-rightV" style="color: red;">￥{{orderData.goods_price}}</view></view>
+    <view class="info-conV" style="margin-top:12px;"><view class="info-leftV">商品总价：</view><view class="info-rightV" style="color: red;">￥{{(orderData.order_amount*100 - orderData.amount*100)/100}}</view></view>
 </view>
 <view class="order-info">
     <view class="info-conV"><view class="info-leftV">基础配送费：</view><view class="info-rightV">{{orderData.amount}}元</view></view>

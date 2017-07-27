@@ -66,8 +66,8 @@
         </picker>
     </view>
     <view class="foot">
-        <view>不含商品费用</view>
-        <view>待支付<txet>¥{{PS_price+XF_index}}</txet></view>
+        <view>含商品费用</view>
+        <view>待支付<txet>¥{{(PS_price*100 + XF_index*100 + good_pcier*100)/100}}</txet></view>
         <form report-submit="true" bindsubmit="goOrderFn">
         <button  class="TJ-btn"  formType="submit">提交订单</button >
         </form>

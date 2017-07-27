@@ -42,8 +42,12 @@ Page({
     },
     //修改商品费用
     change_good_pcier : function (e) {
+        var temVal = e.detail.value.replace(/[^0-9]/g, "");
+        if(temVal > 9999){
+            temVal = 9999;
+        }
         this.setData({
-            good_pcier : e.detail.value
+            good_pcier : temVal
         })
     },
 
