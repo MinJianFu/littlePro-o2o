@@ -209,7 +209,7 @@ Page({
             data : beSendData,
             success: (result)=> {
 				beSendData.goods_list = JSON.parse(beSendData.goods);
-				beSendData.order_amount = beSendData.goods_price + beSendData.amount;
+				beSendData.order_amount = (beSendData.goods_price*100 + parseInt(beSendData.amount)*100)/100;
 				beSendData.order_sn = result.obj.order_sn;
                 this.setData({
                     orderData : beSendData

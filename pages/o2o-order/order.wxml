@@ -16,7 +16,7 @@
                     <text class="buy-type" wx:if="{{item.order_type == 2}}">帮你送</text>
                     <text class="buy-type" wx:if="{{item.order_type == 3}}">商家订单</text>
                 </view>
-                <view  wx:if="{{item.order_type != 2}}">￥{{item.goods_price}}</view>
+                <view  wx:if="{{item.order_type != 2}}">￥{{item.order_amount}}</view>
             </view>
             <view class="item-content">
                 <view class="address" wx:if="{{item.order_type == 1}}">默认地址购买</view>
